@@ -29,7 +29,7 @@ app.put('/api/issue/:id', issue_controller.updateIssue);
 
 //login page
 app.get('/api/users', issue_controller.getUsers);
-app.post('/api/login', issue_controller.login);
+// app.post('/api/login', issue_controller.login);
 
 app.post( '/api/logout', issue_controller.logout );
 
