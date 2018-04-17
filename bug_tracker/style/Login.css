@@ -15,7 +15,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    border-color: black;
 }
 
 button:hover {

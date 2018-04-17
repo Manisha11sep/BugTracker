@@ -65,27 +65,28 @@ createUser: ( req, res, next ) => {
   // },
 
 
-  // login: (req, res, next) => {
-  //   const { username, password } = req.body;
-  //   const dbInstance = req.app.get('db');
-  //   dbInstance.find_user([username]).then(data => {
-  //   if (data.length) {
-  //     if (data[0].password === password) {
-  //       req.session.user = { username };
-  //       res.json({message: `Login successfully ${username}` });
-  //     } else {
-  //       res.status(403).json({ message: 'Invalid password' });
-  //     }
-  //   } else {
-  //     res.status(403).json({ message: 'Unknown user' });
-  //   }
-  // }).catch(error => {
-  //   console.log('error', error);
-  //   res.status(500).json({ message: "An error occurred; for security reasons it can't be disclosed" });
-  // });
+  login: (req, res, next) => {
+    const { username, password } = req.body;
+    const dbInstance = req.app.get('db');
+    dbInstance.find_user([username]).then(data => {
+    if (data.length) {
+      if (data[0].password === password) {
+        req.session.user = { username };
+        res.json({message: `Login successfully ${username}` });
+        res.redirect('/dashboard');
+      } else {
+        res.status(403).json({ message: 'Invalid password' });
+      }
+    } else {
+      res.status(403).json({ message: 'Unknown user' });
+    }
+  }).catch(error => {
+    console.log('error', error);
+    res.status(500).json({ message: "An error occurred; for security reasons it can't be disclosed" });
+  });
 
   
-  // },
+  },
 
   logout : (req,res)=>{
     const name = req.session.user.username;
