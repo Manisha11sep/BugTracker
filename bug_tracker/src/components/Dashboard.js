@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Comment from './Comment';
+import Message from './Message';
 
 export default class Dashboard extends Component {
     constructor(){
@@ -8,6 +9,7 @@ export default class Dashboard extends Component {
             this.state ={
                 issues :[],
                 text:'',
+                comments:[]
 
             
         }
@@ -28,38 +30,63 @@ export default class Dashboard extends Component {
     }
 
 
+    loadcomments(id){
+        axios.get(`/api/comment/${id}`).then(response => {
+
+                    this.setState({comments: response.data})
+                    console.log(this.state.comments);
+                })
+    }
+
     render() {
+        
+         const comment= this.state.comments.map((comment,i) =>(
+                <div key = {i}>
+                <p>{comment.description}</p>
+                <p>Posted by:{comment.posted_by} </p> 
+                <p>Refered to Issue{comment.issue_id} </p>
+                </div>
+            ))
+            
                 return(
             <div>
                 <div>
                 <button > sort </button>
                     
                        <button> Delete </button>
-                    
+                 
                        </div>
-
-                <h1> List of Issues is  </h1>
-            {
-                this.state.issues.map((issue,i) => (
-                        <div key={i}>
-                       <p>Issue Name: {issue.name}</p>
-                       <p>Description: {issue.description}</p>
-                       <p>Creater: {issue.creater_id}</p>
-                       <p>Last Updated: {issue.last_updated}</p>
-                       {/* <input className='info-box'
-             placeholder ="Give your thoughts!!"
-            value = {this.state.text}
-            onChange={this.updateText}/>
-
-                       <button> Comment </button> */}
-                    <Comment />
+                <div>
+                     <h1> List of Issues is  </h1>
+                     {
+                        this.state.issues.map((issue,i) => (
+                            <div key={i}>
+                            <p> Issue Id :{issue.id} </p>
+                            <p>Issue Name: {issue.name}</p>
+                            <p>Description: {issue.description}</p>
+                            <p>Creater ID: {issue.creater_id}</p>
+                            <p>Last Updated: {issue.last_updated}</p>
+                            <button onClick ={() =>this.loadcomments(issue.id)}> Load comments </button>
+                        {comment}
+                             <Comment issue_id={issue.id}/>
                   
-                        </div>
+                          </div>
+                       
                 ))
             }
+
+           
+      
+
+            </div>
             </div>
       
         )
       }
       }
-      
+              {/* <input className='info-box'
+             placeholder ="Give your thoughts!!"
+            value = {this.state.text}
+            onChange={this.updateText}/>
+
+                       <button > Comment </button> */}

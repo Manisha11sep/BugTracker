@@ -1,1 +1,1 @@
-INSERT INTO users ( id,username,password,email,profile_pic) VALUES ( $1, $2, $3, $4, $5);
+INSERT INTO users ( username,password,email,profile_pic) VALUES ( $1, $2, $3, $4);

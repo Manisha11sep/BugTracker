@@ -2,19 +2,21 @@ module.exports = {
 
 createUser: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
-    const { id,username,password,email,profile_pic } = req.body;
+    const {username,password,email,profile_pic} = req.body;
 
-    dbInstance.create_user([id,username,password,email,profile_pic])
-      .then( () => res.status(200).send(message= "Post created successfully") )
+    dbInstance.create_user([username,password,email,profile_pic])
+      .then( () => res.status(200).send(message= "User Regestered successfully") )
 
       .catch( error => console.log(error) );
   },
 
   createIssue: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
-    const { name,description,creater_id_last_updated } = req.body;
+    const {title,description} = req.body;
+    const posted_by =  req.session.user.username;
+ console.log("username is" ,req.session.user.username);
 
-    dbInstance.create_issue([name,description,creater_id_last_updated])
+    dbInstance.create_issue([title,description,creater_id,posted_by])
       .then( () => res.status(200).send(message= "Issue created successfully") )
 
       .catch( error => console.log(error) );

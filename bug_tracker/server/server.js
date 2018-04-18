@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const issue_controller = require('./issue_controller');
+const comment_controller = require('./comment_controller');
 const massive = require('massive');
 const session = require('express-session');
 require('dotenv').config();
@@ -34,9 +35,12 @@ app.post('/api/login', issue_controller.login);
 
 app.post( '/api/logout', issue_controller.logout );
 
+//Signup page
+app.post( '/api/signup', issue_controller.createUser );
 
 
 //**************** COMMENT page */
-app.get
+app.get('/api/comment/:issue_id', comment_controller.getComment);
+app.post('/api/comment', comment_controller.createComment);
 
 app.listen(PORT, ()=> console.log(`you are running on : ${PORT}`))

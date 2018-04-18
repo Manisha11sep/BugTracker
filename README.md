@@ -17,3 +17,5 @@ Your proxy should look like "proxy": "http://localhost:4000" using whatever port
 ### validator.js(This library validates and sanitizes strings only.)
 
 npm install validator
+
+npm install react-icons --save

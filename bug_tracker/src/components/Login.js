@@ -53,13 +53,13 @@ password(event){
   login() {
     this.setState({ message: null });
     const { username, password } = this.state;
-    console.log("inside createpost", {username,password})
+    console.log("inside Login", {username,password})
     axios.post('/api/login',{username,password}).then(response => {
       this.setState({ user: response.data });
-      console.log(response.data);
+      console.log("User name Value inside App", this.state.user);
       window.location = '/dashboard';
     }).catch(error => {
-      this.setState({ message: 'Something went wrong: ' + this.getMessage(error) });
+      this.setState({ message: 'Something went wrong: '});
     });
   };
 

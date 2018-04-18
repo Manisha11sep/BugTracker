@@ -1,26 +1,77 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Signup extends Component {
-    render() {
+    constructor(){
+    super();
+    this.state = {
+        username:'',
+        email:'',
+        password:'',
+        profile_pic :'',
+        messages:'',
+        }
+    
+    this.createUser = this.createUser.bind( this );
+    this.username= this.username.bind(this);
+    this.password = this.password.bind(this);
+    this.email = this.email.bind(this);
+    this.profile_pic = this.profile_pic.bind(this);
+
+    }   
+    username(event){
+        this.setState({username:event.target.value});
+    }
+   email(event){
+        this.setState({email:event.target.value});
+    }
+    password(event){
+        this.setState({password:event.target.value});
+    }
+   profile_pic(event){
+        this.setState({profile_pic:event.target.value});
+    }
+    createUser()
+    {
+     
+     const {username,email,profile_pic,password} = this.state;
+     console.log("inside createuser", )
+      axios.post('/api/signup',{username,password,email,profile_pic}).then( response => {
+          console.log("inside create" , response.data);
+        this.setState({ messages: response.data });
+    
+      });
+    }
+
+
+render() {
         return (
             <div>
                 <form>
                 <p className="h4 text-center mb-4">Sign up</p>
                     <div>
                     <label> Username</label>
-                    <input type="text" name ="username"/>
+                    <input type="text" name ="username"
+                     placeholder ="Enter Username!!"
+                     value ={this.state.username}
+                     onChange={this.username}/>
             
                     </div>
 
    
                 <div>
                 <label >Email Id </label>
-                <input type="email" name="email"/>
+                <input type="email" name="email"
+                  placeholder ="Enter Email!!"
+                  value ={this.state.email}
+                  onChange={this.email}/>
                 </div>
 
                 <div>
                 <label >Profile Picture </label>
-                    <input type="file" />
+                    <input type="file"  placeholder ="Upload profile pic!!"
+                     value ={this.state.profile_pic}
+                     onChange={this.profile_pic}/>
                     
                     
                 </div>
@@ -28,12 +79,16 @@ export default class Signup extends Component {
             
                 <div>
                 <label >Your password</label>
-                    <input type="password" name ="password"/>
+                    <input type="password" name ="password"  placeholder ="Enter Password!!"
+                     value ={this.state.password}
+                     onChange={this.password}/>
                 
                 </div>
 
                 <div >
-                    <button className="btn btn-primary" type="submit">Register</button>
+                <button onClick ={this.createUser}> Register</button>
+
+<span> {this.state.messages}</span>
 
                     <input type="reset"/>
                 </div>
