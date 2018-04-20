@@ -13,18 +13,21 @@ class Dashboard extends Component {
       comments: [],
       user:{}
     };
-    this.updateText = this.updateText.bind(this);
+    // this.updateText = this.updateText.bind(this);
     this.loadcomments = this.loadcomments.bind(this);
   }
 
   componentDidMount() {
     console.log("inisde mount");
     axios.get("/api/issue/getAll").then(response => {
-      this.setState({ issues: response.data }).catch(error => console.log(error));
+      this.setState({ issues: response.data })
+    //   .catch(error => console.log(error));
     });
     axios.get("/api/session").then(response => {
         console.log("inside axios session",response.data)
-      this.setState({ user: response.data }).catch(error => console.log(error));
+      this.setState({ user: response.data })
+      this.props.userDetail(response.data);
+    //   .catch(error => console.log(error));
     });
   }
 
@@ -42,7 +45,7 @@ class Dashboard extends Component {
 
 
   render() {
-    console.log("Inside the dashboard", this.state.username);
+    console.log("Inside the dashboard", this.state.user.username);
 
     const comment = this.state.comments.map((comment, i) => (
       <div key={i}>
@@ -83,14 +86,14 @@ class Dashboard extends Component {
     );
   }
 }
-function mapStateToProps(state) {
-  const { username, email, profile_pic } = state;
 
-  return {
-    username,
-    profile_pic,
-    email
+const mapStateToProps = state => {
+    return state;
   };
-}
-
-export default connect(mapStateToProps, {userDetail})(Dashboard);
+  
+  const mapDispatchToProps = {
+    userDetail,
+  };
+  
+  
+  export default connect(mapStateToProps, mapDispatchToProps) (Dashboard);
