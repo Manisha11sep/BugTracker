@@ -8,7 +8,7 @@ require('dotenv').config();
 const PORT=4000;
 const app = express();
 // const cors = require('cors');
-
+// const checkForSession = require('./middlewares/checkForSession');
 app.use(bodyParser.json());
 // app.use(cors());
 massive( process.env.CONNECTION_STRING ).then( dbInstance => app.set('db', dbInstance) );
@@ -22,6 +22,7 @@ app.use(session({
 
 }));
 
+// app.use(checkForSession);
 app.get( '/api/issue/getAll',issue_controller.getIssues );
 app.post('/api/issue/create', issue_controller.createIssue);
 app.delete('/api/issue/:id', issue_controller.deleteIssue);
@@ -29,18 +30,22 @@ app.put('/api/issue/:id', issue_controller.updateIssue);
 // app.get( '/api/issue/:id', issue_controller.getIssue );
 
 
-//login page
+//****************login page//****************
 // app.get('/api/users', issue_controller.getUsers);
 app.post('/api/login', issue_controller.login);
 
 app.post( '/api/logout', issue_controller.logout );
 
-//Signup page
+//****************Signup page//****************
 app.post( '/api/signup', issue_controller.createUser );
 
 
-//**************** COMMENT page */
+//**************** COMMENT page//****************
 app.get('/api/comment/:issue_id', comment_controller.getComment);
 app.post('/api/comment', comment_controller.createComment);
+
+
+//**************** SESSION //****************
+app.get('/api/session', issue_controller.session);
 
 app.listen(PORT, ()=> console.log(`you are running on : ${PORT}`))

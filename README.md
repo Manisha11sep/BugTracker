@@ -19,3 +19,7 @@ Your proxy should look like "proxy": "http://localhost:4000" using whatever port
 npm install validator
 
 npm install react-icons --save
+
+npm i react-redux redux react-router-dom
+
+npm install --save react-datetime

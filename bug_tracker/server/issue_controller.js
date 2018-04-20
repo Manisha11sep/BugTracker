@@ -12,11 +12,11 @@ createUser: ( req, res, next ) => {
 
   createIssue: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
-    const {title,description} = req.body;
-    const posted_by =  req.session.user.username;
- console.log("username is" ,req.session.user.username);
+    const {title,description,last_updated} = req.body;
+    const creater_id = req.session.user.id;
+ console.log("id is" ,req.session.user.id);
 
-    dbInstance.create_issue([title,description,creater_id,posted_by])
+    dbInstance.create_issue([title,description,creater_id,last_updated])
       .then( () => res.status(200).send(message= "Issue created successfully") )
 
       .catch( error => console.log(error) );
@@ -54,7 +54,11 @@ createUser: ( req, res, next ) => {
       .then( () => res.status(200).send(message = "post is deleted") )
       .catch( error => console.log(error) );
   },
+session:(req,res,next)=>{
+  console.log("inside session function ", req.session.user);
+  res.status(200).send(req.session.user)
 
+},
 
 
   // getIssue: ( req, res, next ) => {
@@ -71,11 +75,18 @@ createUser: ( req, res, next ) => {
     const { username, password } = req.body;
     const dbInstance = req.app.get('db');
     dbInstance.find_user([username]).then(data => {
+      console.log("user data is ",data);
     if (data.length) {
       if (data[0].password === password) {
-        req.session.user = { username };
-        res.json({message: `Login successfully ${username}` });
+        req.session.user = { 
+          id:data[0].id,
+          username: data[0].username,
+          email: data[0].email,
+          profile_pic: data[0].profile_pic
+         };
+        res.status(200).send(req.session.user)
         res.redirect('/dashboard');
+    
       } else {
         res.status(403).json({ message: 'Invalid password' });
       }

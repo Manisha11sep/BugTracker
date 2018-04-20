@@ -11,26 +11,31 @@ export default class Signup extends Component {
         profile_pic :'',
         messages:'',
         }
-    
+
+        this.onChange=this.onChange.bind(this);
     this.createUser = this.createUser.bind( this );
-    this.username= this.username.bind(this);
-    this.password = this.password.bind(this);
-    this.email = this.email.bind(this);
-    this.profile_pic = this.profile_pic.bind(this);
+    // this.username= this.username.bind(this);
+    // this.password = this.password.bind(this);
+    // this.email = this.email.bind(this);
+    // this.profile_pic = this.profile_pic.bind(this);
 
     }   
-    username(event){
-        this.setState({username:event.target.value});
+
+    onChange(e){
+        this.setState({[e.target.name]:e.target.value});
     }
-   email(event){
-        this.setState({email:event.target.value});
-    }
-    password(event){
-        this.setState({password:event.target.value});
-    }
-   profile_pic(event){
-        this.setState({profile_pic:event.target.value});
-    }
+//     username(event){
+//         this.setState({username:event.target.value});
+//     }
+//    email(event){
+//         this.setState({email:event.target.value});
+//     }
+//     password(event){
+//         this.setState({password:event.target.value});
+//     }
+//    profile_pic(event){
+//         this.setState({profile_pic:event.target.value});
+//     }
     createUser()
     {
      
@@ -54,7 +59,7 @@ render() {
                     <input type="text" name ="username"
                      placeholder ="Enter Username!!"
                      value ={this.state.username}
-                     onChange={this.username}/>
+                     onChange={this.onChange}/>
             
                     </div>
 
@@ -64,14 +69,14 @@ render() {
                 <input type="email" name="email"
                   placeholder ="Enter Email!!"
                   value ={this.state.email}
-                  onChange={this.email}/>
+                  onChange={this.onChange}/>
                 </div>
 
                 <div>
                 <label >Profile Picture </label>
                     <input type="file"  placeholder ="Upload profile pic!!"
                      value ={this.state.profile_pic}
-                     onChange={this.profile_pic}/>
+                     onChange={this.onChange}/>
                     
                     
                 </div>
@@ -81,16 +86,18 @@ render() {
                 <label >Your password</label>
                     <input type="password" name ="password"  placeholder ="Enter Password!!"
                      value ={this.state.password}
-                     onChange={this.password}/>
+                     onChange={this.onChange}/>
                 
                 </div>
 
                 <div >
                 <button onClick ={this.createUser}> Register</button>
 
-<span> {this.state.messages}</span>
+
 
                     <input type="reset"/>
+                    <br />
+                    <span> {this.state.messages}</span>
                 </div>
     
 </form>

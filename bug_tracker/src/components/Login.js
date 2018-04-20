@@ -2,66 +2,55 @@ import React, { Component } from 'react';
 import App from '../App.css';
 import axios from 'axios';
 // import validateInput from './validations';
+import { connect } from "react-redux";
+import {userDetail, logout} from '../ducks/reducer'; 
+import Signup from './Signup';
 
-export default class Login extends Component {
-  constructor() {
-    super();
+class Login extends Component {
+    constructor() {
+      super();
 
-    this.state = {
-      user:null,
-      username: '',
-      password: '',
-      errors: {},
-      isLoading: false
-    };
-    this.login = this.login.bind( this );
-   this.username = this.username.bind(this);
-   this.password = this.password.bind(this);
-  //  this.onSubmit = this.onSubmit.bind(this);
+      this.state = {
+        user:{},
+        username: '',
+        password: '',
+        errors: {},
+        isLoading: false
+      };
+      this.login = this.login.bind( this );
+      this.username = this.username.bind(this);
+      this.password = this.password.bind(this);
+      // this.userDetails = this.userDetails.bind(this);
+    }
 
+    username(event){
+      this.setState({username:event.target.value});
+      console.log(this.state.username);
+    }
+    password(event){
+      this.setState({password:event.target.value});
+      console.log(this.state.password);
+    }
 
-  }
-
-  username(event){
-    this.setState({username:event.target.value});
-    console.log(this.state.username);
-
-}
-password(event){
-    this.setState({password:event.target.value});
-    console.log(this.state.password);
-}
-
-// isValid() {
-//   const { errors, isValid } = validateInput(this.state);
-
-//   if (!isValid) {
-//     this.setState({ errors });
-//   }
-
-//   return isValid;
-// }
-
-// onSubmit(e){
-//   e.preventDefault();
-//   if(this.isValid()){
-
-//   }
-// }
-
-
-  login() {
-    this.setState({ message: null });
-    const { username, password } = this.state;
-    console.log("inside Login", {username,password})
-    axios.post('/api/login',{username,password}).then(response => {
-      this.setState({ user: response.data });
-      console.log("User name Value inside App", this.state.user);
-      window.location = '/dashboard';
-    }).catch(error => {
+    login() {
+      this.setState({ message: null });
+      const { username, password } = this.state;
+      console.log("inside Login", {username,password})
+      axios.post('/api/login',{username,password}).then(response => {
+        console.log(response.data)
+          this.setState({ user: response.data });
+          this.props.userDetail(response.data);
+          window.location = '/dashboard';
+      }).catch(error => {
       this.setState({ message: 'Something went wrong: '});
-    });
-  };
+      });
+    };
+
+
+      // userDetails(){
+      //   const {user}=this.state;
+      // }
+
 
 // logout = () => {
 //   axios.post('/api/logout').then(response => {
@@ -74,24 +63,47 @@ password(event){
 
 
 render() {
-  const {username, password, isLoading, message} = this.state;
+  const {username, password} = this.state;
   return (
     <div className="main">
-  Please login 
-  <div>
-        {/* <form onSubmit={this.onSubmit}> */}
-        <input type="text" placeholder="Username"  value ={username}
-           onChange={this.username}/>
-        <input  type="password" placeholder="Password" value ={password}
-           onChange={this.password}/>
+      Please login 
+      <div>
+      
+        <input type="text" 
+          placeholder="Username"
+          value ={username}
+          onChange={this.username}/>
+       
+        <input  type="password"
+         placeholder="Password"
+         value ={password}
+        onChange={this.password}/>
         <div>
-          <button  disabled={isLoading} onClick={ this.login }>Login </button>
-
-          <span> Status is :  {message}</span>
+            <button  onClick={ this.login }>Login </button>
+            {console.log("inside Login page", this.state.user)}
+         <p> email id is {this.state.user.email} </p>
+         
         </div>
-        {/* </form> */}
-        </div>
+        
+      </div>
     </div>
   );
 }
 }
+// function mapStateToProps( state ) {
+//   const{id,username,email,profile_pic} = state;
+//   return {
+//     id,username,email,profile_pic
+//   };
+// }
+
+const mapStateToProps = state => {
+  return state;
+};
+
+const mapDispatchToProps = {
+  userDetail,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (Login);
