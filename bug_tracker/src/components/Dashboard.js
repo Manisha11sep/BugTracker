@@ -2,32 +2,35 @@ import React, { Component } from "react";
 import axios from "axios";
 import Comment from "./Comment";
 import { connect } from "react-redux";
-import {userDetail, logout} from '../ducks/reducer';
+import { userDetail, search } from "../ducks/reducer";
+import SearchIcon from "react-icons/lib/md/search";
 
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
       issues: [],
-      text: "",
+      text: '',
       comments: [],
-      user:{}
+      searchedIssue: [],
+      user: {}
     };
-    // this.updateText = this.updateText.bind(this);
+    this.updateText = this.updateText.bind(this);
     this.loadcomments = this.loadcomments.bind(this);
+    this.searchIssue = this.searchIssue.bind(this);
   }
 
   componentDidMount() {
     console.log("inisde mount");
     axios.get("/api/issue/getAll").then(response => {
-      this.setState({ issues: response.data })
-    //   .catch(error => console.log(error));
+      this.setState({ issues: response.data });
+      //   .catch(error => console.log(error));
     });
     axios.get("/api/session").then(response => {
-        console.log("inside axios session",response.data)
-      this.setState({ user: response.data })
+      console.log("inside axios session", response.data);
+      this.setState({ user: response.data });
       this.props.userDetail(response.data);
-    //   .catch(error => console.log(error));
+      //   .catch(error => console.log(error));
     });
   }
 
@@ -43,15 +46,25 @@ class Dashboard extends Component {
     });
   }
 
+  searchIssue() {
+    const { text } = this.state;
+    console.log("search parameter is ",text);
+    axios.get(`/api/issue?search=${text}`).then(response => {
+      this.setState({ searchedIssue: response.data });
+      console.log(response.data);
+    });
+   
+  }
 
   render() {
+    const {text } = this.state;
     console.log("Inside the dashboard", this.state.user.username);
 
     const comment = this.state.comments.map((comment, i) => (
       <div key={i}>
         <p>{comment.description}</p>
         <p>Posted by:{comment.posted_by} </p>
-        {/* <p>Refered to Issue{comment.issue_id} </p> */}
+        <p>Refered to Issue{comment.issue_id} </p>
       </div>
     ));
 
@@ -61,6 +74,25 @@ class Dashboard extends Component {
           <button> sort </button>
 
           <button> Delete </button>
+      <div>
+          <input type="text" 
+          placeholder="search"
+          value ={text}
+          onChange={this.updateText}/>
+
+          {/* <input placeholder="Search " onChange={e => search(e.target.value)} /> */}
+
+          <SearchIcon id="Search__icon" />
+
+          <button onClick={() => this.searchIssue(search)}> Go </button>
+        <p> The searched Issue is :</p> 
+        {this.state.searchedIssue.map((search,i)=>{
+          <div key ={i}>
+          <p> Title is {search.name}</p>
+          </div>
+        })} 
+
+        </div>
         </div>
         <div>
           <h1> Welcome {this.props.username} </h1>
@@ -74,10 +106,11 @@ class Dashboard extends Component {
               <p>Creater ID: {issue.creater_id}</p>
               <p>Last Updated: {issue.last_updated}</p>
               <button onClick={() => this.loadcomments(issue.id)}>
-                {" "}
-                Load comments{" "}
+                Load comments
               </button>
               {comment}
+              {console.log("inside comment", { comment })}
+              {/* {comment[0].issue_id == issue.id ? comment : null} */}
               <Comment issue_id={issue.id} />
             </div>
           ))}
@@ -88,12 +121,12 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-    return state;
-  };
-  
-  const mapDispatchToProps = {
-    userDetail,
-  };
-  
-  
-  export default connect(mapStateToProps, mapDispatchToProps) (Dashboard);
+  return state;
+};
+
+const mapDispatchToProps = {
+  userDetail,
+  search
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

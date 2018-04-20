@@ -9,12 +9,14 @@ const initalState = {
     user:[],
     issues :[],
     text:'',
+    search:'',
     comments:[]
 }
 
 const USERDETAIL = 'USERDETAIL';
 const LOGOUT ='LOGOUT';
 const WRITE_COMMENT = 'WRITE_COMMENT';
+const SEARCH = 'SEARCH';
 
 function reducer (state=initalState, action){
     console.log("inside switch", action.payload);
@@ -39,6 +41,11 @@ function reducer (state=initalState, action){
                 return {
                     ...state,description:action.payload
                 };
+
+            case SEARCH:
+            return {
+                ...state,search:action.payload
+             };
             
 
     default:
@@ -71,6 +78,15 @@ export function writeComment(description){
     return {
         type: WRITE_COMMENT,
         payload:description
+    };
+
+}
+
+// Search 
+export function search(searchText){
+    return {
+        type: SEARCH,
+        payload:searchText
     };
 
 }

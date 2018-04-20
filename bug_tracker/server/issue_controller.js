@@ -61,14 +61,22 @@ session:(req,res,next)=>{
 },
 
 
-  // getIssue: ( req, res, next ) => {
-  //   const dbInstance = req.app.get('db');
-  //   const { params } = req;
+  searchIssue: ( req, res, next ) => {
+    const dbInstance = req.app.get('db');
+    const { search } = req.query;
+    console.log("inside controller", search)
+    dbInstance.search_issue([ search])
+      .then( product => res.status(200).send( product ) )
+      .catch( error => console.log(error) );
+  },
 
-  //   dbInstance.read_product([ params.id ])
-  //     .then( product => res.status(200).send( product ) )
-  //     .catch( error => console.log(error) );
-  // },
+  // search: (req, res) => {
+  //   console.log(req.query.city);
+  //   if(req.query.city){
+  //       req.app.get('db').search_property(req.query.city).then(data => {
+  //           res.status(200).send(data)
+  //       })
+  //   }
 
 
   login: (req, res, next) => {

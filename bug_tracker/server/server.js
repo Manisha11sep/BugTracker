@@ -27,7 +27,7 @@ app.get( '/api/issue/getAll',issue_controller.getIssues );
 app.post('/api/issue/create', issue_controller.createIssue);
 app.delete('/api/issue/:id', issue_controller.deleteIssue);
 app.put('/api/issue/:id', issue_controller.updateIssue);
-// app.get( '/api/issue/:id', issue_controller.getIssue );
+app.get( '/api/issue', issue_controller.searchIssue);
 
 
 //****************login page//****************
