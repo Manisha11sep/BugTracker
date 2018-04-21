@@ -4,6 +4,8 @@ import Comment from "./Comment";
 import { connect } from "react-redux";
 import { userDetail, search } from "../ducks/reducer";
 import SearchIcon from "react-icons/lib/md/search";
+// import Profile from './Profile';
+
 
 class Dashboard extends Component {
   constructor() {
@@ -56,9 +58,12 @@ class Dashboard extends Component {
    
   }
 
+  
+
   render() {
     const {text } = this.state;
     console.log("Inside the dashboard", this.state.user.username);
+
 
     const comment = this.state.comments.map((comment, i) => (
       <div key={i}>
@@ -71,6 +76,7 @@ class Dashboard extends Component {
     return (
       <div>
         <div>
+        {/* <Profile /> */}
           <button> sort </button>
 
           <button> Delete </button>

@@ -32,9 +32,9 @@ function reducer (state=initalState, action){
             case LOGOUT:
             return {
                 ...state,
-                name:'',
+                username:'',
                 email:'',
-            picture:'',
+                profile_pic:'',
             };
 
             case WRITE_COMMENT:

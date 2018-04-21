@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import NewIssue from './components/NewIssue';
 import Signup from './components/Signup';
+import AdminDashboard from './components/AdminDashboard';
 
 
 
@@ -14,5 +15,7 @@ export default (
     <Route component={ Dashboard } path="/dashboard" />
     <Route component={ NewIssue } path="/issue" />
     <Route component={ Signup} path="/signup" />
+    <Route component={AdminDashboard} path="/admin" />
+  
   </Switch>
 )

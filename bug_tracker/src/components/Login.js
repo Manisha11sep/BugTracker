@@ -5,6 +5,7 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import {userDetail, logout} from '../ducks/reducer'; 
 import Signup from './Signup';
+// import Header from './Header';
 
 class Login extends Component {
     constructor() {
@@ -35,22 +36,26 @@ class Login extends Component {
     login() {
       this.setState({ message: null });
       const { username, password } = this.state;
-      console.log("inside Login", {username,password})
       axios.post('/api/login',{username,password}).then(response => {
-        console.log(response.data)
+        console.log("inside login page",response.data)
           this.setState({ user: response.data });
           this.props.userDetail(response.data);
-          window.location = '/dashboard';
+          {response.data.username ==='admin'
+          ?
+          window.location = '/admin'
+          :
+          window.location = '/dashboard'
+        }
       }).catch(error => {
       this.setState({ message: 'Something went wrong: '});
       });
     };
 
-
-      // userDetails(){
-      //   const {user}=this.state;
-      // }
-
+    handleKeyPress(event){
+      if(event.key ==='Enter'){
+        this.login();
+      }
+    }
 
 // logout = () => {
 //   axios.post('/api/logout').then(response => {
@@ -66,6 +71,7 @@ render() {
   const {username, password} = this.state;
   return (
     <div className="main">
+  
       Please login 
       <div>
       
@@ -77,6 +83,7 @@ render() {
         <input  type="password"
          placeholder="Password"
          value ={password}
+         onKeyPress={e=>this.handleKeyPress(e)}
         onChange={this.password}/>
         <div>
             <button  onClick={ this.login }>Login </button>

@@ -32,6 +32,7 @@ app.get( '/api/issue', issue_controller.searchIssue);
 
 //****************login page//****************
 // app.get('/api/users', issue_controller.getUsers);
+app.get('/api/checkSession', issue_controller.checkSession);
 app.post('/api/login', issue_controller.login);
 
 app.post( '/api/logout', issue_controller.logout );

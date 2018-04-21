@@ -93,7 +93,7 @@ session:(req,res,next)=>{
           profile_pic: data[0].profile_pic
          };
         res.status(200).send(req.session.user)
-        res.redirect('/dashboard');
+        // res.redirect('/dashboard');
     
       } else {
         res.status(403).json({ message: 'Invalid password' });
@@ -115,13 +115,12 @@ session:(req,res,next)=>{
     res.json({message: 'you have successfully logged out, ${name}'});
 
 },
-
-// signout: ( req, res, next ) => {
-//   const {session} =req;
-//   session.destroy();
-//   res.status(200).send("your loggedout");
-
-
-// },
-
+checkSession: (req, res) => {
+  if(req.session.user){
+      res.status(200).send(req.session.user)
+      console.log("insdie check session", req.session.user)
+  } else {
+      res.status(200).send('No Session found');
+  }
+},
 };
