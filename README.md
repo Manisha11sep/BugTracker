@@ -25,3 +25,5 @@ npm i react-redux redux react-router-dom
 npm install --save react-datetime
 
 npm install react-chartjs-2 chart.js --save
+
+npm install --save styled-components.

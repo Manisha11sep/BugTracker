@@ -2,8 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const issue_controller = require('./issue_controller');
 const comment_controller = require('./comment_controller');
+const admin_controller = require('./admin_controller');
 const massive = require('massive');
 const session = require('express-session');
+
+
+
 require('dotenv').config();
 const PORT=4000;
 const app = express();
@@ -44,6 +48,15 @@ app.post( '/api/signup', issue_controller.createUser );
 //**************** COMMENT page//****************
 app.get('/api/comment/:issue_id', comment_controller.getComment);
 app.post('/api/comment', comment_controller.createComment);
+
+//**************** ADMIN DASHBOARD page//****************
+app.get('/api/admin/comment', admin_controller.commentByIssue);
+app.get('/api/admin/issue', admin_controller.issueByUserId);
+app.get('/api/admin/issuecount', admin_controller.issueCountByUser);
+app.get('/api/admin/commentcount', admin_controller.commentCountByUser);
+app.get('/api/admin/issuecomment', admin_controller.commentCountByIssue);
+
+
 
 
 //**************** SESSION //****************
