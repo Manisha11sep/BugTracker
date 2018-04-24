@@ -55,6 +55,7 @@ app.get('/api/admin/issue', admin_controller.issueByUserId);
 app.get('/api/admin/issuecount', admin_controller.issueCountByUser);
 app.get('/api/admin/commentcount', admin_controller.commentCountByUser);
 app.get('/api/admin/issuecomment', admin_controller.commentCountByIssue);
+app.get('/api/admin/users', admin_controller.allUser);
 
 
 

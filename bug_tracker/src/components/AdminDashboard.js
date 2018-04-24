@@ -12,36 +12,105 @@ export default class AdminDashboard extends Component {
     constructor(){
         super();
         this.state = {
+            users:[],
           comments:[],
           issues:[],
           issueCount:[],
           commentCount:[],
           commentCountByIssue:[],
+          IssuePerUSer:{},
+          CommentPerUser:{},
+          CommentPerIssue:{}
        
         }
 
         this.getComment = this.getComment.bind(this);
         this.getIssue = this.getIssue.bind(this);
         this.logout = this.logout.bind(this);
+        this.getUsers = this.getUsers.bind(this);
     }
 
     componentDidMount() {
         console.log("inisde mount");
-        axios.get("/api/admin/issuecount").then(response => {
-          this.setState({ issueCount: response.data });
-          console.log("issue count is ",this.state.issueCount)
+        // axios.get("/api/admin/issuecount").then(response => {
+        //   this.setState({ issueCount: response.data });
+        //   console.log("issue count is ",this.state.issueCount)
+        // });
+        axios.get("/api/admin/issuecount").then(res => {
+            
+            const issue=res.data;
+            let username=[];
+            let issueCount = [];
+            issue.forEach(element =>{
+                username.push(element.username);
+                issueCount.push(element.issue_count);
+            });
+            this.setState({
+                IssuePerUSer:{
+                    labels: username,
+                   datasets: [
+                       {
+                           label: 'Issue created by each user',
+                           data:issueCount,
+                           backgroundColor: ['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)' ],
+                           borderColor: ['rgba(255,99,132,1)','rgba(54, 162, 235, 1)'   ],
+                           borderWidth: 1  
+                    }]
+                },
+                
+            });
+        })
+        axios.get("/api/admin/commentcount").then(res => {
+           
+            const comment=res.data;
+            let posted_by=[];
+            let commentCount = [];
+            comment.forEach(element =>{
+                posted_by.push(element.posted_by);
+                commentCount.push(element.comment_count);
+            });
+            this.setState({
+                CommentPerUser:{
+                    labels: posted_by,
+                   datasets: [
+                       {
+                           label: 'Issue created by each user',
+                           data:commentCount,
+                           backgroundColor: ['rgba(255, 206, 86, 0.2)',
+                           'rgba(75, 192, 192, 0.2)',
+                           'rgba(153, 102, 255, 0.2)',
+                           'rgba(255, 159, 64, 0.2)'],
+                           borderColor: ['rgba(255,99,132,1)','rgba(54, 162, 235, 1)'   ],
+                           borderWidth: 1  
+                    }]
+                },
+                
+            });
         });
-        axios.get("/api/admin/commentcount").then(response => {
-          console.log("commentCount", response.data);
-          this.setState({ commentCount: response.data });
-
-        //   this.props.userDetail(response.data);
-          //   .catch(error => console.log(error));
-        });
-        axios.get("/api/admin/issuecomment").then(response => {
-            this.setState({commentByIssue: response.data });
-            //   .catch(error => console.log(error));
-            console.log("commentByIssue", this.state.commentByIssue);
+        axios.get("/api/admin/issuecomment").then(res => {
+            console.log("Comment by issue", res.data);
+            const commentbyIssue=res.data;
+            let Issue_id=[];
+            let commentCount = [];
+            commentbyIssue.forEach(element =>{
+                Issue_id.push(element.issue_id);
+                console.log(Issue_id);
+                commentCount.push(element.comment_count);
+            });
+            this.setState({
+                CommentPerIssue:{
+                    labels: Issue_id,
+                   datasets: [
+                       {
+                           label: 'Comment Per Issue ',
+                           data:commentCount,
+                           backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360" ],
+                           hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"],
+                           borderWidth: 1  
+                    }]
+                },
+                
+            });
           });
       }
 
@@ -50,6 +119,14 @@ export default class AdminDashboard extends Component {
           this.setState({ comments: response.data });
           console.log("Inside admin",this.state.comments);
         });
+    }
+
+    getUsers(){
+        axios.get('/api/admin/users').then(response => {
+            this.setState({ users: response.data });
+            console.log("Inside admin",this.state.users);
+          });
+
     }
 
      getIssue() {
@@ -122,16 +199,16 @@ export default class AdminDashboard extends Component {
                 <a href="#"><i className="fa fa-line-chart"></i> Charts <span className="arrow"></span></a>
             </li>
             <ul className="sub-menu collapse" id="products">
-                <li > <a data-toggle="collapse" href="#barchart" >Comment posted by users </a></li>
-                <li><a href="#">Issue posted by User</a></li>
-                <li><a href="#">Comment on issues</a></li>
+                <li > <a data-toggle="collapse" href="#CommentByUSer" >Comment posted by users </a></li>
+                <li><a data-toggle="collapse" href="#IssueByUser" >Issue posted by User</a></li>
+                <li><a data-toggle="collapse" href="#CommentByIssue">Comment on issues</a></li>
                 
             </ul>
             
             <li>
-                <a href="#">
+                <div data-toggle="collapse" data-target ="#UserData" onClick = {this.getUsers}> 
                     <i className="fa fa-users fa-lg"></i> Users
-                </a>
+               </div>
             </li>
             <li>
                 <div onClick={()=>{console.log("email comp")}}>
@@ -169,21 +246,57 @@ export default class AdminDashboard extends Component {
         {commentList}   
     </div>
 
-    <div className = "collapse" id="barchart" onClick= {<BarChart />}>
-    <h1> BarChart </h1>
-    <BarChart />
-
-        </div>
 
         </div>
         
+        <div className="collapse" id="IssueByUser">
+        <h1> Issue count by each User</h1>
+                <Pie data={this.state.IssuePerUSer}
+                options={{ maintainAspectRatio: false }} />
+                </div>
+
+                <div className="collapse" id="CommentByUSer">
+                <h1> Comment Posted by Each user </h1>
+            
+                <Bar data={this.state.CommentPerUser}
+                options={{ maintainAspectRatio: false }} />
+                </div>
+
+                  <div className="collapse" id="CommentByIssue" >
+            <h1> Comment Count Per Issue Id </h1>
+            <Bar data={this.state.CommentPerIssue}
+            options={{ maintainAspectRatio: false }} />
+            </div> 
+
+
+            <div>
+            <div className ="collapose" id="UserData">
+                <h1> List of Users </h1>
+                {this.state.users.map((user,i) =>{
+                    return(
+                        <div key={user.id}>
+                        
+                        <li> Profile pic: {user.profile_pic} </li>
+                        <li> Username: {user.username} </li>
+                        <li> Email: {user.email} </li>
+                    </div>
+                    )
+                })
+                }
+                </div>
+                </div>
+
+
+            
+                </div>
+
 
 
 </div>
 
     
 </div>
-</div>
+
 
 
 

@@ -37,6 +37,13 @@ commentByIssue: ( req, res, next ) => {
         .catch(error => console.log(error));
       },
 
+      allUser: ( req, res, next ) => {
+        const dbInstance = req.app.get('db');
+    
+        dbInstance.select_users().then(issues => res.status(200).send(issues))
+        .catch(error => console.log(error));
+      },
+
 
 
     }
