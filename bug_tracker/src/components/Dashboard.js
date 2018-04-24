@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { userDetail, search } from "../ducks/reducer";
 import SearchIcon from "react-icons/lib/md/search";
 // import Profile from './Profile';
+import Footer from './Footer';
 
 
 class Dashboard extends Component {
@@ -65,13 +66,15 @@ class Dashboard extends Component {
     console.log("Inside the dashboard", this.state.user.username);
 
 
-    const comment = this.state.comments.map((comment, i) => (
+    const comment = this.state.comments.map((comment, i) => {
+      return(
       <div key={i}>
         <p>{comment.description}</p>
         <p>Posted by:{comment.posted_by} </p>
         <p>Refered to Issue{comment.issue_id} </p>
       </div>
-    ));
+      );
+    });
 
     return (
       <div>
@@ -118,6 +121,7 @@ class Dashboard extends Component {
               {console.log("inside comment", { comment })}
               {/* {comment[0].issue_id == issue.id ? comment : null} */}
               <Comment issue_id={issue.id} />
+              <Footer />
             </div>
           ))}
         </div>

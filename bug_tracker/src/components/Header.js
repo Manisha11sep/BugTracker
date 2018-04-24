@@ -8,31 +8,39 @@ import Profile from './Profile';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-height:100px;
-width:50%;
-min-width:360px;
-background-color:back;
-box-shadow:box-shadow: 1px 2px 5px rgba(0,0,0,0.45);
-&:hover{
-  curser:pointer
-}
-@media(max-width: 739px){
-  width:100%;
-}
-
+  height: 50px;
+  width: 100%;
+  min-width: 360px;
+  background-color:black;
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.45);
+  overflow:hidden;
+  border-radius: 5px;
+  margin: 5px 5px;
+  text-align: center;
+  &:hover{
+    cursor:pointer;
+    box-shadow: 1px 4px 5px rgba(0,0,0,0.45);
+  }
+  @media (max-width: 739px) {
+    width: 100%;
+  }
 `
 const InnerBox = styled.div`
   display: flex;
   flex-direction: row;
   max-width: 1200px;
+ text-color:white
   margin: 0 auto;
   text-align: center;
-  background-color: white;
   height: 100%;
   justify-content: space-between;
-  `
-  
+  `;
 
+  const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  text-color:black;
+`;
 
 
 
@@ -65,40 +73,35 @@ logout = () => {
 
   render() {
     return (
-  
       <Wrapper>
-        <Link to="/signup">Register</Link>
-        <div className="navbar-container">
+       {this.state.userDetail.username === 'admin'
+       ?
+       <InnerBox>
+         <Profile />
+         <Link to="/signup">Register</Link>
+         <Link to="/admin"> Admin Dashboard</Link>
+         <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
+         
+         </InnerBox>
 
-        {this.state.userDetail.username === 'admin'
-      ?
-      <div>
-                            <Link to="/admin"> Admin Dashboard</Link>
-                            
-                            <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
-                            <Profile />
-                            </div>
-
-         :
-             
-         <div>
+       
+        :
+        <InnerBox>
+           <Profile /> 
+         <Link to="/">Login</Link>
+         <Link to="/dashboard">Dashboard</Link>
+         <Link to="/issue" > Create New Issue </Link> 
+         <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
         
-                            <Link to="/">Login</Link>
-                            <Link to="/dashboard">Dashboard</Link>
-          
-                            <Link to="/issue" > Create New Issue </Link> 
-                            <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
-                            <Profile />
-                        
-         </div>
+         </InnerBox>
+      
+       }          
 
-    }
-                        
-                  </div>
+     
+        </Wrapper>
 
-      </Wrapper>
 
-   
     )
   }
 }
+
