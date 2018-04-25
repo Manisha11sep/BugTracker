@@ -6,6 +6,7 @@ import { userDetail, search } from "../ducks/reducer";
 import SearchIcon from "react-icons/lib/md/search";
 // import Profile from './Profile';
 import Footer from './Footer';
+import "./../style/DashboardStyle.css";
 
 
 class Dashboard extends Component {
@@ -15,12 +16,11 @@ class Dashboard extends Component {
       issues: [],
       text: '',
       comments: [],
-      searchedIssue: [],
       user: {}
     };
     this.updateText = this.updateText.bind(this);
     this.loadcomments = this.loadcomments.bind(this);
-    this.searchIssue = this.searchIssue.bind(this);
+  
   }
 
   componentDidMount() {
@@ -49,16 +49,6 @@ class Dashboard extends Component {
     });
   }
 
-  searchIssue() {
-    const { text } = this.state;
-    console.log("search parameter is ",text);
-    axios.get(`/api/issue?search=${text}`).then(response => {
-      this.setState({ searchedIssue: response.data });
-      console.log(response.data);
-    });
-   
-  }
-
   
 
   render() {
@@ -77,32 +67,7 @@ class Dashboard extends Component {
     });
 
     return (
-      <div>
-        <div>
-        {/* <Profile /> */}
-          <button> sort </button>
-
-          <button> Delete </button>
-      <div>
-          <input type="text" 
-          placeholder="search"
-          value ={text}
-          onChange={this.updateText}/>
-
-          {/* <input placeholder="Search " onChange={e => search(e.target.value)} /> */}
-
-          <SearchIcon id="Search__icon" />
-
-          <button onClick={() => this.searchIssue(search)}> Go </button>
-        <p> The searched Issue is :</p> 
-        {this.state.searchedIssue.map((search,i)=>{
-          <div key ={i}>
-          <p> Title is {search.name}</p>
-          </div>
-        })} 
-
-        </div>
-        </div>
+      <div className="container ">
         <div>
           <h1> Welcome {this.props.username} </h1>
 

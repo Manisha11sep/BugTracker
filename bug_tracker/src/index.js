@@ -9,10 +9,13 @@ import store from './store'
 
 
 ReactDOM.render(
-    <Provider store={store}>
+<div>
+       <Provider store={store}>
 <BrowserRouter>
 <App /> 
 </BrowserRouter>
-</Provider> 
+</Provider>
+    </div>
+ 
 , document.getElementById('root'));
 registerServiceWorker();
