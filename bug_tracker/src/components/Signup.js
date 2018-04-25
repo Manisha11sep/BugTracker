@@ -74,7 +74,7 @@ render() {
 
                 <div>
                 <label >Profile Picture </label>
-                    <input type="file"  placeholder ="Upload profile pic!!"
+                    <input type="file" name="profile_pic" placeholder ="Upload profile pic!!"
                      value ={this.state.profile_pic}
                      onChange={this.onChange}/>
                     

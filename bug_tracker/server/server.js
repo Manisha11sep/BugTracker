@@ -3,8 +3,10 @@ const bodyParser = require('body-parser')
 const issue_controller = require('./issue_controller');
 const comment_controller = require('./comment_controller');
 const admin_controller = require('./admin_controller');
+const email_controller = require('./email_controller');
 const massive = require('massive');
 const session = require('express-session');
+const nodeMailer = require('nodemailer');
 
 
 
@@ -56,6 +58,9 @@ app.get('/api/admin/issuecount', admin_controller.issueCountByUser);
 app.get('/api/admin/commentcount', admin_controller.commentCountByUser);
 app.get('/api/admin/issuecomment', admin_controller.commentCountByIssue);
 app.get('/api/admin/users', admin_controller.allUser);
+
+//**************** Email//****************
+app.post("/api/send-email", email_controller.sendMessage);
 
 
 

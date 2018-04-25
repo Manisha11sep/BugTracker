@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import dataCreator from "./dateCreator";
 import {connect} from 'react-redux';
 import {writeComment} from './../ducks/reducer';
 

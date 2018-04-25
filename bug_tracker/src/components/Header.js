@@ -6,6 +6,8 @@ import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Profile from './Profile';
 import styled from 'styled-components';
+import { connect } from "react-redux";
+import {userDetail, logout} from '../ducks/reducer'; 
 
 const Wrapper = styled.div`
   height: 50px;
@@ -43,19 +45,19 @@ const InnerBox = styled.div`
 `;
 
 
-
-export default class Header extends Component {
+class Header extends Component {
 constructor(){
   super();
   this.state ={
-    userDetail:'',
+    user:'',
 
   }
 }
   componentDidMount(){
   axios.get("/api/session").then(response => {
     console.log("inside header user data", response.data);
-    this.setState({ userDetail: response.data });
+    this.setState({ user: response.data });
+    this.props.userDetail(response.data);
     
   });
 }
@@ -74,7 +76,7 @@ logout = () => {
   render() {
     return (
       <Wrapper>
-       {this.state.userDetail.username === 'admin'
+       {this.state.user.username === 'admin'
        ?
        <InnerBox>
          <Profile />
@@ -105,3 +107,11 @@ logout = () => {
   }
 }
 
+const mapStateToProps = state => {
+  return state;
+};
+
+const mapDispatchToProps = {
+  userDetail,
+};
+export default connect(mapStateToProps, mapDispatchToProps) (Header);

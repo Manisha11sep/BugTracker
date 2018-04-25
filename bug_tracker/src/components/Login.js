@@ -3,11 +3,11 @@ import App from '../App.css';
 import axios from 'axios';
 // import validateInput from './validations';
 import { connect } from "react-redux";
-import {userDetail, logout} from '../ducks/reducer'; 
+import { logout} from '../ducks/reducer'; 
 import Signup from './Signup';
 // import Header from './Header';
 
-class Login extends Component {
+export default class Login extends Component {
     constructor() {
       super();
 
@@ -39,7 +39,8 @@ class Login extends Component {
       axios.post('/api/login',{username,password}).then(response => {
         console.log("inside login page",response.data)
           this.setState({ user: response.data });
-          this.props.userDetail(response.data);
+         
+        //  this.props.userDetail(response.data);
           {response.data.username ==='admin'
           ?
           window.location = '/admin'
@@ -104,13 +105,13 @@ render() {
 //   };
 // }
 
-const mapStateToProps = state => {
-  return state;
-};
+// const mapStateToProps = state => {
+//   return state;
+// };
 
-const mapDispatchToProps = {
-  userDetail,
-};
+// const mapDispatchToProps = {
+//   userDetail,
+// };
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (Login);
+// export default connect(mapStateToProps, mapDispatchToProps) (Login);
