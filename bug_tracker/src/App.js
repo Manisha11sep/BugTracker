@@ -4,6 +4,7 @@ import routes from './router';
 import { connect } from "react-redux";
 // import Navbar from './components/Navbar';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 
 
@@ -17,6 +18,8 @@ class App extends Component {
           <Header />
            {/* <Navbar /> */}
            {routes}
+
+           <Footer />
       </div>
     );
   }

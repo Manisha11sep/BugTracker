@@ -31,8 +31,7 @@ app.use(session({
 // app.use(checkForSession);
 app.get( '/api/issue/getAll',issue_controller.getIssues );
 app.post('/api/issue/create', issue_controller.createIssue);
-app.delete('/api/issue/:id', issue_controller.deleteIssue);
-app.put('/api/issue/:id', issue_controller.updateIssue);
+
 app.get( '/api/issue', issue_controller.searchIssue);
 
 
@@ -50,6 +49,9 @@ app.post( '/api/signup', issue_controller.createUser );
 //**************** COMMENT page//****************
 app.get('/api/comment/:issue_id', comment_controller.getComment);
 app.post('/api/comment', comment_controller.createComment);
+app.put(`/api/comment/:id`, comment_controller.updateComment);
+app.delete('/api/comment/:id', comment_controller.deleteComment);
+
 
 //**************** ADMIN DASHBOARD page//****************
 app.get('/api/admin/comment', admin_controller.commentByIssue);

@@ -14,6 +14,7 @@ export default class Signup extends Component {
 
         this.onChange=this.onChange.bind(this);
     this.createUser = this.createUser.bind( this );
+    this.clearForm=this.clearForm.bind(this);
     // this.username= this.username.bind(this);
     // this.password = this.password.bind(this);
     // this.email = this.email.bind(this);
@@ -40,12 +41,21 @@ export default class Signup extends Component {
     {
      
      const {username,email,profile_pic,password} = this.state;
-     console.log("inside createuser", )
       axios.post('/api/signup',{username,password,email,profile_pic}).then( response => {
-          console.log("inside create" , response.data);
-        this.setState({ messages: response.data });
+        this.setState({ messages: response.data })
     
-      });
+      }).catch(console.log("error"))
+      this.clearForm();
+    }
+    clearForm(){
+        this.setState({
+            username:'',
+            email:'',
+            password:'',
+            profile_pic :'',
+            messages:'',
+        });
+        alert('Thank you for Signing up on Bug Tracker!!')
     }
 
 

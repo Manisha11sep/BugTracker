@@ -1,0 +1,1 @@
+UPDATE comment SET description = $2 WHERE posted_by = $1;

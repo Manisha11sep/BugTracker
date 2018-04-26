@@ -59,6 +59,7 @@ class Comment extends Component {
     return (
        
       <div>
+        
         <input
           className="info-box"
           placeholder="Give your thoughts!!"

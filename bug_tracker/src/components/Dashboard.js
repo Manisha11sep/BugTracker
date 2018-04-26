@@ -16,17 +16,22 @@ class Dashboard extends Component {
       issues: [],
       text: '',
       comments: [],
-      user: {}
+      user: {},
+      showEditAndDelete: false,
+      message:[],
+
     };
     this.updateText = this.updateText.bind(this);
     this.loadcomments = this.loadcomments.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
   
   }
 
   componentDidMount() {
-    console.log("inisde mount");
+    
     axios.get("/api/issue/getAll").then(response => {
       this.setState({ issues: response.data });
+      console.log("inisde mount", this.state.issues);
       //   .catch(error => console.log(error));
     });
     axios.get("/api/session").then(response => {
@@ -49,42 +54,79 @@ class Dashboard extends Component {
     });
   }
 
-  
+  checkIfUserCanEdit(comment){
+    // console.log(this.props.user.id, " _ ", this.state);
+    return this.state.user.username === comment.posted_by;
+  }
+
+  deleteComment(id){
+    console.log("delete  triggered", id)
+    axios.post(`/api/comment/${id}`).then(res => {
+        console.log('comment deleted!')
+    }).catch(error => console.log("ERROR deleting ", error));
+    // this.props.history.push("/dashboard");
+} 
+deleteComment(id){
+  console.log("in delete post" +id);
+  axios.delete(`/api/comment/${id}`).then(results =>{
+    this.setState({message: results.data});
+  })
+}
+
+
+
+editComment(posted_by){
+  axios.post(`/api/comment${posted_by},{description}`).then(respnose=>{
+    this.setState({})
+  }).catch(error=>console.log("Error while editing", error));
+
+}
+
+
 
   render() {
+    console.log("state of edit button", this.state.showEditAndDelete);
     const {text } = this.state;
-    console.log("Inside the dashboard", this.state.user.username);
+
+    const{username}=this.state.user;
 
 
     const comment = this.state.comments.map((comment, i) => {
       return(
-      <div key={i}>
-        <p>{comment.description}</p>
-        <p>Posted by:{comment.posted_by} </p>
-        <p>Refered to Issue{comment.issue_id} </p>
-      </div>
+      <div className="comment-box" key={i}>
+        <p>Issue_ID: {comment.issue_id} Posted by:- {comment.posted_by} </p>
+        <p>Comment:- {comment.description}</p>
+        {this.checkIfUserCanEdit(comment) ? 
+        <div>
+          <button type="button" className="btn btn-secondary" onClick={this.editComment(comment.posted_by)}> Edit </button>
+          <button type="button" className="btn btn-secondary" onClick={(() =>this.deleteComment(comment.id))}>Delete Your comment</button>
+        </div>
+          : null 
+          }
+          </div>
       );
     });
 
     return (
       <div className="container ">
-        <div>
+        <div className="header">
           <h1> Welcome {this.props.username} </h1>
-
-          <h1> List of Issues is </h1>
+          </div>
+          <div className="row">
           {this.state.issues.map((issue, i) => (
-            <div key={i}>
-              <p> Issue Id :{issue.id} </p>
-              <p>Issue Name: {issue.name}</p>
+            <div className="issue-main" key={i}>
+              <p> Issue_ID :{issue.id}  Issue Title: {issue.name}</p>
+              <p></p>
               <p>Description: {issue.description}</p>
-              <p>Creater ID: {issue.creater_id}</p>
+              <p>User_ID: {issue.creater_id}</p>
               <p>Last Updated: {issue.last_updated}</p>
-              <button onClick={() => this.loadcomments(issue.id)}>
+              <button onClick={(() => this.loadcomments(issue.id))}>
                 Load comments
               </button>
-              {comment}
+         
+              {/* {comment} */}
               {console.log("inside comment", { comment })}
-              {/* {comment[0].issue_id == issue.id ? comment : null} */}
+              {comment[0].issue_id == issue.id ? comment : null}
               <Comment issue_id={issue.id} />
               <Footer />
             </div>

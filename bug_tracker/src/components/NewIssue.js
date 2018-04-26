@@ -12,6 +12,7 @@ export default class NewIssue extends Component {
     this.title = this.title.bind(this);
     this.description = this.description.bind(this);
     this.createIssue = this.createIssue.bind(this);
+    this.clearForm=this.clearForm.bind(this);
   }
 
   title(event) {
@@ -30,12 +31,20 @@ export default class NewIssue extends Component {
     console.log("inside createpost", { description, title });
     axios
       .post("/api/issue/create", { description, title, last_updated })
-      .then(response => {
-        console.log("inside create", response.data);
-        this.setState({ comments: response.data });
-        console.log(this.state.comments);
-      });
+      .then(response => {this.setState({ comments: response.data });
+
+      }).catch(console.log("error"))
+      this.clearForm();
+    
   }
+  clearForm(){
+    this.setState({
+      title: "",
+      description: "",
+      posted_by: ""
+    });
+    alert('Thank you for Creating a new Issue on Bug Tracker!!')
+}
 
   render() {
     return (

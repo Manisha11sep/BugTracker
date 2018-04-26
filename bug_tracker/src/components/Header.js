@@ -84,6 +84,7 @@ logout = () => {
          <Link to="/admin"> Admin Dashboard</Link>
          <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
          
+         
          </InnerBox>
 
        

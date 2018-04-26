@@ -1,1 +1,0 @@
-DELETE FROM issue WHERE id = $1;

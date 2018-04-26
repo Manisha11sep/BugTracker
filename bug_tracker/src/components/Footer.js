@@ -33,7 +33,7 @@ export default class Footer
         return (
           <Wrapper>
               <Title>
-            Manisha Chhibber. All rights reserved. 
+           Bug Tracker Created by Manisha Chhibber. All rights reserved. 
             </Title>
 
           

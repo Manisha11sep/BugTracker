@@ -67,6 +67,7 @@ export default class Search extends Component {
          const {text } = this.state;
 
         return (
+            <div className ="container">
             <StyledSearch>
                 <SearchText
           placeholder="search.."
@@ -92,6 +93,7 @@ export default class Search extends Component {
        
 
                 </StyledSearch>
+                </div>
 
 
             
