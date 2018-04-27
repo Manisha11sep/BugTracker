@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 // import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Logo from './Logo.jpg';
 
 
 
@@ -12,13 +13,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Router>
-          <Route exact path "/" Component = {Login} />
-          </Router> */}
           <Header />
-           {/* <Navbar /> */}
+          <div>
+            {/* <img src={Logo} height="42" width="42"/> */}
+        
+          </div>
+        
            {routes}
-
+      
            <Footer />
       </div>
     );

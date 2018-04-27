@@ -15,7 +15,7 @@
     border: solid;
 }
 .issue-main p {
-    color: #1abc9c;
+    color:black
 }
 .comment-box{
     border:solid blue;
@@ -23,11 +23,10 @@
 
 
 /* Style the header */
-.header {
-    background-color: #f1f1f1;
-    padding: 30px;
+.listofbug {
+  
     text-align: center;
-    font-size: 35px;
+    font-size: 20px;
 }
 
 /* Container for flexboxes */

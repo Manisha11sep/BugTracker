@@ -14,7 +14,6 @@ createUser: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
     const {title,description,last_updated} = req.body;
     const creater_id = req.session.user.id;
- console.log("id is" ,req.session.user.id);
 
     dbInstance.create_issue([title,description,creater_id,last_updated])
       .then( () => res.status(200).send(message= "Issue created successfully") )
@@ -55,7 +54,6 @@ createUser: ( req, res, next ) => {
       .catch( error => console.log(error) );
   },
 session:(req,res,next)=>{
-  console.log("inside session function ", req.session.user);
   res.status(200).send(req.session.user)
 
 },
@@ -64,7 +62,6 @@ session:(req,res,next)=>{
   searchIssue: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
     const { search } = req.query;
-    console.log("inside controller", search)
     dbInstance.search_issue([ search])
       .then( product => res.status(200).send( product ) )
       .catch( error => console.log(error) );

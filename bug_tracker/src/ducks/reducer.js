@@ -17,6 +17,7 @@ const USERDETAIL = 'USERDETAIL';
 const LOGOUT ='LOGOUT';
 const WRITE_COMMENT = 'WRITE_COMMENT';
 const SEARCH = 'SEARCH';
+const ISSUELIST = 'ISSUELIST';
 
 function reducer (state=initalState, action){
     console.log("inside switch", action.payload);
@@ -46,6 +47,11 @@ function reducer (state=initalState, action){
             return {
                 ...state,search:action.payload
              };
+             case ISSUELIST:
+             return {
+                 ...state, issues:action.payload
+              };
+             
             
 
     default:
@@ -61,17 +67,20 @@ export function userDetail(user){
     };
 
 }
-
-// console.log("inside Login", {username,password})
-    //   axios.post('/api/login',{username,password}).then(response => {
-    //     console.log(response.data)
-    //       this.setState({ user: response.data });
-
 export function logout(){
     return{
         type:LOGOUT,
     }
 }
+
+export function issueList(issueList){
+    return {
+        type: ISSUELIST,
+        payload:issueList
+    };
+
+}
+
 
 //Comment 
 export function writeComment(description){

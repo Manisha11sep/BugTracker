@@ -10,7 +10,7 @@
 
 }
 
-.row {
+.home-row {
 
    border-color: black;
    border:solid;
@@ -18,25 +18,26 @@
 }
 
 /* Create three equal columns that sits next to each other */
-.column {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1; /* Should be removed. Only for demonstration */
-    border-color: black;
-    border:solid;
+.text{
+    color:black;
 }
 
+col{
+    background-color: black;
+}
 
-.section{
-    /* background-image: url("http://veodesign.co.uk/application/files/8314/5087/3630/wooden-desk.jpg"); */
+.home-background{
+    background-image: url("https://i1.wp.com/fancycrave.com/wp-content/uploads/2017/06/How-to-Use-Video-Background-on-Websites.jpg?w=1000");
+    
     text-align: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
-  -webkit-background-size: cover;
+  background-position: center;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
+  -o-background-size: cover; */
   background-size: cover;
+  height:680px;
 
 }
 

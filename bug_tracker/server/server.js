@@ -7,9 +7,6 @@ const email_controller = require('./email_controller');
 const massive = require('massive');
 const session = require('express-session');
 const nodeMailer = require('nodemailer');
-
-
-
 require('dotenv').config();
 const PORT=4000;
 const app = express();

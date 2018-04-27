@@ -8,6 +8,7 @@ import Profile from './Profile';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import {userDetail, logout} from '../ducks/reducer'; 
+import Logo from './../Logo.jpg';
 
 const Wrapper = styled.div`
   height: 50px;
@@ -57,7 +58,7 @@ constructor(){
   axios.get("/api/session").then(response => {
     console.log("inside header user data", response.data);
     this.setState({ user: response.data });
-    this.props.userDetail(response.data);
+    // this.props.userDetail(response.data);
     
   });
 }
@@ -69,29 +70,13 @@ logout = () => {
   })
 }
 
-
-
-
-
   render() {
     return (
       <Wrapper>
-       {this.state.user.username === 'admin'
-       ?
-       <InnerBox>
-         <Profile />
-         <Link to="/signup">Register</Link>
-         <Link to="/admin"> Admin Dashboard</Link>
-         <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
-         
-         
-         </InnerBox>
-
+         {/* this.state.user.username === 'admin' */}
        
-        :
         <InnerBox>
            <Profile /> 
-         <Link to="/">Login</Link>
          <Link to="/dashboard">Dashboard</Link>
          <Link to="/issue" > Create New Issue </Link> 
          <Link to = "/" onClick={()=>this.logout()}> Log out </Link>

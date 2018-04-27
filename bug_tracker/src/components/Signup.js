@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dropzone from 'react-dropzone'
 import axios from 'axios';
 
 export default class Signup extends Component {
@@ -10,33 +11,20 @@ export default class Signup extends Component {
         password:'',
         profile_pic :'',
         messages:'',
+        disabled: true, 
+        files: []
         }
 
         this.onChange=this.onChange.bind(this);
     this.createUser = this.createUser.bind( this );
     this.clearForm=this.clearForm.bind(this);
-    // this.username= this.username.bind(this);
-    // this.password = this.password.bind(this);
-    // this.email = this.email.bind(this);
-    // this.profile_pic = this.profile_pic.bind(this);
 
     }   
 
     onChange(e){
         this.setState({[e.target.name]:e.target.value});
     }
-//     username(event){
-//         this.setState({username:event.target.value});
-//     }
-//    email(event){
-//         this.setState({email:event.target.value});
-//     }
-//     password(event){
-//         this.setState({password:event.target.value});
-//     }
-//    profile_pic(event){
-//         this.setState({profile_pic:event.target.value});
-//     }
+
     createUser()
     {
      
@@ -57,6 +45,36 @@ export default class Signup extends Component {
         });
         alert('Thank you for Signing up on Bug Tracker!!')
     }
+    onDrop(files) {
+        this.setState({
+          files
+        });
+      }
+
+    //   onDrop(){
+    //     var file = files[0];
+    //       axios.get(ENDPOINT_TO_GET_SIGNED_URL, {
+    //     filename: file.name,
+    //     filetype: file.type
+    //   })
+    //   .then(function (result) {
+    //     var signedUrl = result.data.signedUrl;
+        
+    //     var options = {
+    //       headers: {
+    //         'Content-Type': file.type
+    //       }
+    //     };
+  
+    //     return axios.put(signedUrl, file, options);
+    //   })
+    //   .then(function (result) {
+    //     console.log(result);
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err);
+    //   });
+    // }
 
 
 render() {
@@ -72,40 +90,51 @@ render() {
                      onChange={this.onChange}/>
             
                     </div>
-
-   
-                <div>
-                <label >Email Id </label>
-                <input type="email" name="email"
-                  placeholder ="Enter Email!!"
-                  value ={this.state.email}
-                  onChange={this.onChange}/>
-                </div>
-
-                <div>
-                <label >Profile Picture </label>
-                    <input type="file" name="profile_pic" placeholder ="Upload profile pic!!"
-                     value ={this.state.profile_pic}
-                     onChange={this.onChange}/>
+                        
+                    <div>
+                    <label >Your password</label>
+                        <input type="password" name ="password"  placeholder ="Enter Password!!"
+                        value ={this.state.password}
+                        onChange={this.onChange}/>
                     
-                    
+                    </div>
+
+        
+                        <div>
+                        <label >Email Id </label>
+                        <input type="email" name="email"
+                        placeholder ="Enter Email!!"
+                        value ={this.state.email}
+                        onChange={this.onChange}/>
+                        </div>
+
+                        <div>
+            
+                <div className="dropzone">
+                <Dropzone onDrop={this.onDrop.bind(this)}>
+                    <p>Try dropping some files here, or click to select files to upload.</p>
+                </Dropzone>
                 </div>
+                <aside>
+                <h5>Dropped files</h5>
+                <ul>
+                    {
+                    this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+                    }
+                </ul>
+                </aside>
+                            
+                            
+                        </div>
 
             
-                <div>
-                <label >Your password</label>
-                    <input type="password" name ="password"  placeholder ="Enter Password!!"
-                     value ={this.state.password}
-                     onChange={this.onChange}/>
-                
-                </div>
 
                 <div >
-                <button onClick ={this.createUser}> Register</button>
+                <button  className="btn btn-primary" onClick ={this.createUser}> Register</button>
 
 
 
-                    <input type="reset"/>
+                    <input  className="btn btn-primary" type="reset"/>
                     <br />
                     <span> {this.state.messages}</span>
                 </div>
