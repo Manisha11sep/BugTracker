@@ -1,8 +1,8 @@
 var aws = require ('aws-sdk');
 
 aws.config.update({
-   accessKeyId: 'AKIAIVTYA47IOX5BHNWA',
-   secretAccessKey: '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'
+   accessKeyId: '',
+   secretAccessKey: ''
 });
 
 exorts = module.exports ={
