@@ -1,11 +1,4 @@
 
-.search-issue{
-    background-color: #1abc9c; /* Green */
-
-}
-.search-bar{
-    align:center;
-}
 
 .issue-main{
     width: 100%;
@@ -13,27 +6,32 @@
     align-items: center;
     border-color: black;
     border: solid;
+    background-color: pink
 }
 .issue-main p {
     color:black
 }
 .comment-box{
-    border:solid blue;
+    border:solid grey;
 }
 
+.bug-text{
+    background-color:aqua;
+}
 
 /* Style the header */
 .listofbug {
   
     text-align: center;
     font-size: 20px;
+    background-color:yellow;
 }
 
 /* Container for flexboxes */
-.row {
+/* .row {
     display: -webkit-flex;
     display: flex;
-}
+} */
 
 /* Create three equal columns that sits next to each other */
 .column {

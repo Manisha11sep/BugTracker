@@ -2,32 +2,45 @@ import React, { Component } from "react";
 import axios from "axios";
 import {connect} from 'react-redux';
 import {writeComment,userDetail} from './../ducks/reducer';
+import FaTrash from "react-icons/lib/fa/trash";
+import FaPencil from "react-icons/lib/fa/pencil";
+import EditComment from './EditComment';
+import './../style/CommentStyle.css'
+
+
+
 
 class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
       text: "",
+      showComment: false,
       description: "",
       commentList: [],
       username: "",
-      editing: false,
-      showMasterMenu: false
+      editting: false,
+      editedText:''
     };
     this.createComment = this.createComment.bind(this);
     this.loadcomments = this.loadcomments.bind(this);
     this.checkIfUserCanEdit = this.checkIfUserCanEdit.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+    // this.edit = this.edit.bind(this);
+
+
     this.editComment = this.editComment.bind(this);
   }
     createComment() {
-        const { description } = this.props;
+        const { description } = this.state;
         const { issue_id } = this.props;
         console.log("inside createpost", { description }, { issue_id });
         axios.post("/api/comment", { description, issue_id }).then(response => {
         this.setState({ comments: response.data });
-        alert('Comment is posted!!');
         });
+        this.loadcomments();
+  
     }
 
     
@@ -35,93 +48,96 @@ class Comment extends Component {
     const { issue_id } = this.props;
     axios.get(`/api/comment/${issue_id}`).then(response => {
       this.setState({ commentList: response.data });
-      console.log(this.state.comments);
+      
     });
+    this.setState({ showComment: !this.state.showComment})
+    console.log("State of load comment",this.state.showComment);
   }
+
   checkIfUserCanEdit(comment){
     console.log(this.props.username);
       return this.props.username === comment.posted_by;
     }
     deleteComment(id){
-      console.log("in delete post" +id);
+    
       axios.delete(`/api/comment/${id}`).then(results =>{
         this.setState({message: results.data});
       })
+      this.loadcomments();
     }
+    handleChange(event){
+
+      this.setState({editedText:event.target.value});
+      console.log(this.state.editedText);
+    }
+   
     
     
-    
-    editComment(posted_by){
-      axios.post(`/api/comment${posted_by},{description}`).then(respnose=>{
-        this.setState({})
+    editComment(event,id){
+      const {editedText}= this.state;
+      console.log("inside edit ", id);
+      if( event.key === "Enter" && editedText.length !== 0 ) {
+      axios.post(`/api/comment${id},{description}`).then(respnose=>{
+        this.setState({commentList:respnose.data})
+        
       }).catch(error=>console.log("Error while editing", error));
     
     }
+    }
+    // edit( event ) {
+    //   const { editedText } = this.state;
+    //   if( event.key === "Enter" && text.length !== 0 ) {
+    // editComment(posted_by);
+    //     this.setState({ editting: false });
+    //   }
+    // }
   
-    //This put the post into Edit mode when the Edit button is pressed 
-    // showEdit(){
-    //     this.setState({editing:true ,showMasterMenu : false});
-    // }
-
-    //This put the post back into normal view mode when the cancel button is clicked
-    // This method is passed to the <Edit /> componenet via props
-    // hideEdit(){
-    //     this.setState({editing:false})
-    // }
-
-
-    //This toggle the drop-down when the we click on right corner of edit 
-    // toggleMasterMenu(){
-    //     this.setState({showMasterMenu: !this.state.showMasterMenu});
-    // }
-
-    //This hide the drop down when post is clicked anywhere
-    // hideMasterMenu(){
-    //     if(this.state.showMasterMenu ===true){
-    //         this.setState({showMasterMenu: false});
-
-    //     }
-    // }
-
   render() {
    //   Extracting writeComment function from the props from Reducer
     const {writeComment} = this.props;
-    const {editing,showMasterMenu} = this.state;
+    const {editting,description,editedText} = this.state;
+    console.log("state of edit", editting);
     return (
-      <div>
-        
-        <input className="info-box"
-          placeholder="Give your thoughts!!"
+      <div className="container">
+       <div className="write-comment">
+       <input type="text" className="form-control " value ={description}placeholder="Write your comment here...." onChange={e => this.setState({description: e.target.value})}/>
+        {/* <input className="info-box"
+          placeholder=''
           type="text"
           onChange={(e)=> writeComment(e.target.value)}
-        />
-
-        <button onClick={this.createComment}> Comment </button>
+        /> */}
+        <button class="btn btn-md btn-primary"  onClick={this.createComment}> Post </button>
+        </div>
+       
+        <br />
+        <div>
         <button onClick={this.loadcomments}>
                 Load comments
               </button>
+              
             <div>
                  {this.state.commentList.map((comment, i) => {
                      return(
                   <div className="comment-box" key={i}>
-                    <p>Issue_ID: {comment.issue_id} Posted by:- {comment.posted_by} </p>
-                    <p>Comment:- {comment.description}</p>
+              
                     { this.checkIfUserCanEdit(comment) 
                     ? 
                     <div>
-                      <button type="button" className="btn btn-secondary" onClick={this.editComment(comment.posted_by)}> Edit </button>
-                      <button type="button" className="btn btn-secondary" onClick={(() =>this.deleteComment(comment.id))}>Delete Your comment</button>
+                    {/* <p>{comment.description}</p> */}
+                    <EditComment comment_id={comment.id} description={comment.description} issue_id={comment.issue_id}/>
                     </div>
-                      : null 
+  
+                      : <p>{comment.description}</p>
                       }
-                       <button> Hide Comment </button>
+
+                      
                   </div>
 
                  
                   );
                 })
               }
-              
+              </div>
           </div>
 
       </div>

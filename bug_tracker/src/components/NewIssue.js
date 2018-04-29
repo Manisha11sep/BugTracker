@@ -1,6 +1,43 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Dropzone from 'react-dropzone'
+import styled from 'styled-components';
+
+const StyledSearch = styled.div`
+height: 100%;
+    // display: flex;
+    // align-items: center;
+    margin: 0px 10px;
+
+    `
+    const SearchText = styled.input`
+    border-radius: 21px;
+    border: 1px solid #2aabe2;
+    outline: none;
+    padding: 9px 34px 8px 12px;
+    font-size: 12px;
+    color:green;
+    `
+    const Button = styled.button`
+  /* Adapt the colours based on primary prop */
+  background: ${props => props.primary ? 'palevioletred' : 'white'};
+  color: ${props => props.primary ? 'white' : 'palevioletred'};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+const SearchResult = styled.div`
+font-size: 20px;
+position: absolute;
+top: 6px;
+right: 12px;
+cursor: pointer;
+ position: relative;
+`
 
 export default class NewIssue extends Component {
   constructor() {
@@ -11,19 +48,8 @@ export default class NewIssue extends Component {
       posted_by: "",
       files: []
     };
-    this.title = this.title.bind(this);
-    this.description = this.description.bind(this);
     this.createIssue = this.createIssue.bind(this);
-    this.clearForm=this.clearForm.bind(this);
-  }
-
-  title(event) {
-    this.setState({ title: event.target.value });
-    console.log("title is ", this.state.title);
-  }
-  description(event) {
-    this.setState({ description: event.target.value });
-    console.log("description is ", this.state.description);
+// this.clearForm=this.clearForm.bind(this);
   }
 
   createIssue() {
@@ -33,38 +59,33 @@ export default class NewIssue extends Component {
     console.log("inside createpost", { description, title });
     axios
       .post("/api/issue/create", { description, title, last_updated })
-      .then(response => {this.setState({ comments: response.data });
-
-      }).catch(console.log("error"))
-      this.clearForm();
+      . then(response => this.setState({title:'', description:''}) )
+     
+      alert('Thank you for Creating a new Issue on Bug Tracker!!')
     
   }
-  clearForm(){
-    this.setState({
-      title: "",
-      description: "",
-      posted_by: ""
-    });
-    alert('Thank you for Creating a new Issue on Bug Tracker!!')
-}
+//   clearForm(){
+//     console.log("insdie clear form");
+//     this.setState({
+     
+//       title:'',
+//       description:''
+//     });
+ 
+// }
 
-onDrop(files) {
-  this.setState({
-    files
-  });
-}
   render() {
     return (
-      <div>
+      <div className ="container">
         <p> inside newissue </p>
 
         <label>
           Title
           <input
             name=" Title"
-            placeholder="Enter Title"
             value={this.state.title}
-            onChange={this.title}
+            placeholder="Enter Title"
+            onChange={(event) => this.setState({title:event.target.value})}
           />
         </label>
         <br />
@@ -73,38 +94,18 @@ onDrop(files) {
           Issue Description:
           <textarea
             name="Description"
-            placeholder="Enter Issue Description"
             value={this.state.description}
-            onChange={this.description}
+
+            placeholder="Enter Issue Description"
+            onChange={(event) =>this.setState({description:event.target.value})}
           />
         </label>
-        <section>
-        <div className="dropzone">
-          <Dropzone onDrop={this.onDrop.bind(this)}>
-            <p>Try dropping some files here, or click to select files to upload.</p>
-          </Dropzone>
-        </div>
-        <aside>
-          <h2>Upload a file</h2>
-          <ul>
-            {
-              this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
-            }
-          </ul>
-        </aside>
-        <br />
-        <button> Preview </button>
-        <br />
+        
 
         <button onClick={() => this.createIssue()}> Submit a Issue </button>
         <br />
-       
-        {/* <div>
-                            <p>Title {this.state.title} </p>
-                            <p> Description {this.state.description} </p>
-                            </div> */}
-                            
-      </section>
+      
+  
       </div>
     );
   }

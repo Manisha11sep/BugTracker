@@ -4,7 +4,9 @@ const issue_controller = require('./issue_controller');
 const comment_controller = require('./comment_controller');
 const admin_controller = require('./admin_controller');
 const email_controller = require('./email_controller');
+const user_controller = require('./user_controller');
 const massive = require('massive');
+
 const session = require('express-session');
 const nodeMailer = require('nodemailer');
 require('dotenv').config();
@@ -25,7 +27,7 @@ app.use(session({
 
 }));
 
-// app.use(checkForSession);
+
 app.get( '/api/issue/getAll',issue_controller.getIssues );
 app.post('/api/issue/create', issue_controller.createIssue);
 
@@ -34,19 +36,27 @@ app.get( '/api/issue', issue_controller.searchIssue);
 
 //****************login page//****************
 // app.get('/api/users', issue_controller.getUsers);
-app.get('/api/checkSession', issue_controller.checkSession);
-app.post('/api/login', issue_controller.login);
+// app.get('/api/checkSession', user_controller.checkSession);
+app.post('/api/login', user_controller.login);
+app.post( '/api/logout', user_controller.logout );
 
-app.post( '/api/logout', issue_controller.logout );
+//**************FILE UPLOAD************* */
+app.get('/api/upload',user_controller.imageUpload);
 
 //****************Signup page//****************
-app.post( '/api/signup', issue_controller.createUser );
+app.post( '/api/signup', user_controller.createUser );
+
+//**************** SESSION //****************
+app.get('/api/session', user_controller.session);
+
+
+
 
 
 //**************** COMMENT page//****************
 app.get('/api/comment/:issue_id', comment_controller.getComment);
 app.post('/api/comment', comment_controller.createComment);
-app.put(`/api/comment/:id`, comment_controller.updateComment);
+app.put('/api/comment/:comment_id', comment_controller.updateComment);
 app.delete('/api/comment/:id', comment_controller.deleteComment);
 
 
@@ -61,10 +71,5 @@ app.get('/api/admin/users', admin_controller.allUser);
 //**************** Email//****************
 app.post("/api/send-email", email_controller.sendMessage);
 
-
-
-
-//**************** SESSION //****************
-app.get('/api/session', issue_controller.session);
 
 app.listen(PORT, ()=> console.log(`you are running on : ${PORT}`))

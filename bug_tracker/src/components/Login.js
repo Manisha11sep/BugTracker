@@ -90,16 +90,17 @@ export default class Login extends Component {
         console.log("inside login page",response.data)
           this.setState({ user: response.data });
          
-        //  this.props.userDetail(response.data);
           {response.data.username ==='admin'
           ?
           window.location = '/admin'
           :
-          window.location = '/home'
+          window.location = '/home';
+          console.log("other user");
         }
       }).catch(error => {
       this.setState({ message: 'Something went wrong: '});
       });
+    
     };
 
     handleKeyPress(event){

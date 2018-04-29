@@ -20,14 +20,27 @@
         .catch( error => console.log(error) );
         },
         
+        // updateComment: ( req, res, next ) => {
+        //     const dbInstance = req.app.get('db');
+        //     // const { id} = req.params;
+        //     // const description = req.body;
+
+        //     dbInstance.update_comment([req.params.comment_id,req.query.editText])
+        //     .then( () => res.status(200).send(message = "comment is updated") )
+        //     .catch( error => console.log("can not update comment",error) );
+        // },
+
+
         updateComment: ( req, res, next ) => {
             const dbInstance = req.app.get('db');
-            const { params, query } = req;
+            const id = req.params.comment_id;
+            const description = req.body.editText;
 
-            dbInstance.update_comment([ params.posted_by, query.description ])
-            .then( () => res.status(200).send(message = "comment is updated") )
-            .catch( error => console.log(error) );
-        },
+            dbInstance.update_comment([id, description])
+        
+        .then( () => res.status(200).send(message = "comment is updated") )
+            .catch( error => console.log("can not update comment",error) );
+          },
 
         deleteComment: ( req, res, next ) => {
             const dbInstance = req.app.get('db');

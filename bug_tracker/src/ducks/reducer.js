@@ -18,6 +18,7 @@ const LOGOUT ='LOGOUT';
 const WRITE_COMMENT = 'WRITE_COMMENT';
 const SEARCH = 'SEARCH';
 const ISSUELIST = 'ISSUELIST';
+const COMMENTLIST = 'COMMENTLIST';
 
 function reducer (state=initalState, action){
     console.log("inside switch", action.payload);
@@ -40,7 +41,8 @@ function reducer (state=initalState, action){
 
             case WRITE_COMMENT:
                 return {
-                    ...state,description:action.payload
+                    ...state,
+                    comments: [...state.comments, action.payload]
                 };
 
             case SEARCH:
@@ -51,6 +53,11 @@ function reducer (state=initalState, action){
              return {
                  ...state, issues:action.payload
               };
+              case COMMENTLIST:
+              return {
+                  ...state, comments:action.payload
+               };
+              
              
             
 
@@ -77,6 +84,13 @@ export function issueList(issueList){
     return {
         type: ISSUELIST,
         payload:issueList
+    };
+
+}
+export function commentList(commentList){
+    return {
+        type: COMMENTLIST,
+        payload:commentList
     };
 
 }

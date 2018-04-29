@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone'
 import axios from 'axios';
+import './../style/SignupStyle.css';
+import { Link } from 'react-router-dom';
+
+const CLOUDINARY_UPLOAD_URL="https://api.cloudinary.com/v1_1/manisha11/image/upload";
+const CLOUDINARY_UPLOAD_PRESET ="hdi8lbnt";
+const CLOUDINARY_UPLOAD_PRESET_SIGNED ="Bug_Tracker";
+
 
 export default class Signup extends Component {
     constructor(){
@@ -12,12 +19,14 @@ export default class Signup extends Component {
         profile_pic :'',
         messages:'',
         disabled: true, 
-        files: []
+        files: [],
+        cloudinaryUrl: ''
         }
 
         this.onChange=this.onChange.bind(this);
-    this.createUser = this.createUser.bind( this );
+    // this.createUser = this.createUser.bind( this );
     this.clearForm=this.clearForm.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
 
     }   
 
@@ -25,16 +34,16 @@ export default class Signup extends Component {
         this.setState({[e.target.name]:e.target.value});
     }
 
-    createUser()
-    {
+    // createUser()
+    // {
      
-     const {username,email,profile_pic,password} = this.state;
-      axios.post('/api/signup',{username,password,email,profile_pic}).then( response => {
-        this.setState({ messages: response.data })
+    //  const {username,email,profile_pic,password} = this.state;
+    //   axios.post('/api/signup',{username,password,email,profile_pic}).then( response => {
+    //     this.setState({ messages: response.data })
     
-      }).catch(console.log("error"))
-      this.clearForm();
-    }
+    //   }).catch(console.log("error"))
+    //   this.clearForm();
+    // }
     clearForm(){
         this.setState({
             username:'',
@@ -42,6 +51,8 @@ export default class Signup extends Component {
             password:'',
             profile_pic :'',
             messages:'',
+            uploadUrl:''
+            
         });
         alert('Thank you for Signing up on Bug Tracker!!')
     }
@@ -51,98 +62,76 @@ export default class Signup extends Component {
         });
       }
 
-    //   onDrop(){
-    //     var file = files[0];
-    //       axios.get(ENDPOINT_TO_GET_SIGNED_URL, {
-    //     filename: file.name,
-    //     filetype: file.type
-    //   })
-    //   .then(function (result) {
-    //     var signedUrl = result.data.signedUrl;
-        
-    //     var options = {
-    //       headers: {
-    //         'Content-Type': file.type
-    //       }
-    //     };
-  
-    //     return axios.put(signedUrl, file, options);
-    //   })
-    //   .then(function (result) {
-    //     console.log(result);
-    //   })
-    //   .catch(function (err) {
-    //     console.log(err);
-    //   });
-    // }
+      uploadImage(file){
+        console.log("inside uploadfile" , file);
+        axios.get('/api/upload').then(response => {
+            console.log("response data", response.data)
+            //********form data for Signed upload */
+            // let formData = new FormData();
+            // formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET_SIGNED);
+            // formData.append("signature", response.data.signature)
+            // formData.append("api_key","135962885327916");
+            // formData.append('timestamp', response.data.timestamp);
+            // formData.append('file', file[0]);
+            // console.log("form data is ", formData);
+
+            //form data for unsigned uploads
+
+        let formData = new FormData();
+        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+        formData.append("file", file[0]);
+               
+            axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
+            console.log(response.data)
+            this.setState({uploadUrl: response.data.secure_url})
+            const user = {
+            username: this.state.username,
+            email: this.state.email,
+            profile_pic: this.state.uploadUrl,
+            password: this.state.password,
+            }
+            console.log(user)
+            axios.post('/api/signup', user).then(response => {
+                console.log("response from server", response);
+                if(response.data === 'registered'){
+                    window.location = '/'
+                } 
+                this.clearForm();
+            })
+            
+            })
+        })
+    }
+    
 
 
-render() {
+    render() {
+    
         return (
             <div>
-                <form>
-                <p className="h4 text-center mb-4">Sign up</p>
-                    <div>
-                    <label> Username</label>
-                    <input type="text" name ="username"
-                     placeholder ="Enter Username!!"
-                     value ={this.state.username}
-                     onChange={this.onChange}/>
-            
-                    </div>
-                        
-                    <div>
-                    <label >Your password</label>
-                        <input type="password" name ="password"  placeholder ="Enter Password!!"
-                        value ={this.state.password}
-                        onChange={this.onChange}/>
-                    
-                    </div>
-
-        
-                        <div>
-                        <label >Email Id </label>
-                        <input type="email" name="email"
-                        placeholder ="Enter Email!!"
-                        value ={this.state.email}
-                        onChange={this.onChange}/>
+                <div className='container'>
+                        <h1 className=''>register</h1>
+                        <div className="form-group">
+                            <label>username</label>
+                            <input type="text" className="form-control signup-input" placeholder="username" onChange={e => this.setState({username: e.target.value})}/>
                         </div>
-
-                        <div>
-            
-                <div className="dropzone">
-                <Dropzone onDrop={this.onDrop.bind(this)}>
-                    <p>Try dropping some files here, or click to select files to upload.</p>
-                </Dropzone>
-                </div>
-                <aside>
-                <h5>Dropped files</h5>
-                <ul>
-                    {
-                    this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
-                    }
-                </ul>
-                </aside>
-                            
-                            
+                        <div className="form-group">
+                            <label>password</label>
+                            <input type="password" className="form-control signup-input" placeholder="password" onChange={e => this.setState({password: e.target.value})}/>
                         </div>
-
-            
-
-                <div >
-                <button  className="btn btn-primary" onClick ={this.createUser}> Register</button>
-
-
-
-                    <input  className="btn btn-primary" type="reset"/>
-                    <br />
-                    <span> {this.state.messages}</span>
+                        <div className="form-group">
+                            <label>email</label>
+                            <input type="text" className="form-control signup-input" placeholder="email" onChange={e => this.setState({email: e.target.value})}/>
+                        </div>
+                        <div className="form-group">
+                            <label>image Upload</label>
+                            <input type="file" onChange={e => this.setState({profile_pic: e.target.files})} className="form-control-file fileInput"/>
+                        </div>
+                        {this.state.failMessage}
+                        <button className="btn btn-primary" onClick={() => this.uploadImage(this.state.profile_pic)}>sign up</button>
                 </div>
-    
-</form>
-                </div>
-
-            
+                
+            </div>
         );
     }
 }

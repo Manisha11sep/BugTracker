@@ -1,1 +1,1 @@
-DELETE FROM comment WHERE (id = $1);s
+DELETE FROM comment WHERE (id = $1);

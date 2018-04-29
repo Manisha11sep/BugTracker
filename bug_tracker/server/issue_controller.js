@@ -1,14 +1,6 @@
+
 module.exports = {
 
-createUser: ( req, res, next ) => {
-    const dbInstance = req.app.get('db');
-    const {username,password,email,profile_pic} = req.body;
-
-    dbInstance.create_user([username,password,email,profile_pic])
-      .then( () => res.status(200).send(message= "User Regestered successfully") )
-
-      .catch( error => console.log(error) );
-  },
 
   createIssue: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
@@ -16,7 +8,7 @@ createUser: ( req, res, next ) => {
     const creater_id = req.session.user.id;
 
     dbInstance.create_issue([title,description,creater_id,last_updated])
-      .then( () => res.status(200).send(message= "Issue created successfully") )
+      .then( () => res.json("Issue created successfully") )
 
       .catch( error => console.log(error) );
   },
@@ -28,13 +20,7 @@ createUser: ( req, res, next ) => {
     .catch(error => console.log(error));
   },
 
-  getUsers: ( req, res, next ) => {
-    const dbInstance = req.app.get('db');
-
-    dbInstance.select_users()
-    .then( users => res.status(200).send(users))
-    .catch(error => console.log(error));
-  },
+ 
 
   updateIssue: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
@@ -53,10 +39,7 @@ createUser: ( req, res, next ) => {
       .then( () => res.status(200).send(message = "post is deleted") )
       .catch( error => console.log(error) );
   },
-session:(req,res,next)=>{
-  res.status(200).send(req.session.user)
 
-},
 
 
   searchIssue: ( req, res, next ) => {
@@ -76,42 +59,6 @@ session:(req,res,next)=>{
   //   }
 
 
-  login: (req, res, next) => {
-    const { username, password } = req.body;
-    const dbInstance = req.app.get('db');
-    dbInstance.find_user([username]).then(data => {
-      console.log("user data is ",data);
-    if (data.length) {
-      if (data[0].password === password) {
-        req.session.user = { 
-          id:data[0].id,
-          username: data[0].username,
-          email: data[0].email,
-          profile_pic: data[0].profile_pic
-         };
-        res.status(200).send(req.session.user)
-        // res.redirect('/dashboard');
-    
-      } else {
-        res.status(403).json({ message: 'Invalid password' });
-      }
-    } else {
-      res.status(403).json({ message: 'Unknown user' });
-    }
-  }).catch(error => {
-    console.log('error', error);
-    res.status(500).json({ message: "An error occurred; for security reasons it can't be disclosed" });
-  });
-
-  
-  },
-
-  logout : (req,res)=>{
-    const name = req.session.user.username;
-    req.session.destroy();
-    res.json({message: 'you have successfully logged out, ${name}'});
-
-},
 checkSession: (req, res) => {
   if(req.session.user){
       res.status(200).send(req.session.user)

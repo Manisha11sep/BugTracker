@@ -1,14 +1,14 @@
 create table users( 
 id serial primary key,
-username varchar(20),
-password varchar(20),
-email varchar(20),
+username varchar,
+password varchar,
+email varchar,
 profile_pic text
 );
 
 create table issue(
 id serial PRIMARY KEY,
-name varchar(30),
+name varchar,
 description varchar,
 creater_id INTEGER references users(id),
 last_updated varchar
