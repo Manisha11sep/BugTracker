@@ -48,6 +48,7 @@ app.post( '/api/signup', user_controller.createUser );
 
 //**************** SESSION //****************
 app.get('/api/session', user_controller.session);
+app.get('/api/checkSession',user_controller.checkSession);
 
 
 

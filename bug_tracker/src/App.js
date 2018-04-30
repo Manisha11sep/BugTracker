@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Header />
+          {/* <Header /> */}
           <div>
             {/* <img src={Logo} height="42" width="42"/> */}
         

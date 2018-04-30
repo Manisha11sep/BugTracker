@@ -72,22 +72,28 @@ logout = () => {
 
   render() {
     return (
-      <Wrapper>
-         {/* this.state.user.username === 'admin' */}
-       
+      <div>
+     
+        { (this.state.user.username!=='admin')
+       ?
+       <Wrapper>
         <InnerBox>
-           <Profile /> 
+           <Link to="/home">Home</Link>
          <Link to="/dashboard">Dashboard</Link>
          <Link to="/issue" > Create New Issue </Link> 
+         <Link to="/search">Search</Link>
          <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
         
          </InnerBox>
-      
+             </Wrapper>
+      :
+      <p> Welcome </p>
        }          
 
      
-        </Wrapper>
+    
 
+       </div>
 
     )
   }

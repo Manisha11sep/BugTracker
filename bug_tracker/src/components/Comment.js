@@ -39,7 +39,7 @@ class Comment extends Component {
         axios.post("/api/comment", { description, issue_id }).then(response => {
         this.setState({ comments: response.data });
         });
-        this.loadcomments();
+        this.loadcomments(issue_id);
   
     }
 
@@ -48,6 +48,7 @@ class Comment extends Component {
     const { issue_id } = this.props;
     axios.get(`/api/comment/${issue_id}`).then(response => {
       this.setState({ commentList: response.data });
+      console.log("inside load comment, list of comments", this.state.commentList);
       
     });
     this.setState({ showComment: !this.state.showComment})
@@ -100,7 +101,8 @@ class Comment extends Component {
     return (
       <div className="container">
        <div className="write-comment">
-       <input type="text" className="form-control " value ={description}placeholder="Write your comment here...." onChange={e => this.setState({description: e.target.value})}/>
+       <input type="text" className="form-control " value ={description}placeholder="Write your comment here...."
+        onChange={e => this.setState({description: e.target.value})}/>
         {/* <input className="info-box"
           placeholder=''
           type="text"

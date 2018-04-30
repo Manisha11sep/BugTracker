@@ -5,30 +5,35 @@ class Profile extends Component {
     constructor(){
         super();
         this.state = {
-            username: '',
-            image: '',
-            recents: []
+       users:[]
         }
     }
 
     componentDidMount(){
-        axios.get('/api/checkSession').then((data) => {
-            console.log(data.data.profile_pic)
-            this.setState({
-                username: data.data.username,
-                image: data.data.profile_pic,
-            })
-        })
-    }
+            axios.get("/api/admin/users").then(response => {
+              this.setState({ users: response.data });
+              console.log("Inside admin", this.state.users);
+            });
+          }
 
     render() {
         return (
-            <div >
-                <div className='personalInfo'>
-                    <img className='thumbnail profileImage' src={this.state.image} alt={`of ${this.state.username}`} height="100" width="100"/>
-                    <h2>Welcome {this.state.username}!</h2>
-                </div>
-            </div>
+          <div className ="">
+          <h1> List of Users </h1>
+                
+              {this.state.users.map((user, i) => {
+                return (
+                  <div  key={user.id}>
+                  <div className="panel panel-primary">
+                  <div className="panel-heading">{user.username} </div>
+                    <div className ="pancel-body"><img className="profile-pic" src= {user.profile_pic} /> </div>
+                    <div className ="panel-footer">{user.email} </div>
+              
+                  </div>
+                  </div>
+              );
+            })}
+          </div>
         );
     }
 }

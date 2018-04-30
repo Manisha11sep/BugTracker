@@ -40,10 +40,7 @@ module.exports ={
         .then( users => res.status(200).send(users))
         .catch(error => console.log(error));
       },
-      session:(req,res,next)=>{
-        res.status(200).send(req.session.user)
-      
-      },
+    
       
   login: (req, res, next) => {
     const { username, password } = req.body;
@@ -76,4 +73,19 @@ module.exports ={
         req.session.destroy();
         res.status(200).send('Session ended');
     },
+
+      
+    session:(req,res,next)=>{
+      res.status(200).send(req.session.user)
+    
+    },
+    checkSession: (req, res) => {
+      if(req.session.user){
+          res.status(200).send(req.session.user)
+          console.log("insdie check session", req.session.user)
+      } else {
+          res.status(200).send('No Session found');
+      }
+    },
 }
+

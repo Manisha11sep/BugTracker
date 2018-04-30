@@ -6,20 +6,41 @@
     background-color: #2e353d;
     position:fixed;
     top:0px;
-    width: 300px;
+    width: 250px;
     height: 100%;
     color: #e1ffff;
 
 }
+.admin-dashboard{
+  background-image: url('http://www.elsa-belgium.org/wp-content/uploads/2014/12/header-background-1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover; */
+  background-size: cover;
+  height:680px;
 
-.nav-side-menu .profile-pic{
-    background-color: #23282e;
+
+}
+.profile-pic{
+  height: 100px;
+  width:100px;
+     border-radius: 50%;
+align-items: center;
+
+}
+
+/* .nav-side-menu .profile-pic{
+    background-color: yellow;
     line-height: 100px;
     display: block;
     text-align: center;
     font-size: 14px;
 
-}
+} */
+
 .nav-side-menu .toggle-btn{
     display: none;
 }
@@ -63,7 +84,7 @@
 }
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
-  color: #d19b3d;
+  color: green;
 }
 .nav-side-menu ul .sub-menu li.active a,
 .nav-side-menu li .sub-menu li.active a {
@@ -113,7 +134,9 @@
   -ms-transition: all 1s ease;
   transition: all 1s ease;
 }
-
+h1{
+  color:white;
+}
 
 table, td, th {    
     border: 1px solid #ddd;
@@ -127,6 +150,7 @@ table {
 
 th, td {
     padding: 15px;
+    color: #e1ffff;
 }
 
 @media (max-width: 767px) {
