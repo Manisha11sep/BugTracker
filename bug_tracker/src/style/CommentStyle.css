@@ -1,21 +1,22 @@
 .write-comment{
-    background-color: gold;
-
+   
 }
 .comment{
     width: 100%;
     height:100%;
-    background-color:aqua;
+    /* background-color:aqua; */
 }
 
 .comment-container{
-    display: flex;
-    background-color: yellow;
+   
+    /* background-color: yellow; */
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: baseline;
-	align-content: flex-start;
+    align-content: center;
+   
 }
 /* input[type=text] {
     width: 50%;
@@ -23,16 +24,7 @@
     box-sizing: border-box;
 } */
 
-/* textarea {
-    width: 100%;
-    height: 150px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    resize: none;
-}  */
+
 .display-comments{
     overflow: auto;
     font-size:10px;

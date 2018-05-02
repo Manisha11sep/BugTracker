@@ -11,15 +11,22 @@
 
 
 .issue-main{
-	display: flex;
+    display: flex;
+    box-sizing: border-box;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: flex-start;
     align-content: flex-start;
     border:solid black;
+    border:.2px solid #fff;
+    background-color:lightgrey;
+    margin:1% 0%;
+ border-radius:10px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.45);
 }
 .issue-main p {
+    
     color:black
 }
 .comment-box{
@@ -36,7 +43,7 @@
   
     text-align: center;
     font-size: 20px;
-    background-color:yellow;
+
 }
 
 /* Container for flexboxes */

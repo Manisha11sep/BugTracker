@@ -13,7 +13,6 @@ import './../style/Login.css';
 
 
 const LoginBox = styled.div`
-
 // box-sizing:border-box;
 margin:10% auto;
 max-width:500px;
@@ -31,23 +30,18 @@ border:.5px solid #fff;
     box-shadow: 1px 10px 10px 5px rgba(0,0,0,0.45);
   }
   
-
 `;
 const Heading = styled.div`
 height:100px;
 width:100%;
 display:flex;
 margin-bottom: 10%;
-
-
 `;
 const InnerBox = styled.div`
-
   margin: 0 auto;
   text-align: center;
   justify-content: space-between;
 padding:20px 20px;
-
   `;
 
   const Button =styled.button`
@@ -67,7 +61,6 @@ padding:20px 20px;
   text-align: center;
   color:white;
   font-size:200%;
-
 `;
 const Title1 = styled.h3`
 text-align:left;
@@ -75,16 +68,12 @@ margin-left:40px;
 color:#fff;
 margin:0; 
 padding:0;
-
-
 `;
 const LoginHeader = styled.div`
-
   color:#fff;
   text-align:center;
   font-size:200%;
  text-align:center;
-
 `;
 const Img = styled.img`
   height: 70px;
@@ -92,7 +81,6 @@ const Img = styled.img`
 border-color: black;
 border-radius:20%;
 margin:5px 5px;
-
 `;
 
 

@@ -95,17 +95,18 @@ class Comment extends Component {
       <div className="comment">
         <div className="comment-container">
             <div>
-              <input type="text" value={description}  placeholder="Write your comment here...."
+              <input className ="input-sm"type="text" value={description}  placeholder="Write your comment here...."
                 onChange={e => this.setState({ description: e.target.value })} />
             </div>
             <div>
               <button onClick={this.createComment} > Post</button>
             </div>
+       
+        <div>
+        <button  onClick={this.loadcomments}> Load  </button>
         </div>
-        <div>
+        </div>
 
-        <button  onClick={this.loadcomments}> Load comments  </button>
-        <div>
           <div>
             {this.state.commentList.map((comment, i) => {
               return (
@@ -113,23 +114,24 @@ class Comment extends Component {
                   {this.checkIfUserCanEdit(comment) ? (
                     <div>
                       <EditComment
+                        loadcommentsFN={this.loadcomments}
                         comment_id={comment.id}
                         description={comment.description}
                         issue_id={comment.issue_id}
                       />
                     </div>
                   ) : (
-                    
-                      <p>{comment.description}</p>
-                
+                    <div className="Message__container">
+                      <p className="bug-text">{comment.description}</p>
+                    </div>
                   )}
                 </div>
               );
             })}
           </div>
         </div>
-      </div>
-      </div>
+   
+   
     );
   }
 }

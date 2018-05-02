@@ -69,9 +69,9 @@ class Dashboard extends Component {
 
         {issues.map((issue, i) => (
           <div className="issue-main" key={i}>
-        <p className="bug-text">Title: {issue.name}</p>
+        <p className="bug-text"><b>Title:</b> {issue.name}</p>
          <p className="bug-text">
-              Description: {issue.description} </p>
+         <b> Description:</b> {issue.description} </p>
             <Comment issue_id={issue.id} />
          
           </div>

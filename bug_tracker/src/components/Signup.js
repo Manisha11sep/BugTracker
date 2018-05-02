@@ -117,7 +117,7 @@ export default class Signup extends Component {
     const {errors} =this.state;
         return (
             <div>
-                <div className='container'>
+                <div className='box'>
                         <h1 className=''>register</h1>
                         <div className={classnames("form-group", {'has-error':errors.username})}>
                             <label>username</label>

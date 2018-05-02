@@ -1,10 +1,28 @@
 import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import './../style/NewIssueStyle.css';
 
+
+const Heading = styled.div`
+height:100px;
+width:100%;
+display:flex;
+margin-bottom: 10%;
+
+
+`;
+const InnerBox = styled.div`
+
+  margin: 0 auto;
+  text-align: center;
+  justify-content: space-between;
+padding:20px 20px;
+
+  `;
 const IssueHeading = styled.h3`
   font-size: 20px;
-  color: white;
+  color: black;
   text-align: center;
   padding:20px 25px;
 `; 
@@ -25,20 +43,14 @@ const Button = styled.button`
   color: ${props => (props.primary ? "white" : "palevioletred")};
 
   font-size: 1em;
-  margin: 1em;
+ margin:10% 10%;
   padding: 0.25em 1em;
   border: 2px solid palevioletred;
   border-radius: 3px;
+
 `;
 
-const SearchResult = styled.div`
-  font-size: 20px;
-  position: absolute;
-  top: 6px;
-  right: 12px;
-  cursor: pointer;
-  position: relative;
-`;
+
 
 export default class NewIssue extends Component {
   constructor() {
@@ -70,46 +82,59 @@ export default class NewIssue extends Component {
   
       <div className="content">
 
-     
-     <div >
         <IssueHeading>
           <p> Create a New Issue </p>
         </IssueHeading>
-        <div>
-          <label> Title </label>
-          <input
-            name=" Title"
-            value={this.state.title}
-            placeholder="Enter Title"
-            onChange={event => this.setState({ title: event.target.value })}
-          />
-        </div>
-        <div>
-          <label> Issue Description: </label>
-          <textarea
-            name="Description"
-            value={this.state.description}
-            placeholder="Enter Issue Description"
-            onChange={event =>
-              this.setState({ description: event.target.value })
-            }
-          />
-
-          <Button color="red" onClick={() => this.createIssue()}>
+        {/* <IssueBox> */}
+        <div className="box">
+            <div className="issue-title">
+                <div>
+                    <label> Title </label>
+                </div>
+                <br />
+                <div>
+                  <input
+                    name=" Title"
+                    value={this.state.title}
+                    placeholder="Enter Title"
+                    onChange={event => this.setState({ title: event.target.value })}
+                  />
+                </div>
+         
+             </div>
+            <div className="issue-title">
+              <div>
+                  <label> Issue Description: </label>
+              </div>
+              <div>
+                  <textarea
+                    name="Description"
+                    value={this.state.description}
+                    placeholder="Enter Issue Description"
+                    onChange={event =>
+                      this.setState({ description: event.target.value })
+                    }
+                  />
+               </div>
+                  
+                    
+            </div>
+            <div>
+            <Button color="red" onClick={() => this.createIssue()}>
           
-            Submit a Issue
-          </Button>
+          Submit a Issue
+        </Button>
         </div>
-           </div>
-           
-           
-    </div>
-    
+            {/* </IssueBox> */}
+            </div>
 
-    
-  
-   
       
+         
+        
+
+        </div>
+           
+
     );
   }
 }

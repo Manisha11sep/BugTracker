@@ -15,21 +15,23 @@ height: 100%;
     border: 1px solid #2aabe2;
     outline: none;
     padding: 9px 34px 8px 12px;
-    font-size: 12px;
-    color:green;
+    font-size: .8em;
     `
     const Button = styled.button`
-  /* Adapt the colours based on primary prop */
-  background: ${props => props.primary ? 'palevioletred' : 'white'};
-  color: ${props => props.primary ? 'white' : 'palevioletred'};
 
-  font-size: 1em;
+
+  font-size: 20px;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
+
 `;
 
+const SearchHeading = styled.h3`
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  padding:20px 25px;
+`;
 const SearchResult = styled.div`
 font-size: 20px;
 position: absolute;
@@ -37,6 +39,7 @@ top: 6px;
 right: 12px;
 cursor: pointer;
  position: relative;
+ margin:5% 5%;
 `
 
 export default class Search extends Component {
@@ -56,45 +59,68 @@ export default class Search extends Component {
       }
     searchIssue() {
         const { text } = this.state;
+        {this.searchedIssue=''}
+        if(text.length!=0){
         console.log("search parameter is ",text);
         axios.get(`/api/issue?search=${text}`).then(response => {
+            console.log(response.data);
           this.setState({ searchedIssue: response.data });
           console.log(response.data);
         });
+    }
+        else{
+            alert("Please enter something to search");
+
+        }
+    
        
       }
     render() {
          const {text } = this.state;
 
         return (
-            <div className ="container">
-            <StyledSearch>
+            <div>
+  
+            <div className ="box">
+            {/* <StyledSearch> */}
                 <SearchText
-          placeholder="search.."
+          placeholder="Enter something to search.."
           value ={text}
           onChange={this.updateText}>
          
           </SearchText>
     
-          <Button primary  onClick={() =>this.searchIssue()}> Go 
+          <Button  onClick={() =>this.searchIssue()}> <i class="fa fa-search"></i>
           </Button>
-          <SearchResult>
-        <p> The searched Issue is :</p> 
+          </div>
+         
+              <SearchHeading>
+        <p> The Results are :</p> 
+        </SearchHeading>
+        {(this.state.searchedIssue.length!=0)
+        ?
+        <div>
         {this.state.searchedIssue.map((search,i)=>{
             return(
-          <div key ={i}>
-          <p> Title {search.name}</p>
-          <p> Description {search.description} </p>
-          <p> Last updated {search.last_updated} </p>
-          </div>)
+            
+                <div className="issue-main" key ={i}>
+       <p className="bug-text"> <b>Title: </b> {search.name}</p>
+       <p className="bug-text"><b> Description</b> {search.description} </p>
+       <p className="bug-text"><b>Last updated</b> {search.last_updated} </p>
+          </div>
+    
+          
+          )
           
         })} 
-        </SearchResult>
+        </div>
+        : <p className="bug-text"> <b>No Results!!</b> </p>
+
+    }
        
 
-                </StyledSearch>
-                </div>
-
+             
+</div>
 
             
         );

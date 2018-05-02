@@ -151,13 +151,13 @@ class AdminDashboard extends Component {
       <div className="admin-dashboard">
           {console.log("value of ope",this.state.open)}
         <div className="nav-side-menu">
-          <div className="panel panel-primary">
-            <div className="panel-heading">Welcome</div>
+          {/* <div className="panel panel-primary">
+            <div className="panel-heading">Welcome, {this.state.userdetail.username}</div>
             <div className="panel-body">
               <img className="profile-pic"src={this.state.userdetail.profile_pic}/>
             </div>
             <div className="panel-footer">{this.state.userdetail.username}</div>
-          </div>
+          </div> */}
         
           <i className="fa fa-bars fa-2x toggle-btn"data-toggle="collapse" data-target="#menu-content" />
           <div className="menu-list">

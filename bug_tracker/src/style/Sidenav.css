@@ -185,6 +185,6 @@ th, td {
   }
   #main {
   	width:calc(100% - 300px);
-  	float: right;
+  	float: left;
   }
 }
