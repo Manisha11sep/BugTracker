@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './../style/MessageStyle.css';
 import axios from 'axios'
+import './../style/MessageStyle.css'
 
 import FaTrash from "react-icons/lib/fa/trash";
 import FaPencil from "react-icons/lib/fa/pencil";
@@ -67,7 +68,7 @@ export default class EditComment extends Component {
     const { editting, editText } = this.state;
     console.log("Value of editing button", editting);
     return (
-      <div className="Message__container">
+      <div className="container">
         {
           editting
           ?

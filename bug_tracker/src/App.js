@@ -9,38 +9,33 @@ import Logo from './Logo.jpg';
 
 
 
+
 class App extends Component {
   render() {
+    console.log(window.location)
     return (
       <div>
-          {/* <Header /> */}
-          <div>
-            {/* <img src={Logo} height="42" width="42"/> */}
-        
-          </div>
-        
-           {routes}
+        <div>
+        {window.location.pathname ==='/'
       
+        ?
+      null
+        :
+                  <Header />
+    }
+    </div>
+    <div>
+           {routes}
+           </div>
+      
+      <div>
            <Footer />
+      </div>
       </div>
     );
   }
 }
 
-// function mapStateToProps( state ) {
-//   return state
-// }
+
 export default App;
 
-// export default withRouter(connect( mapStateToProps )( App ));
-
-
-
-        // <Switch>
-        //   <Route exact path="/" component={Login} />
-        // <Route path="/dashboard" component={Dashboard} />
-        //  <Route path="/issue"  component={NewIssue} />
-        //   <Route path="/signup" component={Signup} />
-
-
-        // </Switch> 

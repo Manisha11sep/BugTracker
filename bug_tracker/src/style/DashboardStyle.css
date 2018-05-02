@@ -1,12 +1,23 @@
 
+.issue-heading{
+    
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+    }
+
 
 .issue-main{
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    border-color: black;
-    border: solid;
-    background-color: pink
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+    align-content: flex-start;
+    border:solid black;
 }
 .issue-main p {
     color:black
@@ -16,7 +27,8 @@
 }
 
 .bug-text{
-    background-color:aqua;
+    font-size:.8em;
+    margin:5px;
 }
 
 /* Style the header */
@@ -44,16 +56,22 @@
 }
 
 /* Style the footer */
-.footer {
+/* .footer {
     background-color: #f1f1f1;
     padding: 10px;
     text-align: center;
-}
+} */
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     .row {
       -webkit-flex-direction: column;
       flex-direction: column;
+   
+ 
+     
+    }
+    [className*=col-]{
+        width: 100%
     }
 }

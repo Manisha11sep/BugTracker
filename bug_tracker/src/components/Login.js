@@ -12,47 +12,87 @@ import Logo from './../Logo.jpg';
 import './../style/Login.css';
 
 
-const Wrapper = styled.div`
+const LoginBox = styled.div`
 
-height:250px;
-width:500px;
-margin:0 auto;
+// box-sizing:border-box;
+margin:10% auto;
+max-width:500px;
+  padding-top:15px;
+	padding-bottom:10%;
+//   text-align:center;
+border:.5px solid #fff;
+// border-radius:10px;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.45);
-  border-radius: 5px;
+  border-radius:5%;
   border-color:black;
   text-align: center;
   &:hover{
     cursor:pointer;
-    box-shadow: 1px 4px 5px rgba(0,0,0,0.45);
+    box-shadow: 1px 10px 10px 5px rgba(0,0,0,0.45);
   }
-  @media (max-width: 739px) {
-    width: 100%;
-  }
+  
+
+`;
+const Heading = styled.div`
+height:100px;
+width:100%;
+display:flex;
+margin-bottom: 10%;
+
+
 `;
 const InnerBox = styled.div`
 
   margin: 0 auto;
   text-align: center;
   justify-content: space-between;
-  padding:20px 20px;
+padding:20px 20px;
+
   `;
 
+  const Button =styled.button`
+  ;
+    background-color: #008CBA
+    border:2px solid #f2f2f2;
+    border-radius:20px;
+    color: slategrey;
+    text-transform:uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    cursor:pointer;
+    color: white;
+  }
+  `
   const Title = styled.h5`
-  font-size: 22px;
+ 
   text-align: center;
-  color:black;
- margin:20px 20px;
+  color:white;
+  font-size:200%;
+
 `;
-const Title1 = styled.p`
-font-size: 18px;
-text-align: center;
-color:black;
-margin-right:20px;
+const Title1 = styled.h3`
+text-align:left;
+margin-left:40px;
+color:#fff;
+margin:0; 
+padding:0;
+
+
 `;
-const Button = styled.button`
-margin:0px 10px;
-cursor: pointer;
+const LoginHeader = styled.div`
+
+  color:#fff;
+  text-align:center;
+  font-size:200%;
+ text-align:center;
+
+`;
+const Img = styled.img`
+  height: 70px;
+  width: 70px;
 border-color: black;
+border-radius:20%;
+margin:5px 5px;
+
 `;
 
 
@@ -113,68 +153,48 @@ export default class Login extends Component {
 render() {
   const {username, password} = this.state;
   return (
-    <div className="section login-backgorund">
-    <div className="container">
-    <InnerBox>
-    <img src ={Logo} alt="logo" height="100" width="100"/>
-    </InnerBox>
-      <InnerBox>
-                
-    <Title>
-        Welcome to Bug Tracker.
-         Please Login or Register to access our services!! </Title>
-                </InnerBox>
-           
-                <Wrapper>
-                <InnerBox>  <label><Title1>Username</Title1></label> 
-                 <input type="text" placeholder="Enter your Username" value ={username}onChange={this.username} required/> 
-                 </InnerBox>
-                 <InnerBox>
+  
    
+    <div className="login-backgorund" >
+    <Heading>
+           
+      <Img src ={Logo} alt="logo" /> 
+        <Title> Welcome to Bug Tracker. 
+          </Title>
+      </Heading> 
+
+           <LoginHeader>
+           Please Login or Register to access our services!!
+           </LoginHeader>
+                <LoginBox>
+                <label><Title1>Username</Title1> </label>
+                 <input type="text" placeholder="Enter your Username" value ={username}onChange={this.username} required/> 
+                
            <label><Title1>Password</Title1></label>
-             <input  type="password" placeholder="Enter your Password" value ={password } required
+             <input type="password" placeholder="Enter your Password" value ={password } required
              onKeyPress={e=>this.handleKeyPress(e)} onChange={this.password} />
            
-     </InnerBox>
-          
+           </LoginBox>
     
            <InnerBox>
-           <div>
-           <Button className="btn btn-primary btn-lg"  onClick={ this.login }>Login </Button>
+           
+           <Button onClick={ this.login }>Login </Button>
+           </InnerBox>
+           <InnerBox>
 
-           <Link to="/signup"> <Button className="btn btn-primary btn-lg"> Register </Button></Link>  
-            </div>
+           <Link to="/signup"> <Button > Register </Button></Link>  
+           
           
         
             </InnerBox>
                 
-            </Wrapper>
+         
           
 
 
 </div>
 
-    </div>
+   
   );
 }
 }
-
-
-
-// function mapStateToProps( state ) {
-//   const{id,username,email,profile_pic} = state;
-//   return {
-//     id,username,email,profile_pic
-//   };
-// }
-
-// const mapStateToProps = state => {
-//   return state;
-// };
-
-// const mapDispatchToProps = {
-//   userDetail,
-// };
-
-
-// export default connect(mapStateToProps, mapDispatchToProps) (Login);

@@ -1,52 +1,30 @@
-/* input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-} */
 
 .login-backgorund{
     background-image: url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/SSGTHB82F6.jpg");
-    
-    text-align: center;
-  background-repeat: no-repeat;
-  /* background-attachment: scroll;
-  background-position: center; */
-  /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover; */
-  background-size: cover;
-  height:600px;
+  
+     /* Full height */
+     height: 100%; 
 
+     /* Center and scale the image nicely */
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+  
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    border-color: black;
+ input[type="text"],
+ input[type="password"] {
+  max-width:400px;
+	width: 80%;
+  line-height:3em;
+  font-family: 'Ubuntu', sans-serif;
+  margin:1em 2em;
+  border-radius:5px;
+  border:2px solid #f2f2f2;
+  outline:none;
+  padding-left:10px;
 }
 
-button:hover {
-    opacity: 0.8;
-}
-
-
-
-
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
+.a{
+    text-decoration: none
 }

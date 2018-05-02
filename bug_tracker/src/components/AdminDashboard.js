@@ -4,14 +4,16 @@ import { Bar, Pie } from "react-chartjs-2";
 import { Link } from "react-router-dom";
 import "./../style/Sidenav.css";
 import { connect } from "react-redux";
-import { logout} from '../ducks/reducer'; 
-import Profile from './Profile';
-import Charts from './Charts';
+import { logout } from "../ducks/reducer";
+import Profile from "./Profile";
+import Charts from "./Charts";
+import Email from './Email';
+import GithubIssues from "./GithubIssues";
 class AdminDashboard extends Component {
   constructor() {
     super();
     this.state = {
-      userdetail:[],
+      userdetail: [],
       users: [],
       comments: [],
       issues: [],
@@ -21,147 +23,37 @@ class AdminDashboard extends Component {
       IssuePerUSer: {},
       CommentPerUser: {},
       CommentPerIssue: {},
-      to:[],
-      subject:'',
-      body:'',
-      issueState:false,
-      emailState:false,
-      open:'',
-      chartType:''
+      to: [],
+      subject: "",
+      body: "",
+      issueState: false,
+      emailState: false,
+      open: "",
+      chartType: ""
     };
 
     this.getComment = this.getComment.bind(this);
     this.getIssue = this.getIssue.bind(this);
     this.logout = this.logout.bind(this);
     this.getUsers = this.getUsers.bind(this);
-    this.onChange=this.onChange.bind(this);
-    this.sendEmail = this.sendEmail.bind(this);
     this.getEmail = this.getEmail.bind(this);
     this.getIssueChart = this.getIssueChart.bind(this);
-    this.getCommentChart=this.getCommentChart.bind(this);
-    this.getCommentOnIssue=this.getCommentOnIssue.bind(this);
+    this.getCommentChart = this.getCommentChart.bind(this);
+    this.getCommentOnIssue = this.getCommentOnIssue.bind(this);
+    this.getGithub = this.getGithub.bind(this);
+    this.getBug=this.getBug.bind(this);
+    this.getComments=this.getComments.bind(this);
   }
+  
 
   componentDidMount() {
     axios.get("/api/session").then(response => {
       console.log("inside header user data", response.data);
       this.setState({ userdetail: response.data });
       console.log("user deails", this.state.userdetail);
-  
-      
     });
-
-    // axios.get("/api/admin/issuecount").then(res => {
-    //   const issue = res.data;
-    //   let username = [];
-    //   let issueCount = [];
-    //   issue.forEach(element => {
-    //     username.push(element.username);
-    //     issueCount.push(element.issue_count);
-    //   });
-    //   this.setState({
-    //     IssuePerUSer: {
-    //       labels: username,
-    //       datasets: [
-    //         {
-    //           label: "Issue created by each user",
-    //           data: issueCount,
-    //           backgroundColor: [
-    //             "rgba(255, 99, 132, 0.2)",
-    //             "rgba(54, 162, 235, 0.2)"
-    //           ],
-    //           borderColor: ["rgba(255,99,132,1)", "rgba(54, 162, 235, 1)"],
-    //           borderWidth: 1
-    //         }
-    //       ]
-    //     }
-    //   });
-    // });
-    // axios.get("/api/admin/commentcount").then(res => {
-    //   const comment = res.data;
-    //   let posted_by = [];
-    //   let commentCount = [];
-    //   comment.forEach(element => {
-    //     posted_by.push(element.posted_by);
-    //     commentCount.push(element.comment_count);
-    //   });
-    //   this.setState({
-    //     CommentPerUser: {
-    //       labels: posted_by,
-    //       datasets: [
-    //         {
-    //           label: "Issue created by each user",
-    //           data: commentCount,
-    //           backgroundColor: [
-    //             "rgba(255, 206, 86, 0.2)",
-    //             "rgba(75, 192, 192, 0.2)",
-    //             "rgba(153, 102, 255, 0.2)",
-    //             "rgba(255, 159, 64, 0.2)"
-    //           ],
-    //           borderColor: ["rgba(255,99,132,1)", "rgba(54, 162, 235, 1)"],
-    //           borderWidth: 1
-    //         }
-    //       ]
-    //     }
-    //   });
-    // });
-    // axios.get("/api/admin/issuecomment").then(res => {
-    //   console.log("Comment by issue", res.data);
-    //   const commentbyIssue = res.data;
-    //   let Issue_id = [];
-    //   let commentCount = [];
-    //   commentbyIssue.forEach(element => {
-    //     Issue_id.push(element.issue_id);
-    //     console.log(Issue_id);
-    //     commentCount.push(element.comment_count);
-    //   });
-    //   this.setState({
-    //     CommentPerIssue: {
-    //       labels: Issue_id,
-    //       datasets: [
-    //         {
-    //           label: "Comment Per Issue ",
-    //           data: commentCount,
-    //           backgroundColor: [
-    //             "#F7464A",
-    //             "#46BFBD",
-    //             "#FDB45C",
-    //             "#949FB1",
-    //             "#4D5360"
-    //           ],
-    //           hoverBackgroundColor: [
-    //             "#FF5A5E",
-    //             "#5AD3D1",
-    //             "#FFC870",
-    //             "#A8B3C5",
-    //             "#616774"
-    //           ],
-    //           borderWidth: 1
-    //         }
-    //       ]
-    //     }
-    //   });
-    // });
   }
 
-
-
-
-
-  sendEmail(event)
-  {
-      console.log("inisde props", this.props);
-      const{username,email,profile_pic}=this.props;
-   const {to,subject,body} = this.state;
-   console.log("inside email", to,subject,body)
-    axios.post('/api/send-email',{to,subject,body,username,email}).then( response => {
-        console.log("inside email" , response.data);
-      this.setState({ messages: response.data });
-    //   event.preventDefault();
-  
-    });
-
-  }
 
   getComment() {
     axios.get("/api/admin/comment").then(response => {
@@ -170,30 +62,36 @@ class AdminDashboard extends Component {
     });
   }
 
-  getUsers() {
-    axios.get("/api/admin/users").then(response => {
-      this.setState({ users: response.data, open:'users' });
-      console.log("Inside admin", this.state.users);
-    });
+  getEmail() {
+    this.setState({ open: "email" });
+  }
+  getIssueChart() {
+    this.setState({ open: "charts", chartType: "issue" });
+  }
+  getCommentChart() {
+    this.setState({ open: "charts", chartType: "comment" });
+  }
+  getCommentOnIssue() {
+    this.setState({ open: "charts", chartType: "commentonissue" });
+  }
+  getGithub() {
+    this.setState({ open: "github" });
+  }
+  getBug() {
+    this.setState({ open: "issues" });
+  }
+  getComments() {
+    this.setState({ open: "comments" });
+  }
+  getUsers(){
+    this.setState({open:'users'});
   }
 
-  getEmail(){
-    this.setState({open:'email'})
-  }
-  getIssueChart(){
-    this.setState({open:'charts', chartType: 'issue'})
-  }
-  getCommentChart(){
-    this.setState({open:'charts', chartType: 'comment'})
-  }
-  getCommentOnIssue(){
-    this.setState({open:'charts', chartType: 'commentonissue'})
-  }
 
 
   getIssue() {
     axios.get("/api/admin/issue").then(response => {
-      this.setState({ issues: response.data, issueState:false });
+      this.setState({ issues: response.data, issueState: false });
       console.log("Inside admin issues are ", this.state.issues);
     });
   }
@@ -206,12 +104,7 @@ class AdminDashboard extends Component {
     });
   };
 
-  onChange(e){
-    this.setState({[e.target.name]:e.target.value});
-
-}
   render() {
-    console.log("issue state", this.state.issueState);
     const issueList = (
       <table>
         <tr>
@@ -254,169 +147,139 @@ class AdminDashboard extends Component {
       </table>
     );
     return (
+  
       <div className="admin-dashboard">
+          {console.log("value of ope",this.state.open)}
         <div className="nav-side-menu">
-        <div className="panel panel-primary">
-        <div className="panel-heading">Welcome</div>
-        <div className="panel-body"><img className ="profile-pic"src={this.state.userdetail.profile_pic} /> </div>
-        <div className="panel-footer">{this.state.userdetail.username}</div>
-
-        </div>
-          {/* <div className="profile-pic"> <img className="admin-img" /></div> */}
-          <i className="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"/>
+          <div className="panel panel-primary">
+            <div className="panel-heading">Welcome</div>
+            <div className="panel-body">
+              <img className="profile-pic"src={this.state.userdetail.profile_pic}/>
+            </div>
+            <div className="panel-footer">{this.state.userdetail.username}</div>
+          </div>
+        
+          <i className="fa fa-bars fa-2x toggle-btn"data-toggle="collapse" data-target="#menu-content" />
           <div className="menu-list">
             <ul id="menu-content" className="menu-content collapse out">
-            <button className="btn btn-primary"  data-toggle="collapse" data-target="#charts"  >
-               
-                  <i className="fa fa-line-chart" /> Charts 
-             </button>
+              <button className="btn btn-primary"  data-toggle="collapse"data-target="#charts" >
+                <i className="fa fa-line-chart" /> Charts
+              </button>
 
               <ul className="sub-menu collapse" id="charts">
-                <li onClick ={this.getCommentChart}>
-                  <a data-toggle="collapse" href="#CommentByUSer"> Comment posted by users </a>
+                <li onClick={this.getCommentChart}>
+                  <a data-toggle="collapse" href="#CommentByUSer">  Comment posted by users
+                  </a>
                 </li>
-                <li onClick ={this.getIssueChart}>
-                  <a data-toggle="collapse" href="#IssueByUser" >Issue posted by User </a>
-           
+                <li onClick={this.getIssueChart}>
+                  <a data-toggle="collapse" href="#IssueByUser">
+                    Issue posted by User
+                  </a>
                 </li>
-                 <li onClick ={this.getCommentOnIssue}>
-                  <a data-toggle="collapse" href="#CommentByIssue"> Comment on issues</a>
+                <li onClick={this.getCommentOnIssue}>
+                  <a data-toggle="collapse" href="#CommentByIssue">
+                    Comment on issues
+                  </a>
                 </li>
               </ul>
 
               <li>
-              <button className="btn btn-primary"  data-toggle="collapse" data-target="#UserData" onClick={this.getUsers}>
+                <button className="btn btn-primary" onClick={this.getUsers} >
                   <i className="fa fa-users fa-lg" /> Users
                 </button>
               </li>
               <li>
-              <button className="btn btn-primary"  onClick ={this.getEmail}>
-                {/* <button className="btn btn-primary"  data-toggle="collapse" data-target="#Email" > */}
+                <button className="btn btn-primary" onClick={this.getEmail}>
                   <i class="fa fa-envelope" /> Email
                 </button>
               </li>
-              <li>
-                <button className="btn btn-primary" data-toggle="collapse" data-target="#issue" onClick={this.getIssue}>
-                <i class="fa fa-exclamation-triangle" />  Get All the Bugs
+              <li onClick={this.getBug}>
+                <button className="btn btn-primary"data-toggle="collapse" data-target="#issue" onClick={this.getIssue} >
+                  <i class="fa fa-exclamation-triangle" /> Get All the Bugs
                 </button>
               </li>
 
+              <li onClick={this.getComments}>
+                <button
+                  className="btn btn-primary"
+                  data-toggle="collapse"
+                  data-target="#comment"
+                  onClick={this.getComment}
+                >
+                  <i class="fa fa-comments" /> Get All the Comment
+                </button>
+              </li>
               <li>
                 <button
-                  className="btn btn-primary" data-toggle="collapse" data-target="#comment" onClick={this.getComment}>
-                  <i class="fa fa-comments" />  Get All the Comment
+                  className="btn btn-primary"
+                  data-toggle="collapse"
+                  data-target="#comment"
+                  onClick={this.getGithub}
+                >
+                  <i class="fa fa-github" />vGet Issues from Github
                 </button>
               </li>
               <li>
                 {/* <button className="btn btn-info"  onClick ={this.logout}> Log Out </button> */}
-                <button className="btn btn-primary"> <Link to="/" onClick={this.logout}>
-                  <i class="fa fa-sign-out" />Log out
-                </Link>
-                </button> 
+                <button className="btn btn-primary">
+                  {" "}
+                  <Link to="/" onClick={this.logout}>
+                    <i class="fa fa-sign-out" />Log out
+                  </Link>
+                </button>
               </li>
             </ul>
           </div>
         </div>
         <div>
-
-        <div className="container" id="main">
-        <h1> Welcome to the Bug Tracker </h1>
+          <div className="container" id="main">
         
 
-              <div className="collapse" id="issue">
-                <h1> List of Issues/Bugs </h1> 
-                 {issueList}
-              </div>
-
-              <div className="collapse" id="comment">
-                <h1> List of Comments </h1>
-                 {commentList}
-              </div>
-
-            {/* <div className="collapse" id="IssueByUser">
-              <h1> Issue count by each User</h1>
-              <Pie
-                data={this.state.IssuePerUSer}
-                options={{ maintainAspectRatio: false }}
-              />
-            </div> */}
-            {this.state.open ==='charts'
+            {this.state.open === "issues" 
             ?
-            <Charts chartType ={this.state.chartType}/>
+            <div className="collapse" id="issue">
+              <h1> List of Issues/Bugs </h1>
+              {issueList}
+            </div>
             :
             null
           }
-
-            {/* <div className="collapse" id="CommentByUSer">
-              <h1> Comment Posted by Each user </h1>
-              <Bar
-                data={this.state.CommentPerUser}
-                options={{ maintainAspectRatio: false }}
-              />
+   {this.state.open === "comments" ?
+            <div className="collapse" id="comment">
+              <h1> List of Comments </h1>
+              {commentList}
             </div>
+            :
+            null
+        }
 
-            <div className="collapse" id="CommentByIssue">
-              <h1> Comment Count Per Issue Id </h1>
-              <Bar
-                data={this.state.CommentPerIssue}
-                options={{ maintainAspectRatio: false }}
-              />
-            </div> */}
+            {this.state.open === "charts" ? (
+              <Charts chartType={this.state.chartType} />
+            ) : null}
 
-            {this.state.open ==='users' 
-            ?
-            <Profile />
-            // ?
-            //   <div className="collapose" id="UserData">
-            //    
-            //       );
-            //     })}
-
-                
-            //     </div>
-                :
-                null
-              }
-          
-             
-              {this.state.open ==='email' 
-              ?
-              <div className="collapose" id="Email">
-        
-                <div>
-                    <label>Email address</label>
-                    <input type="email" name ="to" value ={this.state.to}
-                     onChange={this.onChange} placeholder="Enter email"/>
-                </div>
-                <div>
-                    <label>Subject</label>
-                    <input type="text" name ="subject" value ={this.state.subject}
-                     onChange={this.onChange} placeholder="Enter Subject"/>
-                </div>
-                <div>
-                    <label>Body</label>
-                    <textarea name ="body" placeholder="Enter the message" value ={this.state.body}
-                     onChange={this.onChange}/>
-                </div>
-               
-                <button  className="btn btn-info" onClick ={this.sendEmail}> Send </button>
+            {this.state.open === "users" ? (
+              <Profile />
+            ) : 
             
-              </div> : 
-              null
-            }
-          
+            null
+          }
+
+            {this.state.open === "github" ? <GithubIssues /> : null}
+
+            {this.state.open === "email" ? 
+            <Email username={this.state.username}/>
+             
+             : null
+             }
           </div>
         </div>
-        </div>
-     
+      </div>
     );
   }
 }
 const mapStateToProps = state => {
-    return state;
-  };
-  
-  const mapDispatchToProps = {
-   
-  };
-  export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);
+  return state;
+};
+
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

@@ -1,4 +1,16 @@
 
+.home-container {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+    align-content: center;
+  margin-bottom:20px;
+}
+.home-container h1{
+    color:black
+}
 
 
 /* Style the header */
@@ -6,39 +18,34 @@
     padding: 30px;
     text-align: center;
     font-size: 35px;
-    border:solid black;
-
+    color:black;
+    
 }
+    /* border:solid black; */
 
-.home-row {
 
-   border-color: black;
-   border:solid;
+
+.home-text {
+
+  margin-left:5%;
+  margin-right:5%
 
 }
 
 /* Create three equal columns that sits next to each other */
-.text{
-    color:black;
-}
-
-col{
-    background-color: black;
-}
 
 .home-background{
     background-image: url("https://i1.wp.com/fancycrave.com/wp-content/uploads/2017/06/How-to-Use-Video-Background-on-Websites.jpg?w=1000");
-    
-    text-align: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center;
-  /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover; */
-  background-size: cover;
-  height:680px;
 
+
+     /* Full height */
+     height: 100vh; 
+
+     /* Center and scale the image nicely */
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+  
 }
 
 .dashboard-issue{
@@ -52,20 +59,18 @@ col{
     text-transform: none;
     border-color: black;
     border:solid;
-    margin:50px 50px;
+    margin:20px 20px;
+    text-align:center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+
   }
 
 /* Style the footer */
-.footer {
+/* .footer {
     background-color: #f1f1f1;
-    padding: 10px;
+
     text-align: center;
-}
+} */
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-    .row {
-      -webkit-flex-direction: column;
-      flex-direction: column;
-    }
-}

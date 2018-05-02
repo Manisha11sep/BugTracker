@@ -3,6 +3,8 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios';
 import './../style/SignupStyle.css';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
+import validateInput from './Validations';
 
 const CLOUDINARY_UPLOAD_URL="https://api.cloudinary.com/v1_1/manisha11/image/upload";
 const CLOUDINARY_UPLOAD_PRESET ="hdi8lbnt";
@@ -20,30 +22,25 @@ export default class Signup extends Component {
         messages:'',
         disabled: true, 
         files: [],
-        cloudinaryUrl: ''
+        cloudinaryUrl: '',
+        errors:{},
+        isValid:''
+        
         }
 
         this.onChange=this.onChange.bind(this);
     // this.createUser = this.createUser.bind( this );
     this.clearForm=this.clearForm.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
+    this.signUp=this.signUp.bind(this);
 
     }   
 
     onChange(e){
         this.setState({[e.target.name]:e.target.value});
+        
     }
 
-    // createUser()
-    // {
-     
-    //  const {username,email,profile_pic,password} = this.state;
-    //   axios.post('/api/signup',{username,password,email,profile_pic}).then( response => {
-    //     this.setState({ messages: response.data })
-    
-    //   }).catch(console.log("error"))
-    //   this.clearForm();
-    // }
     clearForm(){
         this.setState({
             username:'',
@@ -51,84 +48,99 @@ export default class Signup extends Component {
             password:'',
             profile_pic :'',
             messages:'',
-            uploadUrl:''
-            
+            uploadUrl:'',
+          
         });
         alert('Thank you for Signing up on Bug Tracker!!')
     }
-    onDrop(files) {
-        this.setState({
-          files
-        });
-      }
+
+   isValid() {
+       console.log("inside isvali")
+       const {errors,isValid} = validateInput(this.state);
+       if(!isValid){
+           console.log("inside is validinput", errors)
+           this.setState({errors});
+       }
+       return isValid;
+   }
 
       uploadImage(file){
         console.log("inside uploadfile" , file);
         axios.get('/api/upload').then(response => {
             console.log("response data", response.data)
-            //********form data for Signed upload */
-            // let formData = new FormData();
-            // formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET_SIGNED);
-            // formData.append("signature", response.data.signature)
-            // formData.append("api_key","135962885327916");
-            // formData.append('timestamp', response.data.timestamp);
-            // formData.append('file', file[0]);
-            // console.log("form data is ", formData);
 
-            //form data for unsigned uploads
-
-        let formData = new FormData();
-        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-        formData.append("file", file[0]);
-               
-            axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
-            console.log(response.data)
-            this.setState({uploadUrl: response.data.secure_url})
-            const user = {
-            username: this.state.username,
-            email: this.state.email,
-            profile_pic: this.state.uploadUrl,
-            password: this.state.password,
+                    let formData = new FormData();
+                    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+                    formData.append("file", file[0]);
+                        
+                        axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
+                        console.log(response.data)
+                        this.setState({uploadUrl: response.data.secure_url})
+                    })
+                })
             }
-            console.log(user)
-            axios.post('/api/signup', user).then(response => {
-                console.log("response from server", response);
-                if(response.data === 'registered'){
-                    window.location = '/'
-                } 
-                this.clearForm();
-            })
+            // const user = {
+            // username: this.state.username,
+            // email: this.state.email,
+            // profile_pic: this.state.uploadUrl,
+            // password: this.state.password,
+            // }
             
-            })
-        })
-    }
+            // console.log(user)
+            // if(this.isValid()){
+            //     console.log("inside isValid function");
+            //     this.setState({errors:{}});
+               
+            
+      
+        signUp(){ 
+            // const {username,email,password,uploadUrl}=this.state
+           if (this.isValid())
+           {
+                axios.post('/api/signup', this.state).then(response => {
+                    if(response.data === 'registered'){
+                        window.location = '/'
+                    } 
+                    this.clearForm();
+                })
+                
+       
+            }
+
+         }
+            
+    
     
 
 
     render() {
-    
+    const {errors} =this.state;
         return (
             <div>
                 <div className='container'>
                         <h1 className=''>register</h1>
-                        <div className="form-group">
+                        <div className={classnames("form-group", {'has-error':errors.username})}>
                             <label>username</label>
                             <input type="text" className="form-control signup-input" placeholder="username" onChange={e => this.setState({username: e.target.value})}/>
+                            {errors.username && <span className="help-block">{errors.username} </span>}
                         </div>
-                        <div className="form-group">
+                       
+                        <div className={classnames("form-group", {'has-error':errors.password})}>
                             <label>password</label>
                             <input type="password" className="form-control signup-input" placeholder="password" onChange={e => this.setState({password: e.target.value})}/>
+                            {errors.password && <span className="help-block">{errors.password} </span>}
                         </div>
-                        <div className="form-group">
+                        <div className={classnames("form-group", {'has-error':errors.email})}>
                             <label>email</label>
                             <input type="text" className="form-control signup-input" placeholder="email" onChange={e => this.setState({email: e.target.value})}/>
+                            {errors.email && <span className="help-block">{errors.email} </span>}
                         </div>
                         <div className="form-group">
                             <label>image Upload</label>
-                            <input type="file" onChange={e => this.setState({profile_pic: e.target.files})} className="form-control-file fileInput"/>
+                            <input type="file" onChange={e => this.setState({profile_pic: e.target.files})} onClick={() => this.uploadImage(this.state.profile_pic)} className="form-control-file fileInput"/>
                         </div>
                         {this.state.failMessage}
-                        <button className="btn btn-primary" onClick={() => this.uploadImage(this.state.profile_pic)}>sign up</button>
+                        <button className="btn btn-primary" onClick={()=>this.signUp()} >sign up</button>
                 </div>
                 
             </div>

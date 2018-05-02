@@ -1,35 +1,15 @@
-
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  border-color: black;
+.app {
+  text-align: center;
+  background-color:red;
 }
 
-button:hover {
-  opacity: 0.8;
-}
 
-.container {
-  padding: 16px;
-}
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-/* 
-.comment{
-    width: 1000px;
-    height: 100%;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 0px 20px;
-  
+/* button{
+  padding:20px;
+  background-color: pink;
+  border-radius: 10px;
+
 } */
+
+

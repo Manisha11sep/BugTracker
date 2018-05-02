@@ -62,33 +62,23 @@ class Dashboard extends Component {
 
     return (
       <div className="container ">
-        <div className="row ">
-          {" "}
-          <h1> List of Bugs </h1>
+        <div className=" issue-heading">
+
+          List of Bugs 
         </div>
 
         {issues.map((issue, i) => (
           <div className="issue-main" key={i}>
-            <div className="row ">
-              <div className="col-xs-5 col-sm-6 col-lg-6">
-                {" "}
-                <p className="bug-text">Title: {issue.name}</p>{" "}
-              </div>
-              <div className="col-xs-5 col-sm-6 col-lg-6">
-                {" "}
-                <p className="bug-text">Last Updated: {issue.last_updated}</p>
-              </div>
-            </div>
-
-            <div className="row ">
-              <h5>Description: {issue.description}</h5>
-            </div>
-
+        <p className="bug-text">Title: {issue.name}</p>
+         <p className="bug-text">
+              Description: {issue.description} </p>
             <Comment issue_id={issue.id} />
-            <Footer />
+         
           </div>
-        ))}
+        ))
+        }
       </div>
+      
     );
   }
 }

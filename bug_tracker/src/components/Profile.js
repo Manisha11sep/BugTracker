@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ProfileStyle from './../style/ProfileStyle.css';
 
 class Profile extends Component {
     constructor(){
@@ -18,9 +19,10 @@ class Profile extends Component {
 
     render() {
         return (
-          <div className ="">
-          <h1> List of Users </h1>
-                
+  
+          <div >
+                  <h1> List of Users </h1>
+                <div className="grid-container">
               {this.state.users.map((user, i) => {
                 return (
                   <div  key={user.id}>
@@ -31,8 +33,10 @@ class Profile extends Component {
               
                   </div>
                   </div>
+                 
               );
             })}
+          </div>
           </div>
         );
     }

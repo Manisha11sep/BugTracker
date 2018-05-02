@@ -18,6 +18,7 @@ module.exports ={
     },
 
     createUser: ( req, res, next ) => {
+      // const{error, isValid} = validateInput(req.body);
         const dbInstance = req.app.get('db');
         const {username,password,email,profile_pic} = req.body;
         bcrypt.hash(password,saltRounds ).then(hashedPassword=>{
@@ -26,8 +27,11 @@ module.exports ={
             console.log("registered successfully");
             res.status(200).send('registered');
         }).catch(error => {
-            res.status(500).json({ message: "An error occurred; for security reasons it can't be disclosed" });
+            res.status(400).json(errors);
           });
+          // if(!valid){
+          //   res.status(400).json(errors);
+          // }
     })
             
         },

@@ -11,32 +11,33 @@ import {userDetail, logout} from '../ducks/reducer';
 import Logo from './../Logo.jpg';
 
 const Wrapper = styled.div`
-  height: 50px;
+  height: 70px;
   width: 100%;
   min-width: 360px;
-  background-color:black;
-  box-shadow: 1px 2px 5px rgba(0,0,0,0.45);
-  overflow:hidden;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+
+
+
+
+
+  background-color:#001f3f;
   border-radius: 5px;
-  margin: 5px 5px;
-  text-align: center;
-  &:hover{
-    cursor:pointer;
-    box-shadow: 1px 4px 5px rgba(0,0,0,0.45);
-  }
   @media (max-width: 739px) {
     width: 100%;
   }
 `
 const InnerBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  max-width: 1200px;
- text-color:white
-  margin: 0 auto;
-  text-align: center;
-  height: 100%;
-  justify-content: space-between;
+
+
+color: #f2f2f2;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
   `;
 
   const Title = styled.h1`
@@ -71,28 +72,25 @@ logout = () => {
 }
 
   render() {
+ 
     return (
-      <div>
-     
+      <div className ="flex-container header-parent ">
+   
+ 
         { (this.state.user.username!=='admin')
-       ?
-       <Wrapper>
-        <InnerBox>
-           <Link to="/home">Home</Link>
-         <Link to="/dashboard">Dashboard</Link>
-         <Link to="/issue" > Create New Issue </Link> 
-         <Link to="/search">Search</Link>
-         <Link to = "/" onClick={()=>this.logout()}> Log out </Link>
-        
-         </InnerBox>
-             </Wrapper>
+       ?  <Wrapper>
+        <InnerBox> <Link to="/home">Home</Link>   </InnerBox>
+        <InnerBox> <Link to="/dashboard">Dashboard</Link> </InnerBox>  
+        <InnerBox><Link to="/issue" > New Issue </Link> </InnerBox>
+        <InnerBox> <Link to="/search">Search</Link></InnerBox>
+        <InnerBox> <Link to = "/" onClick={()=>this.logout()}> Log out </Link></InnerBox>
+        </Wrapper>
       :
-      <p> Welcome </p>
+      null
        }          
 
-     
-    
-
+ 
+ 
        </div>
 
     )

@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Dropzone from "react-dropzone";
 import styled from "styled-components";
 
 const IssueHeading = styled.h3`
   font-size: 20px;
-  color: palevioletred;
+  color: white;
   text-align: center;
-`;
+  padding:20px 25px;
+`; 
+
+
+
 const IssueText = styled.input`
   border-radius: 21px;
   border: 1px solid #2aabe2;
@@ -64,7 +67,11 @@ export default class NewIssue extends Component {
 
   render() {
     return (
-      <div className="container">
+  
+      <div className="content">
+
+     
+     <div >
         <IssueHeading>
           <p> Create a New Issue </p>
         </IssueHeading>
@@ -89,11 +96,20 @@ export default class NewIssue extends Component {
           />
 
           <Button color="red" onClick={() => this.createIssue()}>
-            {" "}
-            Submit a Issue{" "}
+          
+            Submit a Issue
           </Button>
         </div>
-      </div>
+           </div>
+           
+           
+    </div>
+    
+
+    
+  
+   
+      
     );
   }
 }

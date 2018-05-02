@@ -48,23 +48,3 @@
     margin: 1% auto;
 }
 
-@media (min-width: 578px){
-    .loginContainer {
-        margin-top: 0;
-        padding: 2%;
-        text-align: center;
-        color: #337ab7;
-        letter-spacing: 0.1em;
-        font-weight: 600;
-    }
-    .signup-input {
-        padding: 2%;
-        width: 50%;
-        margin: 0 auto;
-    }
-   
-  
-    .fileInput {
-        padding: 1%;
-    }
-}
