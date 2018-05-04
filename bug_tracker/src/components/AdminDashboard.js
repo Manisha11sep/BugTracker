@@ -148,16 +148,17 @@ class AdminDashboard extends Component {
     );
     return (
   
-      <div className="admin-dashboard">
+      <div className="container admin-dashboard">
+      <div className="main-sidebar">
           {console.log("value of ope",this.state.open)}
         <div className="nav-side-menu">
-          {/* <div className="panel panel-primary">
+          <div className="panel panel-primary">
             <div className="panel-heading">Welcome, {this.state.userdetail.username}</div>
             <div className="panel-body">
               <img className="profile-pic"src={this.state.userdetail.profile_pic}/>
             </div>
             <div className="panel-footer">{this.state.userdetail.username}</div>
-          </div> */}
+          </div>
         
           <i className="fa fa-bars fa-2x toggle-btn"data-toggle="collapse" data-target="#menu-content" />
           <div className="menu-list">
@@ -231,16 +232,18 @@ class AdminDashboard extends Component {
             </ul>
           </div>
         </div>
+        </div>
         <div>
-          <div className="container" id="main">
-        
+          <div id="main">
 
             {this.state.open === "issues" 
             ?
             <div className="collapse" id="issue">
-              <h1> List of Issues/Bugs </h1>
+              <h3> List of Issues/Bugs </h3>
               {issueList}
+            
             </div>
+       
             :
             null
           }
@@ -248,6 +251,7 @@ class AdminDashboard extends Component {
             <div className="collapse" id="comment">
               <h1> List of Comments </h1>
               {commentList}
+              <br />
             </div>
             :
             null

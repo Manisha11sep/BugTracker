@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { writeComment, userDetail } from "./../ducks/reducer";
+import { userDetail,commentList } from "./../ducks/reducer";
 import FaTrash from "react-icons/lib/fa/trash";
 import FaPencil from "react-icons/lib/fa/pencil";
 import EditComment from "./EditComment";
@@ -16,6 +16,7 @@ class Comment extends Component {
       description: "",
       commentList: [],
       username: "",
+      newComment:'',
       editting: false,
       editedText: ""
     };
@@ -31,17 +32,22 @@ class Comment extends Component {
   createComment() {
     const { description } = this.state;
     const { issue_id } = this.props;
+  
     console.log("inside createpost", { description }, { issue_id });
     axios.post("/api/comment", { description, issue_id }).then(response => {
-      this.setState({ comments: response.data });
+      console.log("resonpose ", response.data)
+      this.setState({ commentList: response.data });
     });
-    this.loadcomments(issue_id);
+    
+    // this.loadcomments(issue_id);
+    this.setState({description:''})
   }
 
   loadcomments() {
     const { issue_id } = this.props;
     axios.get(`/api/comment/${issue_id}`).then(response => {
       this.setState({ commentList: response.data });
+      this.props.commentList(response.data);
       console.log(
         "inside load comment, list of comments",
         this.state.commentList
@@ -78,24 +84,17 @@ class Comment extends Component {
         .catch(error => console.log("Error while editing", error));
     }
   }
-  // edit( event ) {
-  //   const { editedText } = this.state;
-  //   if( event.key === "Enter" && text.length !== 0 ) {
-  // editComment(posted_by);
-  //     this.setState({ editting: false });
-  //   }
-  // }
+
 
   render() {
     //   Extracting writeComment function from the props from Reducer
-    const { writeComment } = this.props;
     const { editting, description, editedText } = this.state;
     console.log("state of edit", editting);
     return (
       <div className="comment">
         <div className="comment-container">
             <div>
-              <input className ="input-sm"type="text" value={description}  placeholder="Write your comment here...."
+              <input className ="comment-textbox" value={description}  placeholder="Write your comment here...."
                 onChange={e => this.setState({ description: e.target.value })} />
             </div>
             <div>
@@ -108,6 +107,7 @@ class Comment extends Component {
         </div>
 
           <div>
+          
             {this.state.commentList.map((comment, i) => {
               return (
                 <div  key={i}>
@@ -142,7 +142,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   userDetail,
-  writeComment
+  commentList
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comment);

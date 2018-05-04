@@ -10,7 +10,13 @@ export default class GithubIssues extends Component {
 
     }
     componentDidMount(){
-        axios.get('https://api.github.com/repos/hadley/dplyr/issues',{limit: 10}).then(response =>{
+
+        // {transformResponse:[function(data){
+        //     data.splice(10,0);
+        //     return data;
+
+        // }]
+        axios.get('https://api.github.com/repos/hadley/dplyr/issues').then(response =>{
             this.setState({githubissue: response.data})
             console.log(this.state.githubissue);
         })
@@ -19,17 +25,17 @@ export default class GithubIssues extends Component {
         
         return (
             
-            <div className="container">
+            <div>
 
             {this.state.githubissue.map((issue,i)=>{
                 return(
-                <div key={i}> 
-
-            <li>Issue Title:{issue.body}  </li>
-            <li>Comment Url :{issue.comments_url} </li>
-            <li>Issue id: {issue.id} </li>
-            <li>State: {issue.state}</li>
-            <li> Posted by:{issue.user.login} </li>
+                <div  className="box"key={i}> 
+        <p className="bug-text"><b>Title: </b>{issue.title} </p>
+          <p className="bug-text"><b>Issue Url:</b><a href={issue.url}> {issue.url}</a></p>
+          <p className="bug-text"><b>Comment Url:</b>{issue.comments_url} </p>
+          <p className="bug-text"><b>Issue id:</b> {issue.id} </p>
+          <p className="bug-text"><b>State: </b>{issue.state}</p>
+          <p className="bug-text"><b> Posted by:</b>{issue.user.login} </p>
 
 
 

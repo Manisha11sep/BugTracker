@@ -31,8 +31,11 @@ export default class Charts extends Component {
                     label: "Issue created by each user",
                     data: issueCount,
                     backgroundColor: [
-                      "rgba(255, 99, 132, 0.2)",
-                      "rgba(54, 162, 235, 0.2)"
+                      "#F7464A",
+                      "#58D68D",
+                      "#F5B041",
+                      "#A569BD",
+                      "#4D5360"
                     ],
                     borderColor: ["rgba(255,99,132,1)", "rgba(54, 162, 235, 1)"],
                     borderWidth: 1

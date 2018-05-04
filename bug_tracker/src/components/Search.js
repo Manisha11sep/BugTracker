@@ -5,9 +5,9 @@ import SearchIcon from "react-icons/lib/md/search";
 
 const StyledSearch = styled.div`
 height: 100%;
-    // display: flex;
-    // align-items: center;
-    margin: 0px 10px;
+display: flex;
+align-items: center;
+margin: 0px 10px;
 
     `
     const SearchText = styled.input`
@@ -114,8 +114,11 @@ export default class Search extends Component {
           
         })} 
         </div>
-        : <p className="bug-text"> <b>No Results!!</b> </p>
+        :
 
+        <StyledSearch> 
+         <p className="bug-text"> <b>No Results!!</b> </p>
+</StyledSearch> 
     }
        
 

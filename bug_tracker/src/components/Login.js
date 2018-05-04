@@ -32,10 +32,19 @@ border:.5px solid #fff;
   
 `;
 const Heading = styled.div`
-height:100px;
-width:100%;
-display:flex;
-margin-bottom: 10%;
+display: flex;
+background-color:lightblack;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+  align-content: space-around;
+  margin:0%5%;
+  @media (max-width: 1400px){
+    h3 {
+      font-size: 20px;
+    }
+  }
 `;
 const InnerBox = styled.div`
   margin: 0 auto;
@@ -54,33 +63,56 @@ padding:20px 20px;
     font-family: 'Ubuntu', sans-serif;
     cursor:pointer;
     color: white;
+    padding:10px 10px;
+    @media (min-width: 1100px){
+      font-size: 25px;
+      padding:15px 15px;
+   
+    }
   }
   `
-  const Title = styled.h5`
+  const Title = styled.h1`
  
   text-align: center;
   color:white;
   font-size:200%;
+margin:0 auto;
+@media (min-width: 1100px){
+  font-size: 50px;
+
+}
+
 `;
-const Title1 = styled.h3`
-text-align:left;
-margin-left:40px;
+const Title1 = styled.h1`
 color:#fff;
-margin:0; 
 padding:0;
+margin:0 auto;
+
+
 `;
 const LoginHeader = styled.div`
   color:#fff;
   text-align:center;
   font-size:200%;
  text-align:center;
+ margin:5% 5%;
+ @media (min-width: 1100px){
+  font-size: 50px;
+
+}
 `;
 const Img = styled.img`
+display: block;
   height: 70px;
   width: 70px;
 border-color: black;
 border-radius:20%;
 margin:5px 5px;
+@media (min-width: 1100px){
+  height: 100px;
+  width: 100px;
+
+}
 `;
 
 
@@ -154,15 +186,19 @@ render() {
            <LoginHeader>
            Please Login or Register to access our services!!
            </LoginHeader>
-                <LoginBox>
-                <label><Title1>Username</Title1> </label>
-                 <input type="text" placeholder="Enter your Username" value ={username}onChange={this.username} required/> 
+                <div className="box">
+                <div>
+               <Title1> Username </Title1> 
                 
-           <label><Title1>Password</Title1></label>
+                 <input type="text" placeholder="Enter your Username" value ={username}onChange={this.username} required/> 
+                </div>
+           <Title1>Password</Title1>
+           <br />
+
              <input type="password" placeholder="Enter your Password" value ={password } required
              onKeyPress={e=>this.handleKeyPress(e)} onChange={this.password} />
            
-           </LoginBox>
+           </div>
     
            <InnerBox>
            

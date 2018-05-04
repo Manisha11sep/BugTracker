@@ -25,7 +25,7 @@ module.exports ={
             dbInstance.create_user([username,hashedPassword,email,profile_pic]).then((data)=>{
             req.session.user = data[0];
             console.log("registered successfully");
-            res.status(200).send('registered');
+            res.status(200).send(data);
         }).catch(error => {
             res.status(400).json(errors);
           });
@@ -92,4 +92,6 @@ module.exports ={
       }
     },
 }
+
+
 

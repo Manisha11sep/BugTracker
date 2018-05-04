@@ -8,11 +8,9 @@ module.exports = {
     const creater_id = req.session.user.id;
 
     dbInstance.create_issue([title,description,creater_id,last_updated])
-      .then( () => res.json("Issue created successfully") )
-
-      .catch( error => console.log(error) );
+    .then( issue => res.status(200).send(issue))
+    .catch(error => console.log(error));
   },
-
   getIssues: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
 
@@ -27,7 +25,7 @@ module.exports = {
     const { params, query } = req;
 
     dbInstance.update_issue([ params.id, query.content ])
-      .then( () => res.status(200).send(message = "post is updated") )
+      .then( (updatedissue) => res.status(200).send(updatedissue) )
       .catch( error => console.log(error) );
   },
 
@@ -36,20 +34,17 @@ module.exports = {
     const { params } = req;
 
     dbInstance.delete_issue([ params.id ])
-      .then( () => res.status(200).send(message = "post is deleted") )
-      .catch( error => console.log(error) );
+    .then( deletedissue => res.status(200).send(deletedissue))
+    .catch(error => console.log(error));
   },
-
 
 
   searchIssue: ( req, res, next ) => {
     const dbInstance = req.app.get('db');
     const { search } = req.query;
-    dbInstance.search_issue([ search])
-      .then( product => res.status(200).send( product ) )
-      .catch( error => console.log(error) );
+    dbInstance.search_issue([ search]).then( searchedissue => res.status(200).send(searchedissue))
+    .catch(error => console.log(error));
   },
-
   // search: (req, res) => {
   //   console.log(req.query.city);
   //   if(req.query.city){

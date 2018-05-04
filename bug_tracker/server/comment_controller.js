@@ -38,7 +38,7 @@
 
             dbInstance.update_comment([id, description])
         
-        .then( () => res.status(200).send(message = "comment is updated") )
+        .then( (data) => res.status(200).send(data))
             .catch( error => console.log("can not update comment",error) );
           },
 

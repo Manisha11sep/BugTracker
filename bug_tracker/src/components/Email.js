@@ -40,9 +40,9 @@ export default class  extends Component {
       }
     render() {
         return (
-            <div className ="container">
+            <div className ="box">
             <div>
-            <label>Email address</label>
+            <label className="bug-text">To:</label>
             <input
               type="email"
               name="to"
@@ -51,10 +51,10 @@ export default class  extends Component {
               placeholder="Enter email"
             />
           </div>
+          <br />
           <div>
-            <label>Subject</label>
+          <label className="bug-text">Subject: </label>
             <input
-              type="text"
               name="subject"
               value={this.state.subject}
               onChange={this.onChange}

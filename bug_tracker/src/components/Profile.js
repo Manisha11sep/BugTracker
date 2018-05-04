@@ -21,14 +21,14 @@ class Profile extends Component {
         return (
   
           <div >
-                  <h1> List of Users </h1>
+                  <h3 > List of Users </h3>
                 <div className="grid-container">
               {this.state.users.map((user, i) => {
                 return (
                   <div  key={user.id}>
                   <div className="panel panel-primary">
                   <div className="panel-heading">{user.username} </div>
-                    <div className ="pancel-body"><img className="profile-pic" src= {user.profile_pic} /> </div>
+                    <div className ="panel-body"><img className="profile-pic" src= {user.profile_pic} /> </div>
                     <div className ="panel-footer">{user.email} </div>
               
                   </div>

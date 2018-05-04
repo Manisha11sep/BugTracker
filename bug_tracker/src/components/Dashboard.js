@@ -61,10 +61,9 @@ class Dashboard extends Component {
     const { username } = this.state.user;
 
     return (
-      <div className="container ">
+      <div className=" ">
         <div className=" issue-heading">
-
-          List of Bugs 
+         <h3> List of Bugs  </h3>
         </div>
 
         {issues.map((issue, i) => (
@@ -92,3 +91,4 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+3

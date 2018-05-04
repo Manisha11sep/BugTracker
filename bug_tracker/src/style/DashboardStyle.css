@@ -21,7 +21,7 @@
     border:solid black;
     border:.2px solid #fff;
     background-color:lightgrey;
-    margin:1% 0%;
+    margin:2% 2%;
  border-radius:10px;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.45);
 }
@@ -34,11 +34,15 @@
 }
 
 .bug-text{
-    font-size:.8em;
-    margin:5px;
+    font-size:14px;
+    margin:5px 5px;
+    text-align: left;
+}
+.bug-text p{
+    font-size:10px;
 }
 
-/* Style the header */
+
 .listofbug {
   
     text-align: center;
@@ -46,39 +50,26 @@
 
 }
 
-/* Container for flexboxes */
-/* .row {
-    display: -webkit-flex;
-    display: flex;
-} */
 
-/* Create three equal columns that sits next to each other */
-.column {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
- height: 300px; /* Should be removed. Only for demonstration */
-    border-color: black;
-    border:solid;
-}
 
-/* Style the footer */
-/* .footer {
-    background-color: #f1f1f1;
-    padding: 10px;
-    text-align: center;
-} */
+@media  (min-width: 768px)  {
+    /* For mobile phones: */
+    .bug-text{
+        font-size:20px;
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 400px) {
-    .row {
-      -webkit-flex-direction: column;
-      flex-direction: column;
-   
- 
-     
     }
-    [className*=col-]{
-        width: 100%
+    .issue-main{
+        margin:40px 40px;
     }
-}
+  
+    
+  }
+  
+  @media (min-width: 1100px){
+   .bug-text{
+    font-size:25x;
+    }
+    .issue-main{
+        margin:100px 100px;
+    }
+  }

@@ -15,6 +15,8 @@ const Wrapper = styled.div`
    margin: 0 auto !important;
  text-align: center !important;
  width: 100% !important;
+ @media (min-width: 765px) {
+    height:70px;
  `
 const Title = styled.div`
    padding:5px;
@@ -22,6 +24,10 @@ const Title = styled.div`
    font-size: 12px;
    font-weight: normal;
    text-align:center;
+   @media (min-width: 765px) {
+    font-size:20px;
+    padding:10px;
+    margin:5px 5px;
    
  `
 

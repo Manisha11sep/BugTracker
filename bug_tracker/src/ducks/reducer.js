@@ -10,12 +10,12 @@ const initalState = {
   issues: [],
   text: "",
   search: "",
-  comments: []
+  commentList: []
 };
 
 const USERDETAIL = "USERDETAIL";
 const LOGOUT = "LOGOUT";
-const WRITE_COMMENT = "WRITE_COMMENT";
+
 const SEARCH = "SEARCH";
 const ISSUELIST = "ISSUELIST";
 const COMMENTLIST = "COMMENTLIST";
@@ -39,12 +39,6 @@ function reducer(state = initalState, action) {
         profile_pic: ""
       };
 
-    case WRITE_COMMENT:
-      return {
-        ...state,
-        comments: [...state.comments, action.payload]
-      };
-
     case SEARCH:
       return {
         ...state,
@@ -58,7 +52,7 @@ function reducer(state = initalState, action) {
     case COMMENTLIST:
       return {
         ...state,
-        comments: action.payload
+        commentList: action.payload
       };
 
     default:
@@ -92,12 +86,7 @@ export function commentList(commentList) {
 }
 
 //Comment
-export function writeComment(description) {
-  return {
-    type: WRITE_COMMENT,
-    payload: description
-  };
-}
+
 
 // Search
 export function search(searchText) {
