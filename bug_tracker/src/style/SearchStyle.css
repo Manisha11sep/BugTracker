@@ -1,3 +1,17 @@
+.search-background
+{
+  background-image: url("https://usatechsolutions.com/wp-content/uploads/2017/04/dev-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height:100vh;
+  }
+
+
+
+
+
 .Search__parent {
     height: 100%;
     display: flex;

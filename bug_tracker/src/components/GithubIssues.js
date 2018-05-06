@@ -18,15 +18,15 @@ export default class GithubIssues extends Component {
         // }]
         axios.get('https://api.github.com/repos/hadley/dplyr/issues').then(response =>{
             this.setState({githubissue: response.data})
-            console.log(this.state.githubissue);
+          
         })
     }
     render() {
-        
+        console.log(this.state.githubissue);
         return (
-            
+           
             <div>
-
+      <h1 className="bug-text" > List of Github Issues </h1>
             {this.state.githubissue.map((issue,i)=>{
                 return(
                 <div  className="box"key={i}> 

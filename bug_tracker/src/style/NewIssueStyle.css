@@ -1,24 +1,30 @@
 .content
 {
-    /* background-image: url('http://wallpoper.com/images/00/31/33/51/black-background_00313351.jpg'); */
-    height: 100%; 
-    /* background-color: yellow; */
-
-    /* Center and scale the image nicely */
+    background-image: url("https://megsoftconsulting.com/wp-content/uploads/2016/04/web-design-packages-background.jpg");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+    min-height:100vh;
+    }
+
+    .issue-box{
+        box-sizing: border-box;
+        /* margin:10% auto; */
+        margin:0 auto;
+        max-width:700px;
+          padding-top:15px;
+          padding-bottom:5%;
+          box-shadow: 5px 5px 10px grey;
+          border-radius: 2%;
+          border-color:2px black;
+          text-align: center;
+          /* background-color:lightblue; */
+        }
 .issue-title{
 
-    /* display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: flex-start; */
-    /* align-content: center; */
-    margin-top:10%;
-}
-.issue-title div{
-margin:5% 5%;
+   padding:2% 1%;
+  font-size:1.2em;
+  color:white;
+
 }

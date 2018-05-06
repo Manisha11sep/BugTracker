@@ -11,9 +11,10 @@ import {userDetail, logout} from '../ducks/reducer';
 import Logo from './../Logo.jpg';
 
 const Wrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   height: 70px;
-  width: 100%;
-  min-width: 360px;
   display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -38,6 +39,14 @@ color: #f2f2f2;
 padding: 14px 16px;
 text-decoration: none;
 font-size: 17px;
+-webkit-transition: margin-left 0.3s ease-in-out;
+  -o-transition: margin-left 0.3s ease-in-out;
+  transition: margin-left 0.3s ease-in-out;
+  margin-bottom: 0;
+  margin-left: 230px;
+  border: none;
+  min-height: 50px;
+  border-radius: 0;
   `;
 
   const Title = styled.h1`

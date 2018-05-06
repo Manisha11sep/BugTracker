@@ -1,4 +1,14 @@
 
+.dashboard-background{
+    /* background-image: url("https://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg"); */
+    background-size: cover;
+
+    background-color:#3896B2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height:100vh;
+}
 .issue-heading{
     
     display: flex;

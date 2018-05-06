@@ -22,7 +22,8 @@ padding:20px 20px;
   `;
 const IssueHeading = styled.h3`
   font-size: 20px;
-  color: black;
+  color: white;
+  font-size:25px;
   text-align: center;
   padding:20px 25px;
 `; 
@@ -79,18 +80,20 @@ export default class NewIssue extends Component {
 
   render() {
     return (
-  
       <div className="content">
+      <div className="container">
+  
+    
 
         <IssueHeading>
           <p> Create a New Issue </p>
         </IssueHeading>
         {/* <IssueBox> */}
-        <div className="box">
+        <div className="issue-box">
             <div className="issue-title">
-                <div>
+            
                     <label> Title </label>
-                </div>
+               
                 <br />
                 <div>
                   <input
@@ -103,9 +106,9 @@ export default class NewIssue extends Component {
          
              </div>
             <div className="issue-title">
-              <div>
+            
                   <label> Issue Description: </label>
-              </div>
+      
               <div>
                   <textarea
                     name="Description"
@@ -115,15 +118,13 @@ export default class NewIssue extends Component {
                       this.setState({ description: event.target.value })
                     }
                   />
-               </div>
-                  
-                    
+               </div>        
             </div>
             <div>
-            <Button color="red" onClick={() => this.createIssue()}>
+            <button class="btn btn-info" onClick={() => this.createIssue()}>
           
           Submit a Issue
-        </Button>
+        </button>
         </div>
             {/* </IssueBox> */}
             </div>
@@ -132,6 +133,7 @@ export default class NewIssue extends Component {
          
         
 
+        </div>
         </div>
            
 

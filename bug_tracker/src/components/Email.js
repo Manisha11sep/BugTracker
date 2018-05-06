@@ -40,6 +40,7 @@ export default class  extends Component {
       }
     render() {
         return (
+          <div className="email-background">
             <div className ="box">
             <div>
             <label className="bug-text">To:</label>
@@ -74,6 +75,7 @@ export default class  extends Component {
           <button className="btn btn-info" onClick={this.sendEmail}>
             Send
           </button>
+        </div>
         </div>
         );
     }

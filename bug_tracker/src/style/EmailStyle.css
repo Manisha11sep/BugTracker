@@ -1,0 +1,11 @@
+
+
+.email-background{
+background-image: url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/web-design-2906159_1920.jpg");
+background-size: cover;
+background-color: lightblue;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+min-height:100vh;
+}

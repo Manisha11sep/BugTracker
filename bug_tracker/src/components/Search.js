@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import SearchIcon from "react-icons/lib/md/search";
+import './../style/SearchStyle.css';
 
 const StyledSearch = styled.div`
 height: 100%;
@@ -28,7 +29,7 @@ margin: 0px 10px;
 
 const SearchHeading = styled.h3`
   font-size: 20px;
-  color: black;
+  color: white;
   text-align: center;
   padding:20px 25px;
 `;
@@ -79,7 +80,8 @@ export default class Search extends Component {
          const {text } = this.state;
 
         return (
-            <div>
+            <div className="search-background">
+            <div className="container">
   
             <div className ="box">
             {/* <StyledSearch> */}
@@ -90,8 +92,9 @@ export default class Search extends Component {
          
           </SearchText>
     
-          <Button  onClick={() =>this.searchIssue()}> <i class="fa fa-search"></i>
-          </Button>
+          <button class="btn btn-info btn-lg" onClick={() =>this.searchIssue()}>
+          <span class="glyphicon glyphicon-search"></span> Search
+          </button>
           </div>
          
               <SearchHeading>
@@ -116,13 +119,13 @@ export default class Search extends Component {
         </div>
         :
 
-        <StyledSearch> 
+           <SearchHeading>
          <p className="bug-text"> <b>No Results!!</b> </p>
-</StyledSearch> 
+</SearchHeading>
     }
        
 
-             
+    </div>         
 </div>
 
             

@@ -4,7 +4,7 @@
     font-size:12px;
     font-weight: 200;
     background-color: #2e353d;
-    position:fixed;
+    position: relative;
     top:0px;
     width: 250px;
     height: 100%;
@@ -20,7 +20,8 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height:680px;
+  min-height:100vh;
+  display: flex;
 
 
 }

@@ -1,3 +1,20 @@
+.home-background{
+   
+    background-image: url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/the-ultimate-website-development-resource-list-1552x775.jpg");
+    background-size: cover;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-position: center center;
+
+    min-height:100vh;
+}
+
 
 .home-container {
     display: flex;
@@ -6,7 +23,7 @@
 	justify-content: space-around;
 	align-items: center;
     align-content: center;
-  margin-bottom:20px;
+
 }
 .home-container h1{
     color:black
@@ -24,7 +41,7 @@
 
 
 .home-text {
-
+    color:white;
   margin-left:5%;
   margin-right:5%
 
@@ -32,22 +49,10 @@
 
 /* Create three equal columns that sits next to each other */
 
-.home-background{
-    background-image: url("https://i1.wp.com/fancycrave.com/wp-content/uploads/2017/06/How-to-Use-Video-Background-on-Websites.jpg?w=1000");
-    background-size: cover;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    background-position: center center;
-    padding: 50px 0px;
-}
+
 .heading{
     font-size:36px;
+    color:white;
 }
 
 .dashboard-issue{
@@ -58,7 +63,7 @@
 }
 .home-heading {
     
-    margin: 15px 0;
+   
     text-transform: none;
     border-color: black;
     border:solid;

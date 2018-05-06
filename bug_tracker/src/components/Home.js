@@ -23,22 +23,17 @@ class Home extends Component {
   render() {
     return (
       <div className="home-background">
-        <div className="home-container">
-          <div>
-            <h1 className="heading"> Welcome {this.props.username} </h1>
-          </div>
-        </div>
+     
+          <h1 className="heading"> Welcome {this.props.username} </h1>
+     
         <div className="home-container">
           <div className="home-heading">
-            <h1>
-              {" "}
-              <Link to="/dashboard"> Issues</Link>
+            <h1><Link to="/dashboard"> Issues</Link>
             </h1>
             <br />
 
             <h4 className="home-text">
-              {" "}
-              Click here to get all the Issue details{" "}
+              Click here to get all the Issue details
             </h4>
           </div>
 

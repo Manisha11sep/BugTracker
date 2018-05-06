@@ -61,7 +61,8 @@ class Dashboard extends Component {
     const { username } = this.state.user;
 
     return (
-      <div className=" ">
+      <div className="dashboard-background">
+      <div class="">
         <div className=" issue-heading">
          <h3> List of Bugs  </h3>
         </div>
@@ -77,6 +78,7 @@ class Dashboard extends Component {
         ))
         }
       </div>
+      </div>
       
     );
   }
@@ -91,4 +93,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-3
