@@ -42,3 +42,22 @@ border:.1px solid #fff;
     box-shadow: 1px 10px 10px 5px rgba(0,0,0,0.45);
   }
   
+  .admin-heading-text{
+    font-size:20px;
+    text-align: center;
+    color:white;
+  }
+
+  .filter-user {
+    
+      display: flex;
+     width: 600px;
+ float:right;
+
+     
+    
+  }
+  .filter-button{
+   
+   margin:2% 2%;
+  }

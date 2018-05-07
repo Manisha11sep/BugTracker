@@ -57,14 +57,16 @@ export default class Issue extends Component {
     );
 
     return (
-      <div>
-        <input
-          type="text"
+             <div>
+        <h1 className="admin-heading-text" > List of Issues/Bugs </h1>
+        {/* class from html.css file */}
+        <div className="filter-user">
+        <input className="filter-button"
           placeholder="Enter Username to Search!!"
           onChange={e => this.setState({ filterIssue: e.target.value })}
         />
-        <button> Filter by User </button>
-        <h1 className="bug-text"> List of Issues/Bugs </h1>
+         <button className="filter-button"> Filter by User </button>
+         </div>
         {issueList};
       </div>
     );

@@ -47,8 +47,7 @@ export default class Signup extends Component {
             email:'',
             password:'',
             profile_pic :'',
-            messages:'',
-            uploadUrl:'',
+            uploadUrl:''
           
         });
         alert('Thank you for Signing up on Bug Tracker!!')
@@ -74,8 +73,9 @@ export default class Signup extends Component {
                     formData.append("file", file[0]);
                         
                         axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
-                        console.log(response.data)
+                
                         this.setState({uploadUrl: response.data.secure_url})
+                        console.log("Image url is ", this.state.uploadUrl)
                     })
                 })
             }
@@ -97,14 +97,21 @@ export default class Signup extends Component {
             // const {username,email,password,uploadUrl}=this.state
            if (this.isValid())
            {
-                axios.post('/api/signup', this.state).then(response => {
+                     const user = {
+            username: this.state.username,
+            email: this.state.email,
+            profile_pic: this.state.uploadUrl,
+            password: this.state.password,
+            }
+               console.log("inside signup form", user)
+                axios.post('/api/signup', user).then(response => {
                     if(response.data === 'registered'){
                         window.location = '/'
                     } 
-                    this.clearForm();
+                   
                 })
                 
-       
+                this.clearForm();
             }
 
          }
@@ -137,7 +144,8 @@ export default class Signup extends Component {
                         </div>
                         <div className="form-group">
                             <label>image Upload</label>
-                            <input type="file" onChange={e => this.setState({profile_pic: e.target.files})} onClick={() => this.uploadImage(this.state.profile_pic)} className="form-control-file fileInput"/>
+                            <input type="file" onChange={e => this.setState({profile_pic: e.target.files})} />
+                            <button className="btn btn-primary" onClick={() => this.uploadImage(this.state.profile_pic)}> Upload </button>
                         </div>
                         {this.state.failMessage}
                         <button className="btn btn-primary" onClick={()=>this.signUp()} >sign up</button>

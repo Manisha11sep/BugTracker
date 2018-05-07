@@ -19,6 +19,7 @@ module.exports ={
 
     createUser: ( req, res, next ) => {
       // const{error, isValid} = validateInput(req.body);
+      console.log("image url from signup", req.body);
         const dbInstance = req.app.get('db');
         const {username,password,email,profile_pic} = req.body;
         bcrypt.hash(password,saltRounds ).then(hashedPassword=>{

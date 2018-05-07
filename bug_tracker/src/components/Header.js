@@ -22,10 +22,6 @@ const Wrapper = styled.div`
 	align-items: center;
 	align-content: center;
 
-
-
-
-
   background-color:#001f3f;
   border-radius: 5px;
   @media (max-width: 739px) {
@@ -34,19 +30,16 @@ const Wrapper = styled.div`
 `
 const InnerBox = styled.div`
 
-
 color: #f2f2f2;
-padding: 14px 16px;
 text-decoration: none;
-font-size: 17px;
+font-size: 25px;
 -webkit-transition: margin-left 0.3s ease-in-out;
   -o-transition: margin-left 0.3s ease-in-out;
   transition: margin-left 0.3s ease-in-out;
-  margin-bottom: 0;
-  margin-left: 230px;
+  margin-left: 100px;
   border: none;
   min-height: 50px;
-  border-radius: 0;
+
   `;
 
   const Title = styled.h1`
@@ -83,17 +76,44 @@ logout = () => {
   render() {
  
     return (
-      <div className ="flex-container header-parent ">
+      <div>
    
  
         { (this.state.user.username!=='admin')
-       ?  <Wrapper>
-        <InnerBox> <Link to="/home">Home</Link>   </InnerBox>
-        <InnerBox> <Link to="/dashboard">Dashboard</Link> </InnerBox>  
-        <InnerBox><Link to="/issue" > New Issue </Link> </InnerBox>
-        <InnerBox> <Link to="/search">Search</Link></InnerBox>
-        <InnerBox> <Link to = "/" onClick={()=>this.logout()}> Log out </Link></InnerBox>
-        </Wrapper>
+       ?
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class=" active">
+      <InnerBox> <Link to="/home">Home</Link>   </InnerBox>
+      </li>
+      <li class="">
+      <InnerBox> <Link to="/dashboard">Dashboard</Link> </InnerBox> 
+      </li>
+      <li class="">
+      <InnerBox><Link to="/issue" > New Issue </Link> </InnerBox>
+      </li>
+      <li class="">
+      <InnerBox> <Link to="/search">Search</Link></InnerBox>
+      </li>
+    
+      <li class="">
+      <InnerBox> <Link to = "/" onClick={()=>this.logout()}> Log out </Link></InnerBox>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+        //  <Wrapper>
+        // <InnerBox> <Link to="/home">Home</Link>   </InnerBox>
+        // <InnerBox> <Link to="/dashboard">Dashboard</Link> </InnerBox>  
+        // <InnerBox><Link to="/issue" > New Issue </Link> </InnerBox>
+        // <InnerBox> <Link to="/search">Search</Link></InnerBox>
+        // <InnerBox> <Link to = "/" onClick={()=>this.logout()}> Log out </Link></InnerBox>
+        // </Wrapper>
       :
       null
        }          

@@ -26,10 +26,10 @@ export default class GithubIssues extends Component {
         return (
            
             <div>
-      <h1 className="bug-text" > List of Github Issues </h1>
+      <h1 className="admin-heading-text" > List of Github Issues </h1>
             {this.state.githubissue.map((issue,i)=>{
                 return(
-                <div  className="box"key={i}> 
+                <div  className="email-box"key={i}> 
         <p className="bug-text"><b>Title: </b>{issue.title} </p>
           <p className="bug-text"><b>Issue Url:</b><a href={issue.url}> {issue.url}</a></p>
           <p className="bug-text"><b>Comment Url:</b>{issue.comments_url} </p>

@@ -21,7 +21,7 @@ class Profile extends Component {
         return (
   
           <div >
-                  <h1 className="bug-text" > List of Users </h1>
+                  <h1 className="admin-heading-text" > List of Users </h1>
                 <div className="grid-container">
               {this.state.users.map((user, i) => {
                 return (

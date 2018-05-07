@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import './../style/EmailStyle.css';
 
 export default class  extends Component {
     constructor(props){
@@ -41,9 +42,9 @@ export default class  extends Component {
     render() {
         return (
           <div className="email-background">
-            <div className ="box">
+            <div className ="email-box">
             <div>
-            <label className="bug-text">To:</label>
+            <label className="email-text">To:</label>
             <input
               type="email"
               name="to"
@@ -54,7 +55,7 @@ export default class  extends Component {
           </div>
           <br />
           <div>
-          <label className="bug-text">Subject: </label>
+          <label className="email-text">Subject: </label>
             <input
               name="subject"
               value={this.state.subject}
@@ -62,8 +63,7 @@ export default class  extends Component {
               placeholder="Enter Subject"
             />
           </div>
-          <div>
-            <label>Body</label>
+          <div className='email-body'>
             <textarea
               name="body"
               placeholder="Enter the message"
@@ -71,7 +71,7 @@ export default class  extends Component {
               onChange={this.onChange}
             />
           </div>
-
+      
           <button className="btn btn-info" onClick={this.sendEmail}>
             Send
           </button>

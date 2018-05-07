@@ -186,6 +186,7 @@ export default class Login extends Component {
             <Title1> Username </Title1>
 
             <input
+            name='username'
               type="text"
               placeholder="Enter your Username"
               value={username}

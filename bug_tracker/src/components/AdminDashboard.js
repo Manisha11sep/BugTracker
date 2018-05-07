@@ -311,7 +311,7 @@ class AdminDashboard extends Component {
           ) : null} */}
           {this.state.open === "comments" ? (
             <div>
-              <h1 className="bug-text"> List of Comments </h1>
+              <h1 className="admin-heading-text" > List of Comments </h1>
               {commentList}
             </div>
           ) : null}

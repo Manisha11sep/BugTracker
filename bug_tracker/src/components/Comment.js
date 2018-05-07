@@ -101,7 +101,7 @@ class Comment extends Component {
               <button onClick={this.createComment} > Post</button>
             </div>
        
-        <div>
+        <div className="load-comment">
         <button  onClick={this.loadcomments}> Load  </button>
         </div>
         </div>

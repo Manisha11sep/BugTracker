@@ -37,8 +37,8 @@ export default class Charts extends Component {
                       "#A569BD",
                       "#4D5360"
                     ],
-                    borderColor: ["rgba(255,99,132,1)", "rgba(54, 162, 235, 1)"],
-                    borderWidth: 1
+                    borderColor: ["rgb(203, 44, 44)", "rgba(54, 162, 235, 1)"],
+                    borderWidth: 2
                   }
                 ]
               }
@@ -60,12 +60,19 @@ export default class Charts extends Component {
                     label: "Issue created by each user",
                     data: commentCount,
                     backgroundColor: [
-                      "rgba(255, 206, 86, 0.2)",
-                      "rgba(75, 192, 192, 0.2)",
-                      "rgba(153, 102, 255, 0.2)",
-                      "rgba(255, 159, 64, 0.2)"
+                      "#F7464A",
+                      "#46BFBD",
+                      "#FDB45C",
+                      "#2A2AA4",
+                      "#E6EE72",
+                      "#CB2C2C",
+                      "#5FEA92",
+                      "#EE28EE",
+                      "#EFEFE2",
                     ],
-                    borderColor: ["rgba(255,99,132,1)", "rgba(54, 162, 235, 1)"],
+                    borderColor: ["rgba(255,99,132,1)", "rgba(54, 162, 235, 1)","#5FEA92",
+                    "#EE28EE",
+                    "#EFEFE2",],
                     borderWidth: 1
                   }
                 ]
@@ -87,14 +94,19 @@ export default class Charts extends Component {
                 labels: Issue_id,
                 datasets: [
                   {
-                    label: "Comment Per Issue ",
+                    label : "Comment Per Issue ",
                     data: commentCount,
                     backgroundColor: [
                       "#F7464A",
                       "#46BFBD",
                       "#FDB45C",
-                      "#949FB1",
-                      "#4D5360"
+                      "#2A2AA4",
+                      "#E6EE72",
+                      "#CB2C2C",
+                      "#5FEA92",
+                      "#EE28EE",
+                      "#EFEFE2",
+                    
                     ],
                     hoverBackgroundColor: [
                       "#FF5A5E",
@@ -122,8 +134,8 @@ export default class Charts extends Component {
                {
                     chartType ==='issue'
                 ?     
-                    <div>
-                    <h1> Issue count by each User</h1>
+                    <div  className="email-box">
+                    <h1 className="admin-heading-text"> Issue count by each User</h1>
                     <Pie
                         data={this.state.IssuePerUSer}
                         options={{ maintainAspectRatio: false }}
@@ -138,8 +150,8 @@ export default class Charts extends Component {
                      chartType ==='comment'
                 ?
                     <div>
-                        <h1> Comment Posted by Each user </h1>
-                        <Bar
+                      <h1 className="admin-heading-text"> Comment Posted by Each user </h1>
+                        <Bar className="bug-text"
                         data={this.state.CommentPerUser}
                         options={{ maintainAspectRatio: false }}/>
                     </div>
@@ -152,7 +164,7 @@ export default class Charts extends Component {
                 ?     
 
                     <div >
-                    <h1> Comment Count Per Issue Id </h1>
+                   <h1 className="admin-heading-text"> Comment Count Per Issue Id </h1>
                     <Bar
                         data={this.state.CommentPerIssue}
                         options={{ maintainAspectRatio: false }}

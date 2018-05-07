@@ -83,23 +83,21 @@ export default class Search extends Component {
             <div className="search-background">
             <div className="container">
   
-            <div className ="box">
+            <div className ="email-box">
             {/* <StyledSearch> */}
-                <SearchText
+                <SearchText className="filter-button"
           placeholder="Enter something to search.."
           value ={text}
           onChange={this.updateText}>
          
           </SearchText>
     
-          <button class="btn btn-info btn-lg" onClick={() =>this.searchIssue()}>
+          <button className="filter-button btn btn-info btn-lg" onClick={() =>this.searchIssue()}>
           <span class="glyphicon glyphicon-search"></span> Search
           </button>
           </div>
          
-              <SearchHeading>
-        <p> The Results are :</p> 
-        </SearchHeading>
+      
         {(this.state.searchedIssue.length!=0)
         ?
         <div>
@@ -107,6 +105,7 @@ export default class Search extends Component {
             return(
             
                 <div className="issue-main" key ={i}>
+                
        <p className="bug-text"> <b>Title: </b> {search.name}</p>
        <p className="bug-text"><b> Description</b> {search.description} </p>
        <p className="bug-text"><b>Last updated</b> {search.last_updated} </p>
