@@ -154,7 +154,7 @@ class AdminDashboard extends Component {
     // );
 
     const commentList = (
-      <table>
+      <table className="container">
         <tr>
           <th>Issue_id</th>
           <th>Issue_title</th>
@@ -312,7 +312,9 @@ class AdminDashboard extends Component {
           {this.state.open === "comments" ? (
             <div>
               <h1 className="admin-heading-text" > List of Comments </h1>
+              <div className="container">
               {commentList}
+              </div>
             </div>
           ) : null}
 

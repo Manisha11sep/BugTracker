@@ -7,7 +7,6 @@
     -webkit-box-direction: normal;
     flex-direction: column;
     -webkit-box-pack: center;
-    justify-content: center;
     -webkit-box-align: center;
     align-items: center;
     background-position: center center;
@@ -17,12 +16,12 @@
 
 
 .home-container {
-    display: flex;
-	flex-direction: row;
+
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
     align-content: center;
+    
 
 }
 .home-container h1{
@@ -76,7 +75,7 @@
   @media (min-width: 765px) {
    
     .heading{
-        margin:50px 30px;
+        margin:50px 50px;
         
       
     }
@@ -88,4 +87,37 @@
         font-size:50px;
 
     }
+    .home-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+    }
   }
+
+@media (min-width: 1400px) {
+ 
+  .heading{
+      margin:120px 120px;
+      
+    
+  }
+  .home-text{
+      font-size:30px;
+      
+  }
+  .heading {
+      font-size:50px;
+
+  }
+  .home-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+}

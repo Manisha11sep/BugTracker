@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <div>
-        {window.location.pathname ==='/'
+        {window.location.pathname ==='/'||window.location.pathname ==='/signup'
       
         ?
       null

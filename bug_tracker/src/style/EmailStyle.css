@@ -1,21 +1,22 @@
 
-/* 
+
 .email-background{
 
+    display: block;
 background-size: cover;
-background-color: lightblue;
+
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 min-height:100vh;
-} */
+}
 
 .email-box{
     box-sizing: border-box;
   
     /* margin:10% auto; */
     margin:10% auto;
-    max-width:800px;
+    max-width:900px;
       padding-top:15px;
       padding-bottom:2%;
     border:.1px solid #fff;
@@ -32,4 +33,21 @@ min-height:100vh;
     .email-text{
         font-size:12px;
         padding:2% 2%;
+    }
+
+    @media (max-width: 767px) {
+        .email-box {
+          display: block;
+          margin:10% auto;
+    max-width:800px;
+      padding-top:15px;
+      padding-bottom:2%;
+    border:.1px solid #fff;
+      box-shadow: 5px 5px 10px rgba(245, 248, 248, 0.45);
+      border-radius: 2%;
+      border-color:black;
+      text-align: center;
+     background-color:rgb(115, 162, 180);
+
+        }
     }

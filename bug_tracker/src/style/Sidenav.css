@@ -11,8 +11,7 @@
     color: #e1ffff;
 
 }
-.admin-dashboard{
-  background-image: url('http://wallpoper.com/images/00/31/33/51/black-background_00313351.jpg');
+body{ background-image: url('http://wallpoper.com/images/00/31/33/51/black-background_00313351.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;
@@ -21,6 +20,20 @@
   -o-background-size: cover;
   background-size: cover;
   min-height:100vh;
+  height: 100%;
+ 
+
+}
+.admin-dashboard{
+  /* background-image: url('http://wallpoper.com/images/00/31/33/51/black-background_00313351.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height:100vh; */
   display: flex;
 
 
@@ -138,23 +151,35 @@ margin:0 auto;
 h1{
   color:white;
 }
-
-table, td, th {    
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
 table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left:2%;
+  margin-right:2%;
 }
 
 th, td {
-    padding: 15px;
-    color: #e1ffff;
+  text-align: left;
+  padding: 8px;
 }
 
-@media (max-width: 767px) {
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){color: white}
+
+th {
+  background-color: lightblue;
+  color: white;
+}
+
+
+
+@media(min-width:1400px){
+  .container{
+    margin-bottom:20px;
+    /* background-color:yellow; */
+  }
+}
+@media (max-width: 769px) {
   .nav-side-menu {
     position: relative;
     width: 100%;
@@ -188,4 +213,63 @@ th, td {
   	width:calc(100% - 300px);
   	float: left;
   }
+}
+
+
+/* // form mobile */
+@media (max-width:376px) {
+
+  /* .main-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  .profile-pic{
+    height:40px;
+    width:40px;
+    align-content: center;
+  }
+  .panel-heading{
+    font-size:10px;
+  }
+  .panel-body{
+    height: 60px;
+    width: 100px;
+  }
+  .panel-footer{
+ display: none;
+  }
+  .nav-side-menu{
+    height: auto;
+    font-size:8px;
+    font-weight: 0;
+
+  }
+  .admin-dashboard{
+    display: block;
+    margin-bottom: 20px;
+  }
+  table, td, th {    
+
+      border: 1px solid;
+      text-align: left;
+      height: 50%;
+  }
+  
+  table {
+      border-collapse: collapse;
+      width: 100%;
+
+      margin-left:5%;
+      margin-right:5%;
+  }
+  
+  th, td {
+      padding: 2px;
+
+  }
+  
+  
 }

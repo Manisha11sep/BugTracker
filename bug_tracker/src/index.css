@@ -7,11 +7,12 @@ body{
   /* background-color: lightblue; */
 }
 
-html {
-
-
-
+a:hover,
+a:focus {
+  color: lightblue;
+  text-decoration: underline;
 }
+
 textarea {
   width: 100%;
   height: 150px;
@@ -29,7 +30,7 @@ box-sizing: border-box;
 margin:0 auto;
 max-width:500px;
   padding-top:15px;
-  padding-bottom:5%;
+  padding-bottom:2%;
 border:.1px solid #fff;
   box-shadow: 5px 5px 10px rgba(28, 42, 117, 0.45);
   border-radius: 2%;
@@ -48,16 +49,50 @@ border:.1px solid #fff;
     color:white;
   }
 
+  .admin-heading-text label {
+    color: white!important;
+  }
+
   .filter-user {
     
-      display: flex;
+      display: block;
      width: 600px;
- float:right;
+ /* float:right; */
 
      
     
   }
-  .filter-button{
-   
-   margin:2% 2%;
+  .container{
+    margin:10px 10px;
   }
+  .filter-button{
+padding:auto 5px;
+   margin:2% 2%;
+   width: 100px;
+   background-color:lightblue;
+  }
+
+  .navbar {
+    position: relative;
+    min-height: 50px;
+    background-color:black;
+    /* margin-bottom: 20px; */
+    border: 1px solid transparent;
+    margin-bottom:0px;
+    
+  }
+    @media (max-width: 767px) {
+      .navbar{
+background-color:grey;
+      }
+      }
+
+
+      .grid-container {
+        display: grid;
+        justify-content: space-around;
+        grid-template-columns: 50px 50px 50px;/*Make the grid smaller than the container*/
+        grid-gap: 10px;
+      
+        padding: 10px;
+      }

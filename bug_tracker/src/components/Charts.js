@@ -57,7 +57,7 @@ export default class Charts extends Component {
                 labels: posted_by,
                 datasets: [
                   {
-                    label: "Issue created by each user",
+                    label: "comment created by each user",
                     data: commentCount,
                     backgroundColor: [
                       "#F7464A",
@@ -151,9 +151,21 @@ export default class Charts extends Component {
                 ?
                     <div>
                       <h1 className="admin-heading-text"> Comment Posted by Each user </h1>
-                        <Bar className="bug-text"
+                      <div className="container">
+                        <Bar 
                         data={this.state.CommentPerUser}
-                        options={{ maintainAspectRatio: false }}/>
+                        options={{
+                           maintainAspectRatio: false,
+                           legend: {
+                            labels: {
+                                // This more specific font property overrides the global property
+                                fontColor: 'white',
+                                // fontSize: "20px"   
+                        }
+                      }
+                    }}
+                        />
+                        </div>
                     </div>
                 :
                        null
@@ -165,10 +177,12 @@ export default class Charts extends Component {
 
                     <div >
                    <h1 className="admin-heading-text"> Comment Count Per Issue Id </h1>
+                   <div className="container">
                     <Bar
                         data={this.state.CommentPerIssue}
                         options={{ maintainAspectRatio: false }}
                     />
+                     </div >
                     </div>
                 :
             null

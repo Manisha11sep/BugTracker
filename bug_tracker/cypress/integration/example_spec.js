@@ -1154,7 +1154,7 @@ describe('Kitchen Sink', function () {
 
     it('cy.getCookie() - get a browser cookie', function () {
       // https://on.cypress.io/getcookie
-      cy.get('#getCookie .set-a-cookie').click()
+      cy.getCookie('session').should('have.property', 'value', '189jd09su')
 
       // cy.getCookie() yields a cookie object
       cy.getCookie('token').should('have.property', 'value', '123ABC')

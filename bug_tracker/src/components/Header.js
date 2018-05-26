@@ -11,23 +11,21 @@ import {userDetail, logout} from '../ducks/reducer';
 import Logo from './../Logo.jpg';
 
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  height: 70px;
-  display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center;
-
-  background-color:#001f3f;
-  border-radius: 5px;
-  @media (max-width: 739px) {
-    width: 100%;
-  }
-`
+    background-color: #222222;
+    position:fixed;
+   font-size: 12px;
+   font-weight: normal;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   background-color: black;
+   margin: 0 auto !important;
+ text-align: center !important;
+ width: 100% !important;
+ @media (min-width: 765px) {
+    // height:70px;
+ }
+ `
 const InnerBox = styled.div`
 
 color: #f2f2f2;
@@ -54,6 +52,7 @@ constructor(){
   super();
   this.state ={
     user:'',
+    navbar:true
 
   }
 }
@@ -72,6 +71,10 @@ logout = () => {
       }
   })
 }
+burgerToggle= ()=>{
+
+ this.setState({navbar:false})
+}
 
   render() {
  
@@ -81,9 +84,16 @@ logout = () => {
  
         { (this.state.user.username!=='admin')
        ?
-       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+       
+       
+       <nav class="navbar navbar-expand-lg ">
+       
+  <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <i
+              className="fa fa-bars fa-2x toggle-btn"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+            />
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">

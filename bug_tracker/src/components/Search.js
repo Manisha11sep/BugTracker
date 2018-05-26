@@ -85,7 +85,7 @@ export default class Search extends Component {
   
             <div className ="email-box">
             {/* <StyledSearch> */}
-                <SearchText className="filter-button"
+                <SearchText className=""
           placeholder="Enter something to search.."
           value ={text}
           onChange={this.updateText}>

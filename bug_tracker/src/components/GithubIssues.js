@@ -11,11 +11,6 @@ export default class GithubIssues extends Component {
     }
     componentDidMount(){
 
-        // {transformResponse:[function(data){
-        //     data.splice(10,0);
-        //     return data;
-
-        // }]
         axios.get('https://api.github.com/repos/hadley/dplyr/issues').then(response =>{
             this.setState({githubissue: response.data})
           

@@ -62,9 +62,18 @@ const Button = styled.button`
     cursor:pointer;
     color: white;
     padding:10px 10px;
+    margin-bottom:50px;
+   
     @media (min-width: 765){
       font-size: 25px;
       padding:15px 15px;
+      margin-bottom:50px;
+   
+    }
+    @media (min-width: 1400){
+      font-size: 25px;
+      padding:25px  25px;
+      margin-bottom:50px;
    
     }
   }
@@ -91,7 +100,7 @@ const LoginHeader = styled.div`
   text-align: center;
   font-size: 200%;
   text-align: center;
-  margin: 5% 5%;
+  margin: 2% 5%;
   @media (min-width: 1100px) {
     font-size: 30px;
   }

@@ -76,6 +76,7 @@ export default class NewIssue extends Component {
       .then(response => this.setState({ title: "", description: "" }));
 
     alert("Thank you for Creating a new Issue on Bug Tracker!!");
+    this.setState({ title: "", description: "" });
   }
 
   render() {

@@ -62,7 +62,7 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard-background">
-      <div class="">
+      {/* <div class=""> */}
         <div className=" issue-heading">
          <h3> List of Bugs  </h3>
         </div>
@@ -78,7 +78,7 @@ class Dashboard extends Component {
         ))
         }
       </div>
-      </div>
+      // </div>
       
     );
   }

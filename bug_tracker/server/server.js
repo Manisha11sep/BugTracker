@@ -28,6 +28,8 @@ app.use(session({
 }));
 
 
+app.get('API')
+
 app.get( '/api/issue/getAll',issue_controller.getIssues );
 app.post('/api/issue/create', issue_controller.createIssue);
 

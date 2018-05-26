@@ -36,7 +36,7 @@ export default class Issue extends Component {
     //Importing filterIssueByUser from utils unit test
     const filteredIssues = filterIssueByUser(this.state.issues, this.state.filterIssue);
     const issueList = (
-      <table>
+      <table className="container">
         <tr>
           <th>Title</th>
           <th>Description</th>
@@ -57,15 +57,15 @@ export default class Issue extends Component {
     );
 
     return (
-             <div>
+             <div className="container">
         <h1 className="admin-heading-text" > List of Issues/Bugs </h1>
         {/* class from html.css file */}
         <div className="filter-user">
-        <input className="filter-button"
+        <input className=""
           placeholder="Enter Username to Search!!"
           onChange={e => this.setState({ filterIssue: e.target.value })}
         />
-         <button className="filter-button"> Filter by User </button>
+         <button className="filter-button"> <b>Filter by User</b> </button>
          </div>
         {issueList};
       </div>
