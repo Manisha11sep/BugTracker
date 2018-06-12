@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 // import Header from './Header';
 import styled from "styled-components";
 import Logo from "./../Logo.jpg";
+import google from '../Images/google.jpg';
+import paypal from '../Images/paypal.png';
+import yahoo from '../Images/Yahoo_Logo.png'
+
 import "./../style/Login.css";
 
 const LoginBox = styled.div`
@@ -30,14 +34,8 @@ const LoginBox = styled.div`
   }
 `;
 const Heading = styled.div`
-  display: flex;
-  background-color: lightblack;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: space-around;
   margin: 0%5%;
+  color:white;
   @media (max-width: 1400px) {
     h3 {
       font-size: 20px;
@@ -57,42 +55,49 @@ const Button = styled.button`
     border:2px solid #f2f2f2;
     border-radius:20px;
     color: slategrey;
-    text-transform:uppercase;
     font-family: 'Ubuntu', sans-serif;
     cursor:pointer;
     color: white;
     padding:10px 10px;
-    margin-bottom:50px;
+    display:inline;
+    margin:10px 10px;
+
    
     @media (min-width: 765){
       font-size: 25px;
       padding:15px 15px;
-      margin-bottom:50px;
+     
    
     }
     @media (min-width: 1400){
       font-size: 25px;
       padding:25px  25px;
-      margin-bottom:50px;
-   
+
     }
   }
   `;
 const Title = styled.h1`
   text-align: center;
+  font-size: 36px;
   color: white;
-  font-size: 200%;
+  font-size: 150%;
   margin: 0 auto;
+  line-height: 1;
+  max-width: 970px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
   @media (min-width: 765px) {
     font-size: 30px;
   }
-  @media only screen and (min-width: 1200px){
+  @media only screen and (min-width: 1200px) {
     font-size: 30px;
   }
 `;
-const Title1 = styled.h2`
-  color: #fff;
-  padding: 5%;
+const Title1 = styled.h3`
+  // color: #fff;
+  padding: 3%;
   margin: 0 auto;
 `;
 const LoginHeader = styled.div`
@@ -104,26 +109,11 @@ const LoginHeader = styled.div`
   @media (min-width: 1100px) {
     font-size: 30px;
   }
-  @media only screen and (min-width: 1200px){
+  @media only screen and (min-width: 1200px) {
     font-size: 30px;
   }
 `;
-const Img = styled.img`
-  display: block;
-  height: 70px;
-  width: 70px;
-  border-color: black;
-  border-radius: 20%;
-  margin: 5px 5px;
-  @media (min-width: 765) {
-    height: 100px;
-    width: 100px;
-  }
-  @media only screen and (min-width: 1200px){
-    height: 100px;
-    width: 100px;
-  }
-`;
+
 
 export default class Login extends Component {
   constructor() {
@@ -181,21 +171,27 @@ export default class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div className="login-backgorund">
-        <Heading>
-          <Img src={Logo} alt="logo" />
-          <Title> Welcome to Bug Tracker.</Title>
-        </Heading>
-
+      <div>
+      <section className="landing">
+    
+    <LoginHeader>
+         <Title>  
+        Bug Reporting for Desktop and Mobile App.
+        </Title> 
+        <Title1> 
+        A simple, fast and scalable bug tracking application for agile teams, that helps you manage bugs easily and deliver great products on time.
+        </Title1>
+       
+        </LoginHeader>
+    
         <LoginHeader>
           Please Login or Register to access our services!!
         </LoginHeader>
         <div className="box">
           <div>
             <Title1> Username </Title1>
-
             <input
-            name='username'
+              name="username"
               type="text"
               placeholder="Enter your Username"
               value={username}
@@ -205,7 +201,6 @@ export default class Login extends Component {
           </div>
           <Title1>Password</Title1>
           <br />
-
           <input
             type="password"
             placeholder="Enter your Password"
@@ -217,14 +212,54 @@ export default class Login extends Component {
         </div>
 
         <InnerBox>
-          <Button class="btn btn-info" onClick={this.login}>Login </Button>
-        </InnerBox>
-        <InnerBox>
+          <Button class="btn btn-info" onClick={this.login}>
+            Login{" "}
+          </Button>
           <Link to="/signup">
             {" "}
             <Button class="btn btn-info">Register </Button>
           </Link>
         </InnerBox>
+        </section>
+    
+      
+        <section className="companies">
+          <Title1> Top companies love to use Bug Tracker
+            </Title1>
+            <div className="logo">
+            <img src={google} height="50px" width="50px"/>
+            <img src={paypal} height="50px" width="50px"/>
+            <img src={yahoo} height="50px" width="50px"/>
+            </div>
+            <div className="logo">
+            <img src={google} height="50px" width="50px"/>
+            <img src={paypal} height="50px" width="50px"/>
+            <img src={yahoo} height="50px" width="50px"/>
+            </div>
+          </section>
+          <section className="features">
+          <Title1> Everything you need for a development workflow
+            </Title1>
+            <div className="benefit">
+            <Title1>SIMPLE INSTALLATION</Title1>
+            <p>Just add a single line of code and you’re good to go!.</p>
+            </div>
+            <div className="benefit">
+            <Title1>Easy Reporting </Title1>
+            <p>Assign, track, and squash bugs. Manage your team and deliverables with a crystal clear visual report.</p>
+            </div>
+            <div className="benefit">
+            <Title1>EFFICIENT TEAM & CLIENT COMMUNICATION </Title1>
+            <p>With a click, embrace the death of endless email exchanges and feel satisfied with our visual reporting and flexible issue tracker features.</p>
+            </div>
+            <div className="benefit">
+            <Title1>UNIVERSAL TOOL </Title1>
+            <p>No matter the framework ie Laravel, Wordpress, Drupal, etc The Bug Squasher works. From here delegate and prioritize website change requests effortlessly.</p>
+            </div>
+        
+          </section>
+
+
       </div>
     );
   }

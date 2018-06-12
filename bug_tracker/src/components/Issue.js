@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 //Importing filterIssueByUser from utils unit test
-import {filterIssueByUser} from '../utils';
+import { filterIssueByUser } from "../utils";
 
 export default class Issue extends Component {
   constructor() {
@@ -10,9 +10,7 @@ export default class Issue extends Component {
       filterIssue: "",
       issues: [],
       issueList: []
-      //    filteredIssuebyUser:[]
     };
-    // this.filterIssueByUser = this.filterIssueByUser.bind(this);
   }
 
   componentDidMount() {
@@ -21,20 +19,12 @@ export default class Issue extends Component {
       console.log("Inside admin issues are ", this.state.issues);
     });
   }
-
-  // filterIssueByUser() {
-  //   return this.state.issues.filter(issue => {
-  //     return (
-  //       issue.posted_by
-  //         .toLowerCase()
-  //         .indexOf(this.state.filterIssue.toLowerCase()) >= 0
-  //     );
-  //   });
-  // }
-
   render() {
     //Importing filterIssueByUser from utils unit test
-    const filteredIssues = filterIssueByUser(this.state.issues, this.state.filterIssue);
+    const filteredIssues = filterIssueByUser(
+      this.state.issues,
+      this.state.filterIssue
+    );
     const issueList = (
       <table className="container">
         <tr>
@@ -57,16 +47,20 @@ export default class Issue extends Component {
     );
 
     return (
-             <div className="container">
-        <h1 className="admin-heading-text" > List of Issues/Bugs </h1>
+      <div className="container">
+        <h1 className="admin-heading-text"> List of Issues/Bugs </h1>
         {/* class from html.css file */}
         <div className="filter-user">
-        <input className=""
-          placeholder="Enter Username to Search!!"
-          onChange={e => this.setState({ filterIssue: e.target.value })}
-        />
-         <button className="filter-button"> <b>Filter by User</b> </button>
-         </div>
+          <input
+            className=""
+            placeholder="Enter Username to Search!!"
+            onChange={e => this.setState({ filterIssue: e.target.value })}
+          />
+          <button className="filter-button">
+            {" "}
+            <b>Filter by User</b>{" "}
+          </button>
+        </div>
         {issueList};
       </div>
     );

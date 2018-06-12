@@ -1,44 +1,69 @@
-
-.login-backgorund
-  {
-    background-image: url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/SSGTHB82F6.jpg");
-    background-size: cover;
-    background-color: lightblue;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height:100vh;
-  }
-
- input[type="text"],
- input[type="password"] {
-  max-width:400px;
-	width: 80%;
-  line-height:3em;
-  font-family: 'Ubuntu', sans-serif;
-  border:2px solid #f2f2f2;
-  outline:none;
-  padding-left:10px;
-}
-
-.a{
-    text-decoration: none
-}
-
-@media  (min-width: 768px)  {
-  /* For mobile phones: */
-  .box{
-
-    margin-top:5%;
-  }
-
+.landing {
+  background-image:url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/Website-background.jpg");
+  background-position: center;
+  background-color:pink;
+  text-align: center;
+  background-size: cover;
+  /* min-height: 100vh;
+  height: 100%; */
+    padding-top: 54px;
+    padding-bottom: 54px;
   
+
 }
 
-@media (min-width: 1100px){
-  .box{
+.companies{
+  background-color:rgb(71, 88, 71);
+  padding:20px 20px;
 
- 
-    margin-top:5%;
+}
+
+.logo{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin: 20px 20px;
+}
+
+
+features{
+  color: #11CFA0;
+}
+.benefit {
+  box-shadow: rgba(17, 206, 162, 0.3) 0px 2px 30px;
+  color: rgb(52, 52, 52);
+  font-size: 20px;
+  margin-bottom: 34px;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  padding: 10px 30px;
+}
+input[type="text"],
+input[type="password"] {
+  max-width: 300px;
+  width: 50%;
+  font-family: "Ubuntu", sans-serif;
+  border: 2px solid #f2f2f2;
+  outline: none;
+  padding-left: 10px;
+}
+
+.a {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  /* For mobile phones: */
+  .box {
+    margin-top: 5%;
+  }
+}
+
+@media (min-width: 1100px) {
+  .box {
+    margin-top: 5%;
   }
 }

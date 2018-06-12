@@ -1,30 +1,26 @@
-.content
-{
-    background-image: url("https://megsoftconsulting.com/wp-content/uploads/2016/04/web-design-packages-background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height:100vh;
-    }
+.content {
+  background-image: url("https://megsoftconsulting.com/wp-content/uploads/2016/04/web-design-packages-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
 
-    .issue-box{
-        box-sizing: border-box;
-        /* margin:10% auto; */
-        margin:0 auto;
-        max-width:700px;
-          padding-top:15px;
-          padding-bottom:5%;
-          box-shadow: 5px 5px 10px grey;
-          border-radius: 2%;
-          border-color:2px black;
-          text-align: center;
-          /* background-color:lightblue; */
-        }
-.issue-title{
-
-   padding:2% 1%;
-  font-size:1.4em;
-
-
+.issue-box {
+  box-sizing: border-box;
+  /* margin:10% auto; */
+  margin: 0 auto;
+  max-width: 700px;
+  padding-top: 15px;
+  padding-bottom: 5%;
+  box-shadow: 5px 5px 10px grey;
+  border-radius: 2%;
+  border-color: 2px black;
+  text-align: center;
+  /* background-color:lightblue; */
+}
+.issue-title {
+  padding: 2% 1%;
+  font-size: 1.4em;
 }

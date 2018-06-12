@@ -1,86 +1,74 @@
+.dashboard-background {
+  /* background-image: url("https://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg"); */
+  background-size: cover;
 
-.dashboard-background{
-    /* background-image: url("https://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg"); */
-    background-size: cover;
-
-    background-color:#3896B2;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height:100vh;
-    height: 100%;
+  background-color: #3896b2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
 }
-.issue-heading{
-    
-    display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-    }
+.issue-heading {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 
-
-.issue-main{
-    display: flex;
-    box-sizing: border-box;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: flex-start;
-    align-content: flex-start;
-    border:solid black;
-    border:.2px solid #fff;
-    background-color:lightgrey;
-    margin:2% 2%;
- border-radius:10px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.45);
+.issue-main {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  align-content: flex-start;
+  border: solid black;
+  border: 0.2px solid #fff;
+  background-color: lightgrey;
+  margin: 2% 2%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
 }
 .issue-main p {
-    
-    color:black
+  color: black;
 }
-.comment-box{
-    border:solid grey;
-}
-
-.bug-text{
-    font-size:14px;
-    margin:5px 5px;
-    text-align: left;
-}
-.bug-text p{
-    font-size:10px;
+.comment-box {
+  border: solid grey;
 }
 
+.bug-text {
+  font-size: 14px;
+  margin: 5px 5px;
+  text-align: left;
+}
+.bug-text p {
+  font-size: 10px;
+}
 
 .listofbug {
-  
-    text-align: center;
-    font-size: 20px;
-
+  text-align: center;
+  font-size: 20px;
 }
 
-
-
-@media  (min-width: 768px)  {
-    /* For mobile phones: */
-    .bug-text{
-        font-size:20px;
-
-    }
-    .issue-main{
-        margin:40px 40px;
-    }
-  
-    
+@media (min-width: 768px) {
+  /* For mobile phones: */
+  .bug-text {
+    font-size: 20px;
   }
-  
-  @media (min-width: 1100px){
-   .bug-text{
-    font-size:25x;
-    }
-    .issue-main{
-        margin:100px 100px;
-    }
+  .issue-main {
+    margin: 40px 40px;
   }
+}
+
+@media (min-width: 1100px) {
+  .bug-text {
+    font-size: 25x;
+  }
+  .issue-main {
+    margin: 100px 100px;
+  }
+}

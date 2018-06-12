@@ -23,12 +23,12 @@ class Home extends Component {
   render() {
     return (
       <div className="home-background">
-     
-          <h1 className="heading"> Welcome {this.props.username} </h1>
-     
+        <h1 className="heading"> Welcome {this.props.username} </h1>
+
         <div className="home-container">
           <div className="home-heading">
-            <h1><Link to="/dashboard"> Issues</Link>
+            <h1>
+              <Link to="/dashboard"> Issues</Link>
             </h1>
             <br />
 
@@ -64,4 +64,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   userDetail
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

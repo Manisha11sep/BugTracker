@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-
+import React, { Component } from "react";
+import styled from "styled-components";
 
 /* footer formatting */
 const Wrapper = styled.div`
@@ -13,11 +12,11 @@ const Wrapper = styled.div`
    left: 0;
    background-color: black;
    margin: 0 auto !important;
- text-align: center !important;
- width: 100% !important;
- @media (min-width: 765px) {
+   text-align: center !important;
+   width: 100% !important;
+    @media (min-width: 765px) {
     // height:70px;
- `
+ `;
 const Title = styled.div`
    padding:5px;
    color:white;
@@ -29,22 +28,16 @@ const Title = styled.div`
     padding:5px;
     margin:5px 5px;
    
- `
+ `;
 
- 
-
-export default class Footer
- extends Component {
-    render() {
-        return (
-          <Wrapper>
-              <Title>
-           Bug Tracker Created by Manisha Chhibber. All rights reserved. 
-            </Title>
-
-          
-   </Wrapper>
-            
-        );
-    }
+export default class Footer extends Component {
+  render() {
+    return (
+      <Wrapper>
+        <Title>
+          Bug Tracker Created by Manisha Chhibber. All rights reserved.
+        </Title>
+      </Wrapper>
+    );
+  }
 }

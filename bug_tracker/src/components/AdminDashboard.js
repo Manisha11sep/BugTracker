@@ -9,7 +9,7 @@ import Profile from "./Profile";
 import Charts from "./Charts";
 import Email from "./Email";
 import GithubIssues from "./GithubIssues";
-import Issue from './../components/Issue';
+import Issue from "./../components/Issue";
 import Search from "./Search";
 class AdminDashboard extends Component {
   constructor() {
@@ -32,11 +32,11 @@ class AdminDashboard extends Component {
       emailState: false,
       open: "",
       chartType: "",
-      issue_id:''
+      issue_id: ""
     };
 
     this.getComment = this.getComment.bind(this);
-   
+
     this.logout = this.logout.bind(this);
     this.getUsers = this.getUsers.bind(this);
     this.getEmail = this.getEmail.bind(this);
@@ -47,8 +47,6 @@ class AdminDashboard extends Component {
     this.getBug = this.getBug.bind(this);
     this.getComments = this.getComments.bind(this);
     this.getSearchissue = this.getSearchissue.bind(this);
-    // this.filterIssueById=this.filterIssueById.bind(this);
-    // this.filterIssueByUser=this.filterIssueByUser.bind(this);
   }
 
   componentDidMount() {
@@ -66,60 +64,42 @@ class AdminDashboard extends Component {
     });
   }
 
-  // filterIssueById() {
-  //   const filteredIssue=this.state.issues.filter(issue =>{
-  //     return (issue.id === parseInt(this.state.issue_id))
-      
-  //   })
-  //   this.setState({issues: filteredIssue })
-  // }
-  //   filterIssueByUser() {
-  //     const filteredIssuebyUser=this.state.issues.filter(issue =>{
-  //       console.log("issue id is ", this.state.posted_by)
-       
-  //      return (issue.posted_by === (this.state.posted_by))
-        
-  //     })
-  //   console.log("filter one",filteredIssuebyUser)
- 
-  //   // console.log("outside filer", this.state.issues)
-  // }
-
+  //setting the state for open
   getEmail() {
     this.setState({ open: "email" });
   }
+  //setting the state for open
   getIssueChart() {
     this.setState({ open: "charts", chartType: "issue" });
   }
+  //setting the state for open
   getCommentChart() {
     this.setState({ open: "charts", chartType: "comment" });
   }
+  //setting the state for open
   getCommentOnIssue() {
     this.setState({ open: "charts", chartType: "commentonissue" });
   }
+  //setting the state for open
   getGithub() {
     this.setState({ open: "github" });
   }
+  //setting the state for open
   getBug() {
     this.setState({ open: "issues" });
   }
+  //setting the state for open
   getComments() {
     this.setState({ open: "comments" });
   }
+  //setting the state for open
   getUsers() {
     this.setState({ open: "users" });
   }
+  //setting the state for open
   getSearchissue() {
     this.setState({ open: "search" });
   }
-
-  // getIssue() {
-  //   axios.get("/api/admin/issue").then(response => {
-  //     this.props.issueList(response.data);
-  //     this.setState({ issues: response.data, issueState: false });
-  //     console.log("Inside admin issues are ", this.state.issues);
-  //   });
-  // }
 
   logout = () => {
     axios.post("/api/logout").then(response => {
@@ -130,29 +110,8 @@ class AdminDashboard extends Component {
   };
 
   render() {
-
     const issues = this.props.issues;
-    // const issueList = (
-    //   <table>
-    //     <tr>
-    //       <th>Title</th>
-    //       <th>Description</th>
-    //       <th>Posted By</th>
-    //       <th>Last Updated</th>
-    //     </tr>
-    //     {this.state.issues.map((issue, i) => {
-    //       return (
-    //         <tr>
-    //           <td>{issue.issue_title}</td>
-    //           <td>{issue.description}</td>
-    //           <td>{issue.posted_by}</td>
-    //           <td>{issue.last_updated}</td>
-    //         </tr>
-    //       );
-    //     })}
-    //   </table>
-    // );
-
+    //Mapping through the issue into a table using map function
     const commentList = (
       <table className="container">
         <tr>
@@ -176,7 +135,6 @@ class AdminDashboard extends Component {
     return (
       <div className=" admin-dashboard">
         <div className="main-sidebar">
-          {console.log("value of ope", this.state.open)}
           <div className="nav-side-menu">
             <div className="panel panel-primary">
               <div className="panel-heading">
@@ -210,6 +168,7 @@ class AdminDashboard extends Component {
 
                 <ul className="sub-menu collapse" id="charts">
                   <li onClick={this.getCommentChart}>
+                    {/* calling funciton to set state of open on click of chart */}
                     <a data-toggle="collapse" href="#CommentByUSer">
                       {" "}
                       Comment posted by users
@@ -284,9 +243,7 @@ class AdminDashboard extends Component {
                   </button>
                 </li>
                 <li>
-                  {/* <button className="btn btn-info"  onClick ={this.logout}> Log Out </button> */}
                   <button className="btn btn-primary">
-                    {" "}
                     <Link to="/" onClick={this.logout}>
                       <i class="fa fa-sign-out" />Log out
                     </Link>
@@ -296,25 +253,16 @@ class AdminDashboard extends Component {
             </div>
           </div>
         </div>
-{/* ************************************************Display section of Admin Page *************************************** */}
+        {/* ************************************************Display section of Admin Page *************************************** */}
 
         <div id="main">
-         {this.state.open === "issues" ? <Issue /> : null }
-          {/* {this.state.open === "issues" ? (
-            <div>
-              <input type="text" placeholder="issueid" onChange={e => this.setState({issue_id: e.target.value})}/>
-              <button onClick={this.filterIssueById}> Filter By ID </button>
-              <button onClick={this.filterIssueByUser}> Filter by User </button>
-              <h1 className="bug-text"> List of Issues/Bugs </h1>
-              {issueList}
-            </div>
-          ) : null} */}
+          {/* if value of open is "issues" then call Issue component otherwise null */}
+          {this.state.open === "issues" ? <Issue /> : null}
+          {/* if value of open is "comments" then show comments otherwise null */}
           {this.state.open === "comments" ? (
             <div>
-              <h1 className="admin-heading-text" > List of Comments </h1>
-              <div className="container">
-              {commentList}
-              </div>
+              <h1 className="admin-heading-text"> List of Comments </h1>
+              <div className="container">{commentList}</div>
             </div>
           ) : null}
 
@@ -322,23 +270,20 @@ class AdminDashboard extends Component {
             <Charts chartType={this.state.chartType} />
           ) : null}
 
+          {/* if value of open is "users" then call users component otherwise null */}
+
           {this.state.open === "users" ? <Profile /> : null}
 
-          {this.state.open === "github" ? (
-            
-              <GithubIssues />
-          
-          ) : null}
+          {/* if value of open is "github" then call GithubIssue component otherwise null */}
+          {this.state.open === "github" ? <GithubIssues /> : null}
 
+          {/* if value of open is "email" then call Email component otherwise null */}
           {this.state.open === "email" ? (
-           
-              <Email username={this.state.username} />
-         
+            <Email username={this.state.username} />
           ) : null}
 
-          {this.state.open === "search" ?
-           <Search /> 
-           : null}
+          {/* if value of open is "search" then call search component otherwise null */}
+          {this.state.open === "search" ? <Search /> : null}
         </div>
       </div>
     );
@@ -352,4 +297,7 @@ const mapDispatchToProps = {
   issueList
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AdminDashboard);

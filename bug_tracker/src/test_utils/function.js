@@ -5,16 +5,16 @@ module.exports = {
     return a + b;
   },
 
-  getIssue:(url)=> {
+  getIssue: url => {
     return issueData.get(url).then(res => {
       return res.data;
-    })
+    });
   },
-  deleteComment:(url) =>{},
+  deleteComment: url => {},
 
   createIssue() {},
 
-  search: (id) => {
+  search: id => {
     console.log("insdie search function************************");
     return issueData.filter(issue => {
       return issue.id === id;

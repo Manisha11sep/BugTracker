@@ -1,50 +1,45 @@
-
-
 .loginContainer {
-    margin-top: 5%;
-    padding: 5%;
-    text-align: center;
-    color: #337ab7;
-    letter-spacing: 0.1em;
-    font-weight: 600;
+  margin-top: 5%;
+  padding: 5%;
+  text-align: center;
+  color: #337ab7;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
-
-
 .loginNav {
-    height: 10%;
-    width: 100%;
-    background: #444;
-    color: #444;
+  height: 10%;
+  width: 100%;
+  background: #444;
+  color: #444;
 }
 
 .backContainer {
-    position: absolute;
-    bottom: 0;
-    width: 92%;
-    margin: 1%;
+  position: absolute;
+  bottom: 0;
+  width: 92%;
+  margin: 1%;
 }
 
 .signButton {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .backButton {
-    width: 100%;
-    font-size: 1.5em;
-    margin: 1%;
-    display: inline-block
+  width: 100%;
+  font-size: 1.5em;
+  margin: 1%;
+  display: inline-block;
 }
 
 .fileInput {
-    margin: 0 auto;
-    width: 200px;
-    padding: 5%;
+  margin: 0 auto;
+  width: 200px;
+  padding: 5%;
 }
 
 .alert-warning {
-    width: 40%;
-    font-size: 1em;
-    margin: 1% auto;
+  width: 40%;
+  font-size: 1em;
+  margin: 1% auto;
 }
-

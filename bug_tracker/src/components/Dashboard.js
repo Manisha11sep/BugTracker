@@ -20,13 +20,10 @@ class Dashboard extends Component {
       message: []
     };
     this.updateText = this.updateText.bind(this);
-    // this.loadcomments = this.loadcomments.bind(this);
-    // this.deleteComment = this.deleteComment.bind(this);
   }
 
   componentDidMount() {
     axios.get("/api/issue/getAll").then(response => {
-      // this.setState({ issues: response.data });
       this.props.issueList(response.data);
       console.log("inisde mount", this.state.issues);
     });
@@ -50,7 +47,6 @@ class Dashboard extends Component {
         console.log("comment deleted!");
       })
       .catch(error => console.log("ERROR deleting ", error));
-    // this.props.history.push("/dashboard");
   }
 
   render() {
@@ -62,24 +58,23 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard-background">
-      {/* <div class=""> */}
         <div className=" issue-heading">
-         <h3> List of Bugs  </h3>
+          <h3> List of Bugs </h3>
         </div>
 
         {issues.map((issue, i) => (
           <div className="issue-main" key={i}>
-        <p className="bug-text"><b>Title:</b> {issue.name}</p>
-         <p className="bug-text">
-         <b> Description:</b> {issue.description} </p>
+            <p className="bug-text">
+              <b>Title:</b> {issue.name}
+            </p>
+            <p className="bug-text">
+              <b> Description:</b> {issue.description}{" "}
+            </p>
             <Comment issue_id={issue.id} />
-         
           </div>
-        ))
-        }
+        ))}
       </div>
       // </div>
-      
     );
   }
 }
@@ -92,4 +87,7 @@ const mapDispatchToProps = {
   issueList
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

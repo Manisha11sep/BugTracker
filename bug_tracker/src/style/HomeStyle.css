@@ -1,123 +1,98 @@
-.home-background{
-   
-    background-image: url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/the-ultimate-website-development-resource-list-1552x775.jpg");
-    background-size: cover;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    align-items: center;
-    background-position: center center;
+.home-background {
+  background-image: url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/the-ultimate-website-development-resource-list-1552x775.jpg");
+  background-size: cover;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-position: center center;
 
-    min-height:100vh;
+  min-height: 100vh;
 }
-
 
 .home-container {
-
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-    align-content: center;
-    
-
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
 }
-.home-container h1{
-    color:black
+.home-container h1 {
+  color: black;
 }
-
 
 /* Style the header */
 .home-header {
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-    color:black;
-    
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: black;
 }
 
-
 .home-text {
-    color:white;
-  margin-left:5%;
-  margin-right:5%
-
+  color: white;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 /* Create three equal columns that sits next to each other */
 
-
-.heading{
-    font-size:36px;
-    color:white;
+.heading {
+  font-size: 36px;
+  color: white;
 }
 
-.dashboard-issue{
-  
-        margin: 15px 0;
-        text-transform: none;
-      
+.dashboard-issue {
+  margin: 15px 0;
+  text-transform: none;
 }
 .home-heading {
-    
-   
-    text-transform: none;
-    border-color: black;
-    border:solid;
-    margin:20px 20px;
-    text-align:center;
+  text-transform: none;
+  border-color: black;
+  border: solid;
+  margin: 20px 20px;
+  text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
-
+}
+@media (min-width: 765px) {
+  .heading {
+    margin: 50px 50px;
   }
-  @media (min-width: 765px) {
-   
-    .heading{
-        margin:50px 50px;
-        
-      
-    }
-    .home-text{
-        font-size:30px;
-        
-    }
-    .heading {
-        font-size:50px;
-
-    }
-    .home-container{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
-        align-content: center;
-    }
-  }
-
-@media (min-width: 1400px) {
- 
-  .heading{
-      margin:120px 120px;
-      
-    
-  }
-  .home-text{
-      font-size:30px;
-      
+  .home-text {
+    font-size: 30px;
   }
   .heading {
-      font-size:50px;
-
+    font-size: 50px;
   }
-  .home-container{
+  .home-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     align-content: center;
+  }
 }
+
+@media (min-width: 1400px) {
+  .heading {
+    margin: 120px 120px;
+  }
+  .home-text {
+    font-size: 30px;
+  }
+  .heading {
+    font-size: 50px;
+  }
+  .home-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
 }
