@@ -44,7 +44,8 @@ padding:3% 3%;
 }
 .box:hover {
   cursor: pointer;
-  box-shadow: 1px 10px 10px 5px rgba(0, 0, 0, 0.45);
+  box-shadow: rgba(17, 206, 162, 0.3) 0px 2px 30px;
+  color: rgb(52, 52, 52);
 }
 
 .admin-heading-text {
@@ -104,4 +105,9 @@ a{
     font-style: normal;
     color: inherit;
     text-rendering: optimizeLegibility;
+}
+
+.center-text{
+ text-align: center;
+ padding:10px 10px;
 }

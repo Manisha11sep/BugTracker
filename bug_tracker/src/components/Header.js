@@ -7,6 +7,7 @@ import axios from "axios";
 import Profile from "./Profile";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import Button from '@material-ui/core/Button';
 import { userDetail, logout } from "../ducks/reducer";
 import Logo from "./../Logo.jpg";
 
@@ -18,6 +19,19 @@ background-color:black;
 	justify-content: space-around;
 	align-items: center;
 	align-content: center;
+`;
+
+const HomePage = styled.div`
+
+  display: flex;
+  background-color:black;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+
+
 `;
 const InnerBox = styled.div`
   color: white;
@@ -52,6 +66,17 @@ const Img = styled.img`
   }
 `;
 
+const LogoImage = styled.div`
+color: white;
+text-decoration: none;
+font-size: 25px;
+-webkit-transition: margin-left 0.3s ease-in-out;
+-o-transition: margin-left 0.3s ease-in-out;
+transition: margin-left 0.3s ease-in-out;
+min-height: 50px;
+margin:0 10px;
+`;
+
 class Header extends Component {
   constructor() {
     super();
@@ -81,8 +106,26 @@ class Header extends Component {
   render() {
     return (
       <div>
-        {this.state.user.username !== "" ? (
-            <Wrapper>
+  
+        {this.state.user.length ==0 ? (
+              <HomePage>
+              <LogoImage>
+              <Img src={Logo} alt="logo" />
+              </LogoImage>
+                             
+                <LogoImage>
+                   
+             <Button variant="raised" color="primary" onClick={this.login}><Link to="/signup">
+            </Link>
+        Sign UP
+      </Button>
+               
+           
+            </LogoImage>
+            </HomePage>
+          
+        ) :
+        <Wrapper>
                 <InnerBox>
                 <Img src={Logo} alt="logo" />
                 </InnerBox>
@@ -108,10 +151,7 @@ class Header extends Component {
                       Log out
                     </Link>
                   </InnerBox>
-              </Wrapper>
-          
-        ) :
-        null
+          </Wrapper>
         }
       </div>
     );

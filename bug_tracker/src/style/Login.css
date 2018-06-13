@@ -1,7 +1,7 @@
 .landing {
   background-image:url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/Website-background.jpg");
   background-position: center;
-  background-color:pink;
+  opacity: 0.8;
   text-align: center;
   background-size: cover;
   /* min-height: 100vh;
@@ -13,11 +13,14 @@
 }
 
 .companies{
-  background-color:rgb(71, 88, 71);
+background-color:#F9F9F9;
   padding:20px 20px;
 
 }
 
+.login-text{
+  color:white;
+}
 .logo{
   display: flex;
   flex-direction: row;
@@ -26,21 +29,49 @@
   align-items: center;
   align-content: center;
   margin: 20px 20px;
+
+}
+.logo-images{
+  height:100px;
+  width:120px;
+ 
+}
+
+.features{
+
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+  align-content: center;
+}
+.benefit-text
+{
+font-size:15px;
+padding:10px 10px;
+/* justify-content: start; */
+}
+.features-image{
+  height:100px;
+  width:100px;
 }
 
 
-features{
-  color: #11CFA0;
-}
 .benefit {
   box-shadow: rgba(17, 206, 162, 0.3) 0px 2px 30px;
   color: rgb(52, 52, 52);
   font-size: 20px;
-  margin-bottom: 34px;
-  height: 100%;
+  margin: 20px 20px;
+  height:30%;
+  width:40%;
   background: rgb(255, 255, 255);
-  padding: 10px 30px;
+  padding: 10px 10px;
+  display: flex;
 }
+
+
+
 input[type="text"],
 input[type="password"] {
   max-width: 300px;

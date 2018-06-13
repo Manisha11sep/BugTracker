@@ -4,13 +4,13 @@ import styled from "styled-components";
 /* footer formatting */
 const Wrapper = styled.div`
     background-color: #222222;
-    position:fixed;
    font-size: 12px;
    font-weight: normal;
    right: 0;
    bottom: 0;
    left: 0;
    background-color: black;
+   background-blend-mode: screen;
    margin: 0 auto !important;
    text-align: center !important;
    width: 100% !important;
