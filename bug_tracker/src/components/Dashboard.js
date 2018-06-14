@@ -59,7 +59,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard-background">
         <div className=" issue-heading">
-          <h3> List of Bugs </h3>
+          <h1> List of Bugs </h1>
         </div>
 
         {issues.map((issue, i) => (

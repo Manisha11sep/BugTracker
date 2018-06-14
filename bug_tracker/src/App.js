@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 import routes from "./router";
 import { connect } from "react-redux";
-// import Navbar from './components/Navbar';
+import NavbarHeader from './components/NavbarHeader';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Logo from "./Logo.jpg";
@@ -19,7 +19,9 @@ class App extends Component {
           )} */}
 
           <Header />
+          {/* <NavbarHeader /> */}
         </div>
+
         <div>{routes}</div>
 
         <div>

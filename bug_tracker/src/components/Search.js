@@ -4,21 +4,8 @@ import axios from "axios";
 import SearchIcon from "react-icons/lib/md/search";
 import "./../style/SearchStyle.css";
 
-const StyledSearch = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  margin: 0px 10px;
-`;
-const SearchText = styled.input`
-  border-radius: 21px;
-  border: 1px solid #2aabe2;
-  outline: none;
-  padding: 9px 34px 8px 12px;
-  font-size: 0.8em;
-`;
 const Button = styled.button`
-  font-size: 20px;
+  font-size: 15px;
   margin: 1em;
   padding: 0.25em 1em;
 `;
@@ -74,22 +61,28 @@ export default class Search extends Component {
 
     return (
       <div className="search-background">
-        <div className="container">
-          <div className="email-box">
-            {/* <StyledSearch> */}
-            <SearchText
+          <div className="search-parent">
+          <div>
+            <input
               className=""
-              placeholder="Enter something to search.."
+              placeholder=" Enter something to search.."
               value={text}
               onChange={this.updateText}
             />
+            </div>
+            
+            <div>
             <button
-              className="filter-button btn btn-info btn-lg"
+              className="filter-button btn btn-primary btn-md"
               onClick={() => this.searchIssue()}
             >
               <span class="glyphicon glyphicon-search" /> Search
             </button>
-          </div>
+            </div>
+            </div>
+        
+        
+         
           {this.state.searchedIssue.length != 0 ? (
             <div>
               {this.state.searchedIssue.map((search, i) => {
@@ -110,13 +103,12 @@ export default class Search extends Component {
             </div>
           ) : (
             <SearchHeading>
-              <p className="bug-text">
+              <p>
                 <b>No Results!!</b>
               </p>
             </SearchHeading>
           )}
         </div>
-      </div>
     );
   }
 }

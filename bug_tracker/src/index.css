@@ -1,4 +1,8 @@
-body {
+body, html {
+  height: 100%;
+}
+
+/* body {
   
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -9,7 +13,7 @@ body {
   background-size: cover;
   min-height: 100vh;
   height: 100%;
-}
+} */
 a:hover,
 a:focus {
   color: lightblue;
@@ -26,6 +30,10 @@ textarea {
   background-color: #f8f8f8;
   resize: none;
   display: block;
+}
+
+input{
+  /* padding:5px 5px; */
 }
 .box {
   box-sizing: border-box;
@@ -66,12 +74,12 @@ padding:3% 3%;
 /* .container{
     margin:10px 10px;
   } */
-.filter-button {
+/* .filter-button {
   padding: auto 5px;
   margin: 2% 2%;
   width: 100px;
   background-color: lightblue;
-}
+} */
 
 .navbar {
   position: relative;
@@ -99,15 +107,59 @@ padding:3% 3%;
 a{
   color:white;
   text-decoration: none;
-  font-size:20px;
-  font-family: ProximaNova,Helvetica,Arial,sans-serif;
-  font-weight: 400;
-    font-style: normal;
-    color: inherit;
-    text-rendering: optimizeLegibility;
+  font-size:15px;
+  
 }
 
 .center-text{
  text-align: center;
  padding:10px 10px;
+}
+
+
+@media (min-width: 768px) {
+  /* For mobile phones: */
+  .box {
+    margin-top: 5%;
+  }
+  .button{
+    font-size:15px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .box {
+    margin-top: 5%;
+  }
+}
+
+
+
+
+@media only screen and (max-width : 320px) {
+
+  .box{
+    margin:10px 10x;
+    background-color:yellow;
+  }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
 }

@@ -1,10 +1,15 @@
 .content {
   background-image: url("https://megsoftconsulting.com/wp-content/uploads/2016/04/web-design-packages-background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
+
+    /* Full height */
+    min-height: 100vh; 
+    height: 100%;
+
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .issue-box {
@@ -20,7 +25,12 @@
   text-align: center;
   /* background-color:lightblue; */
 }
+.issue-box:hover {
+  cursor: pointer;
+  box-shadow: rgba(17, 206, 162, 0.3) 0px 2px 30px;
+  color: rgb(52, 52, 52);
+}
 .issue-title {
   padding: 2% 1%;
-  font-size: 1.4em;
+  font-size: 1em;
 }

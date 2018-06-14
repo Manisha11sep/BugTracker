@@ -11,7 +11,7 @@ const Wrapper = styled.div`
    left: 0;
    background-color: black;
    background-blend-mode: screen;
-   margin: 0 auto !important;
+  //  margin: 0 auto !important;
    text-align: center !important;
    width: 100% !important;
     @media (min-width: 765px) {
@@ -26,7 +26,7 @@ const Title = styled.div`
    @media (min-width: 765px) {
     font-size:15px;
     padding:5px;
-    margin:5px 5px;
+  
    
  `;
 

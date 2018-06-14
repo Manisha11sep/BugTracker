@@ -7,9 +7,10 @@ import axios from "axios";
 import Profile from "./Profile";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import Button from '@material-ui/core/Button';
 import { userDetail, logout } from "../ducks/reducer";
 import Logo from "./../Logo.jpg";
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 
 const Wrapper = styled.div`
 display: flex;
@@ -18,7 +19,8 @@ background-color:black;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
-	align-content: center;
+  align-content: center;
+  font-size:2em;
 `;
 
 const HomePage = styled.div`
@@ -42,7 +44,6 @@ const InnerBox = styled.div`
   transition: margin-left 0.3s ease-in-out;
   margin-left: 100px;
   border: none;
-  min-height: 50px;
 `;
 
 const Title = styled.h1`
@@ -105,55 +106,126 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-  
+      <Wrapper>
         {this.state.user.length ==0 ? (
-              <HomePage>
-              <LogoImage>
-              <Img src={Logo} alt="logo" />
-              </LogoImage>
-                             
-                <LogoImage>
-                   
-             <Button variant="raised" color="primary" onClick={this.login}><Link to="/signup">
-            </Link>
-        Sign UP
-      </Button>
-               
-           
-            </LogoImage>
-            </HomePage>
+          <Navbar>
+           <Navbar.Header>
+           <Navbar.Brand>
           
-        ) :
-        <Wrapper>
-                <InnerBox>
-                <Img src={Logo} alt="logo" />
-                </InnerBox>
-                               
-                  <InnerBox>
-                    <Link to="/home">Home</Link>
-                  </InnerBox>
-                               
-                  <InnerBox>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </InnerBox>
-                               
-                  <InnerBox>
-                    <Link to="/issue"> New Issue </Link>
-                  </InnerBox>
-                               
-                  <InnerBox>
-                    <Link to="/search">Search</Link>
-                  </InnerBox>
-                               
-                  <InnerBox>
-                    <Link to="/" onClick={() => this.logout()}>
-                      Log out
-                    </Link>
-                  </InnerBox>
-          </Wrapper>
+           <Img src={Logo} alt="logo" />
+       
+           </Navbar.Brand>
+       </Navbar.Header>
+       <Nav>
+           <NavItem eventKey={1} href="#">
+           <button type="button" class="btn btn-primary"><Link to="/signup">
+Sign up  </Link>
+</button>
+           </NavItem>
+
+
+</Nav>
+</Navbar>
+
+
+        ):
+        (this.state.user.username !=='admin')? (
+          <Navbar>
+           <Navbar.Header>
+           <Navbar.Brand>
+          
+           <Img src={Logo} alt="logo" />
+       
+           </Navbar.Brand>
+       </Navbar.Header>
+       <Nav>
+           <NavItem eventKey={1}>
+              <InnerBox>
+              <Link to="/home">Home</Link>
+              </InnerBox> 
+           </NavItem>
+           <NavItem eventKey={2} >
+           <InnerBox>
+           <Link to="/issue"> New Issue </Link>
+           </InnerBox>
+           </NavItem>
+           <NavItem eventKey={3} >
+           <InnerBox>
+           <Link to="/search"> Search </Link>
+           </InnerBox>
+           </NavItem>
+           <NavItem eventKey={1} >
+           <InnerBox>
+           <Link to="/" onClick={() => this.logout()}>
+                Log out
+                  </Link>
+           </InnerBox>
+           </NavItem>
+
+
+</Nav>
+</Navbar>
+
+        )
+
+        :
+        null
         }
-      </div>
+        
+        </Wrapper>
+    
+      // <div>
+  
+      //   {this.state.user.length ==0 ? (
+      //         <HomePage>
+      //         <LogoImage>
+      //         <Img src={Logo} alt="logo" />
+      //         </LogoImage>
+                             
+      //           <LogoImage>
+      //           <button type="button" class="btn btn-primary"><Link to="/signup">
+      //   Sign up  </Link>
+      //   </button>
+
+      //       </LogoImage>
+      //       </HomePage>
+          
+      //   ) :
+      //   (this.state.user.username !=='admin')? (
+      //   <Wrapper>
+      //           <InnerBox>
+      //           <Img src={Logo} alt="logo" />
+      //           </InnerBox>
+                               
+      //             <InnerBox>
+      //               <Link to="/home">Home</Link>
+      //             </InnerBox>
+                               
+      //             <InnerBox>
+      //               <Link to="/dashboard">Dashboard</Link>
+      //             </InnerBox>
+                               
+      //             <InnerBox>
+      //               <Link to="/issue"> New Issue </Link>
+      //             </InnerBox>
+                               
+      //             <InnerBox>
+      //               <Link to="/search">Search</Link>
+      //             </InnerBox>
+                               
+      //             <InnerBox>
+      //               <Link to="/" onClick={() => this.logout()}>
+      //                 Log out
+      //               </Link>
+      //             </InnerBox>
+      //     </Wrapper>
+      //   )
+      //   :
+      //   null
+      //   }
+
+      
+      // </div>
     );
   }
 }

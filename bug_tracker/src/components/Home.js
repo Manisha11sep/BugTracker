@@ -27,29 +27,22 @@ class Home extends Component {
 
         <div className="home-container">
           <div className="home-heading">
-            <h1>
-              <Link to="/dashboard"> Issues</Link>
-            </h1>
-            <br />
-
-            <h4 className="home-text">
+              <Link to="/dashboard"> <h1>Issues </h1></Link>
+            <h3 className="home-text">
               Click here to get all the Issue details
-            </h4>
+            </h3>
           </div>
 
           <div className="home-heading">
-            <h1>
-              <Link to="/issue"> New Issue </Link>{" "}
-            </h1>
-            <br />
+          
+              <Link to="/issue">  <h1> New Issue   </h1></Link>{" "}
             <h4 className="home-text"> Click here to Create a new Issue </h4>
           </div>
 
           <div className="home-heading">
-            <h1>
-              <Link to="/search"> Search </Link>
-            </h1>
-            <br />
+
+              <Link to="/search"> <h1>Search </h1> </Link>
+        
             <h4 className="home-text"> Click here to Search a Issue </h4>
           </div>
         </div>

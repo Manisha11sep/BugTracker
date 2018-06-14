@@ -9,7 +9,7 @@
   -webkit-box-align: center;
   align-items: center;
   background-position: center center;
-
+height: 100%;
   min-height: 100vh;
 }
 
@@ -41,7 +41,7 @@
 
 .heading {
   font-size: 36px;
-  color: white;
+  color: black;
 }
 
 .dashboard-issue {
@@ -52,14 +52,20 @@
   text-transform: none;
   border-color: black;
   border: solid;
-  margin: 20px 20px;
+  margin:20px 20px;
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
 }
+
+.home-heading:hover {
+  cursor: pointer;
+  box-shadow: rgba(17, 206, 162, 0.3) 0px 2px 30px;
+  color: rgb(52, 52, 52);
+}
 @media (min-width: 765px) {
   .heading {
-    margin: 50px 50px;
+    margin: 30px 30px;
   }
   .home-text {
     font-size: 30px;

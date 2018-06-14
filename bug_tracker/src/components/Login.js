@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { logout } from "../ducks/reducer";
 import Signup from "./Signup";
 import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
 import styled from "styled-components";
 import Logo from "./../Logo.jpg";
 import google from "../Images/google.png";
@@ -40,7 +39,7 @@ const InnerBox = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 36px;
+  font-size: 20px;
   color: white;
   margin: 0 auto;
   line-height: 1;
@@ -53,6 +52,23 @@ margin:0 auto;
   }
   @media only screen and (min-width: 1200px) {
     font-size: 30px;
+  }
+`;
+const Title1 = styled.p`
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  margin: 0 auto;
+margin:0 auto;
+  padding:20px 20px;
+}
+  @media (min-width: 765px) {
+    font-size: 20px;
+    padding:20px 20px;
+  }
+  @media only screen and (min-width: 1200px) {
+    font-size: 30px;
+    padding:20px 20px;
   }
 `;
 const LoginHeader = styled.div`
@@ -130,19 +146,17 @@ export default class Login extends Component {
         <section className="landing">
           <LoginHeader>
             <Title>Bug Tracking for Desktop and Mobile App.</Title>
-            <h4>
+            <Title1>
               A simple, fast and scalable bug tracking application for agile
               teams, that helps you manage bugs easily and deliver great
               products on time.
-            </h4>
+            </Title1>
           </LoginHeader>
           <div>
-                  
-          <Button variant="raised" color="primary" onClick={this.login}><Link to="/signup">
-            </Link>
-            Get Started for Free
-      </Button>
-           
+          <button type="button" class="btn btn-primary "> <Link to="/signup">
+          
+            Get Started for Free   </Link></button>
+                
             </div>
           <div className="box">
             <div className="features">
@@ -170,10 +184,7 @@ export default class Login extends Component {
             />
             </div>
              <InnerBox>
-          
-             <Button variant="raised" color="primary" onClick={this.login}>
-        Login
-      </Button>
+             <button type="button" class="btn btn-primary" onClick={this.login}> Login</button>
           </InnerBox>
           </div>
 
