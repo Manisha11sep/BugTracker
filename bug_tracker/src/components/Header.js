@@ -53,19 +53,16 @@ const Title = styled.h1`
 `;
 const Img = styled.img`
   display: block;
-  height: 40px;
-  width: 40px;
+  height:80px;
+  float:left;
+  width: 80px;
   border-color: black;
   border-radius: 20%;
-  @media (min-width: 765) {
-    height: 100px;
-    width: 100px;
-  }
-  @media only screen and (min-width: 1200px) {
-    height: 70px;
-    width: 70px;
-  }
-`;
+  @media (max-width: 768px) {
+display:none;
+  }`
+  
+  ;
 
 const LogoImage = styled.div`
 color: white;
@@ -106,39 +103,39 @@ class Header extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <div>
         {this.state.user.length ==0 ? (
-          <Navbar>
-           <Navbar.Header>
-           <Navbar.Brand>
-          
-           <Img src={Logo} alt="logo" />
-       
-           </Navbar.Brand>
-       </Navbar.Header>
-       <Nav>
-           <NavItem eventKey={1} href="#">
-           <button type="button" class="btn btn-primary"><Link to="/signup">
-Sign up  </Link>
-</button>
-           </NavItem>
-
-
-</Nav>
-</Navbar>
+          <Navbar style={{marginBottom: "0"}} inverse collapseOnSelect>
+          <Navbar.Header>
+          <Navbar.Brand>
+          <Img src={Logo} alt="logo"  />
+    </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse >
+            <Nav pullRight>
+              <NavItem>
+              <button type="button" class="btn btn-primary"><Link to="/signup">
+        Sign up  </Link>
+        </button>
+              </NavItem>
+             
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
 
         ):
         (this.state.user.username !=='admin')? (
-          <Navbar>
-           <Navbar.Header>
-           <Navbar.Brand>
-          
-           <Img src={Logo} alt="logo" />
-       
-           </Navbar.Brand>
-       </Navbar.Header>
-       <Nav>
+          <Navbar style={{marginBottom: "0"}} inverse collapseOnSelect>
+          <Navbar.Header>
+          <Navbar.Brand>
+          <Img src={Logo} alt="logo" />
+    </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+       <Nav pullRight>
            <NavItem eventKey={1}>
               <InnerBox>
               <Link to="/home">Home</Link>
@@ -163,8 +160,9 @@ Sign up  </Link>
            </NavItem>
 
 
-</Nav>
-</Navbar>
+      </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         )
 
@@ -172,7 +170,7 @@ Sign up  </Link>
         null
         }
         
-        </Wrapper>
+        </div>
     
       // <div>
   

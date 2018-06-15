@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import App from "../App.css";
 import axios from "axios";
-// import validateInput from './validations';
 import { connect } from "react-redux";
 import { logout } from "../ducks/reducer";
 import Signup from "./Signup";
@@ -55,12 +54,12 @@ margin:0 auto;
   }
 `;
 const Title1 = styled.p`
-  text-align: center;
-  font-size: 16px;
+text-align: justify;
   color: white;
   margin: 0 auto;
 margin:0 auto;
   padding:20px 20px;
+  font-size: 16px;
 }
   @media (min-width: 765px) {
     font-size: 20px;
@@ -74,15 +73,9 @@ margin:0 auto;
 const LoginHeader = styled.div`
   color: #fff;
   text-align: center;
-  font-size: 200%;
+  // font-size: 200%;
   text-align: center;
   margin: 2% 5%;
-  @media (min-width: 1100px) {
-    font-size: 30px;
-  }
-  @media only screen and (min-width: 1200px) {
-    font-size: 30px;
-  }
 `;
 
 export default class Login extends Component {
@@ -144,22 +137,25 @@ export default class Login extends Component {
       <div>
         
         <section className="landing">
-          <LoginHeader>
+         
             <Title>Bug Tracking for Desktop and Mobile App.</Title>
             <Title1>
               A simple, fast and scalable bug tracking application for agile
               teams, that helps you manage bugs easily and deliver great
               products on time.
             </Title1>
-          </LoginHeader>
+        
           <div>
           <button type="button" class="btn btn-primary "> <Link to="/signup">
           
             Get Started for Free   </Link></button>
+       
                 
             </div>
+            <br />
           <div className="box">
             <div className="features">
+          
               <h4 className="login-text"> Username </h4>  
               <input
                 name="username"

@@ -37,9 +37,8 @@ input{
 }
 .box {
   box-sizing: border-box;
-  /* margin:10% auto; */
   display:auto;
-  width:400px;
+  min-width:350px;
   margin: 0 auto;
   max-width: 500px;
 padding:3% 3%;
@@ -48,7 +47,6 @@ padding:3% 3%;
   border-radius: 2%;
   border-color: black;
   text-align: center;
-  /* background-color:lightblue; */
 }
 .box:hover {
   cursor: pointer;
@@ -71,29 +69,15 @@ padding:3% 3%;
   width: 600px;
   /* float:right; */
 }
-/* .container{
-    margin:10px 10px;
-  } */
+.container{
+   width: 100%;
+  }
 /* .filter-button {
   padding: auto 5px;
   margin: 2% 2%;
   width: 100px;
   background-color: lightblue;
 } */
-
-.navbar {
-  position: relative;
-  min-height: 50px;
-  background-color: black;
-  /* margin-bottom: 20px; */
-  border: 1px solid transparent;
-  margin-bottom: 0px;
-}
-@media (max-width: 767px) {
-  .navbar {
-    background-color: grey;
-  }
-}
 
 .grid-container {
   display: grid;
