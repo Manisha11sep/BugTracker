@@ -9,31 +9,27 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { userDetail, logout } from "../ducks/reducer";
 import Logo from "./../Logo.jpg";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
 
 const Wrapper = styled.div`
-display: flex;
-background-color:black;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
+  display: flex;
+  background-color: black;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
   align-content: center;
-  font-size:2em;
+  font-size: 2em;
 `;
 
 const HomePage = styled.div`
-
   display: flex;
-  background-color:black;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	align-content: stretch;
-
-
+  background-color: black;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
 `;
 const InnerBox = styled.div`
   color: white;
@@ -53,26 +49,25 @@ const Title = styled.h1`
 `;
 const Img = styled.img`
   display: block;
-  height:80px;
-  float:left;
+  height: 80px;
+  float: left;
   width: 80px;
   border-color: black;
   border-radius: 20%;
   @media (max-width: 768px) {
-display:none;
-  }`
-  
-  ;
+    display: none;
+  }
+`;
 
 const LogoImage = styled.div`
-color: white;
-text-decoration: none;
-font-size: 25px;
--webkit-transition: margin-left 0.3s ease-in-out;
--o-transition: margin-left 0.3s ease-in-out;
-transition: margin-left 0.3s ease-in-out;
-min-height: 50px;
-margin:0 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  -webkit-transition: margin-left 0.3s ease-in-out;
+  -o-transition: margin-left 0.3s ease-in-out;
+  transition: margin-left 0.3s ease-in-out;
+  min-height: 50px;
+  margin: 0 10px;
 `;
 
 class Header extends Component {
@@ -104,82 +99,70 @@ class Header extends Component {
   render() {
     return (
       <div>
-        {this.state.user.length ==0 ? (
-          <Navbar style={{marginBottom: "0"}} inverse collapseOnSelect>
-          <Navbar.Header>
-          <Navbar.Brand>
-          <Img src={Logo} alt="logo"  />
-    </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse >
-            <Nav pullRight>
-              <NavItem>
-              <button type="button" class="btn btn-primary"><Link to="/signup">
-        Sign up  </Link>
-        </button>
-              </NavItem>
-             
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        {this.state.user.length == 0 ? (
+          <Navbar style={{ marginBottom: "0" }} inverse collapseOnSelect>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <Img src={Logo} alt="logo" />
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+              <Nav pullRight>
+                <NavItem>
+                  <button type="button" class="btn btn-primary">
+                    <Link to="/signup">Sign up </Link>
+                  </button>
+                </NavItem>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        ) : this.state.user.username !== "admin" ? (
+          <Navbar style={{ marginBottom: "0" }} inverse collapseOnSelect>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <Img src={Logo} alt="logo" />
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+              <Nav pullRight>
+                <NavItem eventKey={1}>
+                  <InnerBox>
+                    <Link to="/home">Home</Link>
+                  </InnerBox>
+                </NavItem>
+                <NavItem eventKey={2}>
+                  <InnerBox>
+                    <Link to="/issue"> New Issue </Link>
+                  </InnerBox>
+                </NavItem>
+                <NavItem eventKey={3}>
+                  <InnerBox>
+                    <Link to="/search"> Search </Link>
+                  </InnerBox>
+                </NavItem>
+                <NavItem eventKey={1}>
+                  <InnerBox>
+                    <Link to="/" onClick={() => this.logout()}>
+                      Log out
+                    </Link>
+                  </InnerBox>
+                </NavItem>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        ) : null}
+      </div>
 
-
-        ):
-        (this.state.user.username !=='admin')? (
-          <Navbar style={{marginBottom: "0"}} inverse collapseOnSelect>
-          <Navbar.Header>
-          <Navbar.Brand>
-          <Img src={Logo} alt="logo" />
-    </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-       <Nav pullRight>
-           <NavItem eventKey={1}>
-              <InnerBox>
-              <Link to="/home">Home</Link>
-              </InnerBox> 
-           </NavItem>
-           <NavItem eventKey={2} >
-           <InnerBox>
-           <Link to="/issue"> New Issue </Link>
-           </InnerBox>
-           </NavItem>
-           <NavItem eventKey={3} >
-           <InnerBox>
-           <Link to="/search"> Search </Link>
-           </InnerBox>
-           </NavItem>
-           <NavItem eventKey={1} >
-           <InnerBox>
-           <Link to="/" onClick={() => this.logout()}>
-                Log out
-                  </Link>
-           </InnerBox>
-           </NavItem>
-
-
-      </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-
-        )
-
-        :
-        null
-        }
-        
-        </div>
-    
       // <div>
-  
+
       //   {this.state.user.length ==0 ? (
       //         <HomePage>
       //         <LogoImage>
       //         <Img src={Logo} alt="logo" />
       //         </LogoImage>
-                             
+
       //           <LogoImage>
       //           <button type="button" class="btn btn-primary"><Link to="/signup">
       //   Sign up  </Link>
@@ -187,30 +170,30 @@ class Header extends Component {
 
       //       </LogoImage>
       //       </HomePage>
-          
+
       //   ) :
       //   (this.state.user.username !=='admin')? (
       //   <Wrapper>
       //           <InnerBox>
       //           <Img src={Logo} alt="logo" />
       //           </InnerBox>
-                               
+
       //             <InnerBox>
       //               <Link to="/home">Home</Link>
       //             </InnerBox>
-                               
+
       //             <InnerBox>
       //               <Link to="/dashboard">Dashboard</Link>
       //             </InnerBox>
-                               
+
       //             <InnerBox>
       //               <Link to="/issue"> New Issue </Link>
       //             </InnerBox>
-                               
+
       //             <InnerBox>
       //               <Link to="/search">Search</Link>
       //             </InnerBox>
-                               
+
       //             <InnerBox>
       //               <Link to="/" onClick={() => this.logout()}>
       //                 Log out
@@ -222,7 +205,6 @@ class Header extends Component {
       //   null
       //   }
 
-      
       // </div>
     );
   }
