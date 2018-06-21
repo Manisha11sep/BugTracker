@@ -232,16 +232,7 @@ class AdminDashboard extends Component {
                     <i class="fa fa-github" />Get Issues from Github
                   </button>
                 </li>
-                <li>
-                  <button
-                    className="btn btn-primary"
-                    data-toggle="collapse"
-                    data-target="#searchissue"
-                    onClick={this.getSearchissue}
-                  >
-                    <i class="fa fa-search" /> Search Issue
-                  </button>
-                </li>
+              
                 <li>
                   <button className="btn btn-primary">
                     <Link to="/" onClick={this.logout}>
@@ -262,7 +253,7 @@ class AdminDashboard extends Component {
           {this.state.open === "comments" ? (
             <div>
               <h1 className="admin-heading-text"> List of Comments </h1>
-              <div className="container">{commentList}</div>
+              <div className="chart-background">{commentList}</div>
             </div>
           ) : null}
 

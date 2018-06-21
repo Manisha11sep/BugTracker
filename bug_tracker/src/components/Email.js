@@ -88,7 +88,7 @@ export default class extends Component {
             />
           </div>
 
-          <button className="btn btn-info" onClick={this.sendEmail}>
+          <button className="btn btn-primary" onClick={this.sendEmail}>
             Send
           </button>
         </div>

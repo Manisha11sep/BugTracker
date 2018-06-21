@@ -5,6 +5,7 @@ import "./../style/SignupStyle.css";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import validateInput from "./Validations";
+import Logo from "./../Logo.jpg";
 
 const CLOUDINARY_UPLOAD_URL =
   "https://api.cloudinary.com/v1_1/manisha11/image/upload";
@@ -86,8 +87,9 @@ export default class Signup extends Component {
       };
       console.log("inside signup form", user);
       axios.post("/api/signup", user).then(response => {
-        if (response.data === "registered") {
-          window.location = "/";
+        console.log("response is ", response)
+        if (response.data === "registered successfully") {
+          window.location = "/home";
         }
       });
 
@@ -98,15 +100,23 @@ export default class Signup extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div>
-        <div className="box">
-          <h1 className="">register</h1>
+      <div className="loginContainer">
+        <div className="wrapper">
+        <div className = "signup-form">
+          <div className="form-header">
+            <img className="logo-image" src={Logo} />
+          </div>
+          <div className ="form-body">
+          <p className="title">
+            Get Started Absolutely 
+            <span className="span-text">Free</span>
+          </p>
+
           <div
-            className={classnames("form-group", {
+            className= {classnames("form-group", {
               "has-error": errors.username
             })}
           >
-            <label>username</label>
             <input
               type="text"
               className="form-control signup-input"
@@ -123,7 +133,6 @@ export default class Signup extends Component {
               "has-error": errors.password
             })}
           >
-            <label>password</label>
             <input
               type="password"
               className="form-control signup-input"
@@ -137,7 +146,7 @@ export default class Signup extends Component {
           <div
             className={classnames("form-group", { "has-error": errors.email })}
           >
-            <label>email</label>
+          
             <input
               type="text"
               className="form-control signup-input"
@@ -148,25 +157,28 @@ export default class Signup extends Component {
               <span className="help-block">{errors.email} </span>
             )}
           </div>
-          <div className="form-group">
-            <label>image Upload</label>
+          <div className="image-upload">
+          <div>
             <input
               type="file"
               onChange={e => this.setState({ profile_pic: e.target.files })}
             />
+            </div>
             <button
               className="btn btn-primary"
               onClick={() => this.uploadImage(this.state.profile_pic)}
             >
-              {" "}
-              Upload{" "}
+              Upload
             </button>
           </div>
           {this.state.failMessage}
-          <button className="btn btn-primary" onClick={() => this.signUp()}>
+          <button className="
+signup-button btn-primary" onClick={() => this.signUp()}>
             sign up
           </button>
         </div>
+      </div>
+      </div>
       </div>
     );
   }

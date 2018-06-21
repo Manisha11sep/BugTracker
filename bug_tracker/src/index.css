@@ -32,9 +32,27 @@ textarea {
   display: block;
 }
 
-input{
-  /* padding:5px 5px; */
+input {
+  /* width: 250px; */
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #cccdd1;
+  border-radius: 5px;
+  outline: none;
 }
+
+
+  input::placeholder {
+    font-size: 12px;
+    letter-spacing: .8px;
+    opacity: 0.8;
+  }
+
+  input:focus::placeholder {
+    opacity: 0.3;
+  }
+
+
 .box {
   box-sizing: border-box;
   display:auto;

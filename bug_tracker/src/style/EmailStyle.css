@@ -10,6 +10,7 @@
 
 .email-box {
   box-sizing: border-box;
+  background-color: #F9F9F9;
 
   /* margin:10% auto; */
   margin: 10% auto;
@@ -21,7 +22,6 @@
   border-radius: 2%;
   border-color: black;
   text-align: center;
-  background-color: rgb(115, 162, 180);
 }
 .email-body {
   padding: 10% 10%;

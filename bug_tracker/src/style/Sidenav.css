@@ -11,6 +11,9 @@
   color: #e1ffff;
 }
 
+.chart-background{
+  background-color: #F9F9F9;
+}
 .admin-dashboard {
   /* background-image: url('http://wallpoper.com/images/00/31/33/51/black-background_00313351.jpg');
   background-repeat: no-repeat;
@@ -152,7 +155,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 tr:nth-child(odd) {
-  color: white;
+  color: black;
 }
 
 th {

@@ -30,7 +30,7 @@ module.exports = {
         .then(data => {
           req.session.user = data[0];
           console.log("registered successfully");
-          res.status(200).send(data);
+          res.status(200).send("registered successfully");
         })
         .catch(error => {
           res.status(400).json(errors);
