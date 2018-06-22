@@ -129,7 +129,7 @@ export default class Charts extends Component {
     return (
       <div>
         {chartType === "issue" ? (
-          <div className="email-box">
+          <div className="">
             <h1 className="admin-heading-text"> Issue count by each User</h1>
             <Pie
               data={this.state.IssuePerUSer}

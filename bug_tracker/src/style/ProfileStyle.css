@@ -8,11 +8,37 @@
 }
 .grid-container > div {
   text-align: center;
-  padding: 10% 10%;
+  padding: 5% 5%;
   font-size: 20px;
 }
 
-.pancel-body {
-  margin-top: 5px;
-  margin-bottom: 5px;
+.panel-body {
+  height:80px;
+  width:100px;
+
+}
+.profile-pic {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  align-items: center;
+  /* margin-left:20% */
+  margin: 0 auto;
+}
+
+.panel-heading {
+  font-size: 10px;
+}
+
+.panel-footer {
+
+  font-size:10px;
+}
+
+@media (max-width: 769px) {
+  .profile-pic {
+height:70px;
+width:70px;
+border-radius: 50%;
+  }
 }

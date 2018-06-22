@@ -26,7 +26,7 @@ export default class Issue extends Component {
       this.state.filterIssue
     );
     const issueList = (
-      <table className="container">
+      <table className="">
         <tr>
           <th>Title</th>
           <th>Description</th>
@@ -46,18 +46,17 @@ export default class Issue extends Component {
       </table>
     );
 
+
     return (
-      <div className="container">
+      <div>
         <h1 className="admin-heading-text"> List of Issues/Bugs </h1>
         {/* class from html.css file */}
         <div className="filter-user">
           <input
-            className=""
             placeholder="Enter Username to Search!!"
             onChange={e => this.setState({ filterIssue: e.target.value })}
           />
           <button className="filter-button">
-            {" "}
             <b>Filter by User</b>{" "}
           </button>
         </div>

@@ -11,6 +11,8 @@ import Email from "./Email";
 import GithubIssues from "./GithubIssues";
 import Issue from "./../components/Issue";
 import Search from "./Search";
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
+
 class AdminDashboard extends Component {
   constructor() {
     super();
@@ -113,7 +115,7 @@ class AdminDashboard extends Component {
     const issues = this.props.issues;
     //Mapping through the issue into a table using map function
     const commentList = (
-      <table className="container">
+      <table className="">
         <tr>
           <th>Issue_id</th>
           <th>Issue_title</th>
@@ -134,116 +136,61 @@ class AdminDashboard extends Component {
     );
     return (
       <div className=" admin-dashboard">
-        <div className="main-sidebar">
-          <div className="nav-side-menu">
-            <div className="panel panel-primary">
-              <div className="panel-heading">
+        <div className="nav-side-menu">
+          <Navbar style={{ marginBottom: "0" }} inverse collapseOnSelect>
+            <Navbar.Header>
+              <Navbar.Brand>
+                {" "}
                 Welcome, {this.state.userdetail.username}
-              </div>
-              <div className="panel-body">
+                {/* <div className="panel-body">
                 <img
-                  className="profile-pic"
+                  className="admin-pic"
                   src={this.state.userdetail.profile_pic}
-                />
-              </div>
-              <div className="panel-footer">
-                {this.state.userdetail.username}
-              </div>
-            </div>
-
-            <i
-              className="fa fa-bars fa-2x toggle-btn"
-              data-toggle="collapse"
-              data-target="#menu-content"
-            />
-            <div className="menu-list">
-              <ul id="menu-content" className="menu-content collapse out">
-                <button
-                  className="btn btn-primary"
-                  data-toggle="collapse"
-                  data-target="#charts"
+                /> 
+              </div>   */}
+                {/* </div> */}
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+              <Nav>
+                <NavItem onClick={this.getUsers}>
+                  <i className="fa fa-users fa-sm" /> Users
+                </NavItem>
+                <NavDropdown
+                  title="Charts"
+                  id="basic-nav-dropdown"
                 >
-                  <i className="fa fa-line-chart" /> Charts
-                </button>
+                  <MenuItem onClick={this.getCommentChart}>
+                    Comment posted by users
+                  </MenuItem>
+                  <MenuItem onClick={this.getIssueChart}>
+                    Issue posted by User
+                  </MenuItem>
+                  <MenuItem onClick={this.getCommentOnIssue}>
+                    Comment on issues
+                  </MenuItem>
+                </NavDropdown>
 
-                <ul className="sub-menu collapse" id="charts">
-                  <li onClick={this.getCommentChart}>
-                    {/* calling funciton to set state of open on click of chart */}
-                    <a data-toggle="collapse" href="#CommentByUSer">
-                      {" "}
-                      Comment posted by users
-                    </a>
-                  </li>
-                  <li onClick={this.getIssueChart}>
-                    <a data-toggle="collapse" href="#IssueByUser">
-                      Issue posted by User
-                    </a>
-                  </li>
-                  <li onClick={this.getCommentOnIssue}>
-                    <a data-toggle="collapse" href="#CommentByIssue">
-                      Comment on issues
-                    </a>
-                  </li>
-                </ul>
-
-                <li>
-                  <button className="btn btn-primary" onClick={this.getUsers}>
-                    <i className="fa fa-users fa-lg" /> Users
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="btn btn-primary"
-                    data-toggle="collapse"
-                    data-target="#email"
-                    onClick={this.getEmail}
-                  >
-                    <i class="fa fa-envelope" /> Email
-                  </button>
-                </li>
-                <li onClick={this.getBug}>
-                  <button
-                    className="btn btn-primary"
-                    data-toggle="collapse"
-                    data-target="#issue"
-                    onClick={this.getIssue}
-                  >
-                    <i class="fa fa-exclamation-triangle" /> Get All the Bugs
-                  </button>
-                </li>
-
-                <li onClick={this.getComments}>
-                  <button
-                    className="btn btn-primary"
-                    data-toggle="collapse"
-                    data-target="#comment"
-                    onClick={this.getComment}
-                  >
-                    <i class="fa fa-comments" /> Get All the Comment
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="btn btn-primary"
-                    data-toggle="collapse"
-                    data-target="#github"
-                    onClick={this.getGithub}
-                  >
-                    <i class="fa fa-github" />Get Issues from Github
-                  </button>
-                </li>
-              
-                <li>
-                  <button className="btn btn-primary">
-                    <Link to="/" onClick={this.logout}>
-                      <i class="fa fa-sign-out" />Log out
-                    </Link>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
+                <NavItem onClick={this.getEmail}>
+                  <i class="fa fa-envelope" /> Email
+                </NavItem>
+                <NavItem onClick={this.getBug}>
+                  <i class="fa fa-exclamation-triangle" /> Get All the Bugs
+                </NavItem>
+                <NavItem onClick={this.getGithub}>
+                  <i class="fa fa-github" /> Get Issues from Github
+                </NavItem>
+                <NavItem eventKey={7}>
+                  <Link to="/" onClick={this.logout}>
+                    <i class="fa fa-sign-out" /> Log out
+                  </Link>
+                </NavItem>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </div>
+      
         {/* ************************************************Display section of Admin Page *************************************** */}
 
         <div id="main">

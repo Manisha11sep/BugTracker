@@ -28,7 +28,7 @@ class Profile extends Component {
                 <div className="panel panel-primary">
                   <div className="panel-heading">{user.username} </div>
                   <div className="panel-body">
-                    <img className="profile-pic" src={user.profile_pic} />{" "}
+                    <img className="profile-pic" src={user.profile_pic} />
                   </div>
                   <div className="panel-footer">{user.email} </div>
                 </div>
@@ -40,5 +40,10 @@ class Profile extends Component {
     );
   }
 }
+
+<div class="panel panel-default">
+  <div class="panel-body">Panel Content</div>
+  <div class="panel-footer">Panel Footer</div>
+</div>
 
 export default Profile;
