@@ -10,10 +10,12 @@ const massive = require("massive");
 const session = require("express-session");
 const nodeMailer = require("nodemailer");
 require("dotenv").config();
-const PORT = 4000;
+const PORT = 3030;
 const app = express();
 // const cors = require('cors');
 // const checkForSession = require('./middlewares/checkForSession');
+
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json());
 // app.use(cors());
 massive(process.env.CONNECTION_STRING).then(dbInstance =>
@@ -67,5 +69,9 @@ app.get("/api/admin/users", admin_controller.allUser);
 
 //**************** Email//****************
 app.post("/api/send-email", email_controller.sendMessage);
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 app.listen(PORT, () => console.log(`your server is running on : ${PORT}`));

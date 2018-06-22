@@ -149,6 +149,7 @@ export default class Login extends Component {
             </button>
           </div>
           <br />
+          <h5>To login as admin use Username and password:- admin</h5>
           <div className="box">
             <div className="features">
               <h4 className="login-text"> Username </h4>
