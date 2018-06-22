@@ -13,12 +13,11 @@
 }
 
 .panel-body {
-  height:80px;
-  width:100px;
-
+  height: 80px;
+  width: 120px;
 }
 .profile-pic {
-  height: 120px;
+  height: 80px;
   width: 120px;
   border-radius: 50%;
   align-items: center;
@@ -31,14 +30,28 @@
 }
 
 .panel-footer {
-
-  font-size:10px;
+  font-size: 10px;
 }
 
 @media (max-width: 769px) {
   .profile-pic {
-height:70px;
-width:70px;
-border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 770px) {
+  .profile-pic {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+  }
+  .panel-heading {
+    font-size: 20px;
+  }
+
+  .panel-footer {
+    font-size: 15px;
   }
 }

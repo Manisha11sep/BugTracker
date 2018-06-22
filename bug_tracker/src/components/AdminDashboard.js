@@ -48,7 +48,6 @@ class AdminDashboard extends Component {
     this.getGithub = this.getGithub.bind(this);
     this.getBug = this.getBug.bind(this);
     this.getComments = this.getComments.bind(this);
-    this.getSearchissue = this.getSearchissue.bind(this);
   }
 
   componentDidMount() {
@@ -98,10 +97,6 @@ class AdminDashboard extends Component {
   getUsers() {
     this.setState({ open: "users" });
   }
-  //setting the state for open
-  getSearchissue() {
-    this.setState({ open: "search" });
-  }
 
   logout = () => {
     axios.post("/api/logout").then(response => {
@@ -142,22 +137,17 @@ class AdminDashboard extends Component {
               <Navbar.Brand>
                 {" "}
                 Welcome, {this.state.userdetail.username}
-                {/* <div className="panel-body">
-                <img
-                  className="admin-pic"
-                  src={this.state.userdetail.profile_pic}
-                /> 
-              </div>   */}
-                {/* </div> */}
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
-                <NavItem onClick={this.getUsers}>
+                <NavItem className="navitem" onClick={this.getUsers}>
                   <i className="fa fa-users fa-sm" /> Users
                 </NavItem>
+
                 <NavDropdown
+                  className="navitem"
                   title="Charts"
                   id="basic-nav-dropdown"
                 >
@@ -172,16 +162,19 @@ class AdminDashboard extends Component {
                   </MenuItem>
                 </NavDropdown>
 
-                <NavItem onClick={this.getEmail}>
+                <NavItem className="navitem" onClick={this.getEmail}>
                   <i class="fa fa-envelope" /> Email
                 </NavItem>
-                <NavItem onClick={this.getBug}>
+
+                <NavItem className="navitem" onClick={this.getBug}>
                   <i class="fa fa-exclamation-triangle" /> Get All the Bugs
                 </NavItem>
-                <NavItem onClick={this.getGithub}>
+
+                <NavItem className="navitem" onClick={this.getGithub}>
                   <i class="fa fa-github" /> Get Issues from Github
                 </NavItem>
-                <NavItem eventKey={7}>
+
+                <NavItem className="navitem" eventKey={7}>
                   <Link to="/" onClick={this.logout}>
                     <i class="fa fa-sign-out" /> Log out
                   </Link>
@@ -190,10 +183,10 @@ class AdminDashboard extends Component {
             </Navbar.Collapse>
           </Navbar>
         </div>
-      
+
         {/* ************************************************Display section of Admin Page *************************************** */}
 
-        <div id="main">
+        <div className="admin-items">
           {/* if value of open is "issues" then call Issue component otherwise null */}
           {this.state.open === "issues" ? <Issue /> : null}
           {/* if value of open is "comments" then show comments otherwise null */}
@@ -219,9 +212,6 @@ class AdminDashboard extends Component {
           {this.state.open === "email" ? (
             <Email username={this.state.username} />
           ) : null}
-
-          {/* if value of open is "search" then call search component otherwise null */}
-          {this.state.open === "search" ? <Search /> : null}
         </div>
       </div>
     );

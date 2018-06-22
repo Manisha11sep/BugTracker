@@ -31,9 +31,9 @@ class Home extends Component {
               {" "}
               <h1>Issues </h1>
             </Link>
-            <h3 className="home-text">
+            <h4 className="home-text">
               Click here to get all the Issue details
-            </h3>
+            </h4>
           </div>
 
           <div className="home-heading">

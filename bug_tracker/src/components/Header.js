@@ -40,6 +40,9 @@ const InnerBox = styled.div`
   transition: margin-left 0.3s ease-in-out;
   margin-left: 100px;
   border: none;
+  @media (max-width: 768px) {
+    margin-left: 50px;
+  }
 `;
 
 const Title = styled.h1`
@@ -54,7 +57,7 @@ const Img = styled.img`
   width: 80px;
   border-color: black;
   border-radius: 20%;
-  @media (max-width: 768px) {
+  @media (max-width: 368px) {
     display: none;
   }
 `;

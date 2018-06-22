@@ -46,7 +46,6 @@ export default class Issue extends Component {
       </table>
     );
 
-
     return (
       <div>
         <h1 className="admin-heading-text"> List of Issues/Bugs </h1>

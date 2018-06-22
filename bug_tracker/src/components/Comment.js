@@ -101,11 +101,23 @@ class Comment extends Component {
             />
           </div>
           <div>
-          <button type="button" class="btn btn-primary" onClick={this.createComment}>Post Comment</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={this.createComment}
+            >
+              Post Comment
+            </button>
           </div>
 
           <div className="load-comment">
-          <button type="button" class="btn btn-primary" onClick={this.loadcomments}>Load Comments</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={this.loadcomments}
+            >
+              Load Comments
+            </button>
           </div>
         </div>
 

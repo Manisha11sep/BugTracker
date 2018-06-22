@@ -1,22 +1,21 @@
 .landing {
-  background-image:url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/Website-background.jpg");
+  background-image: url("https://s3-us-west-1.amazonaws.com/fluffybugtracker/Website-background.jpg");
   background-position: center;
   opacity: 0.8;
   text-align: center;
   background-size: cover;
 }
 
-.companies{
-background-color:#F9F9F9;
-  padding:20px 20px;
-
+.companies {
+  background-color: #f9f9f9;
+  padding: 20px 20px;
 }
 
-.login-text{
-  color:white;
+.login-text {
+  color: white;
   text-align: justify;
 }
-.logo{
+.logo {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -24,48 +23,41 @@ background-color:#F9F9F9;
   align-items: center;
   align-content: center;
   margin: 20px 20px;
-
 }
-.logo-images{
-  height:100px;
-  width:120px;
- 
+.logo-images {
+  height: 100px;
+  width: 120px;
 }
 
-.features{
-
+.features {
   display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: flex-start;
 }
-.benefit-text
-{
-font-size:15px;
-padding:10px 10px;
-/* justify-content: start; */
+.benefit-text {
+  font-size: 15px;
+  padding: 10px 10px;
+  /* justify-content: start; */
 }
-.features-image{
-  height:100px;
-  width:100px;
+.features-image {
+  height: 100px;
+  width: 100px;
 }
-
 
 .benefit {
   box-shadow: rgba(17, 206, 162, 0.3) 0px 2px 30px;
   color: rgb(52, 52, 52);
   font-size: 20px;
   margin: 20px 20px;
-  height:30%;
-  width:40%;
+  height: 30%;
+  width: 40%;
   background: rgb(255, 255, 255);
   padding: 10px 10px;
   display: flex;
 }
-
-
 
 input[type="text"],
 input[type="password"] {
@@ -81,47 +73,43 @@ input[type="password"] {
   text-decoration: none;
 }
 
-
-@media only screen and (max-width : 320px) {
+@media only screen and (max-width: 320px) {
   .landing {
-    padding:10px 10px;
+    padding: 10px 10px;
   }
-  .login-text{
-    font-size:1em;
-
+  .login-text {
+    font-size: 1em;
   }
 }
 
-
-/* Extra Small Devices, Phones */ 
-@media only screen and (max-width : 480px) {
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
   .landing {
-    padding:10px 10px;
+    padding: 10px 10px;
   }
-  .benefit{
-    width:auto;
+  .benefit {
+    width: auto;
   }
 }
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
+@media only screen and (min-width: 768px) {
   .landing {
-    padding:10px 10px;
+    padding: 10px 10px;
   }
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
-  .landing{
+@media only screen and (max-width: 992px) {
+  .landing {
     padding-top: 54px;
     padding-bottom: 54px;
   }
-
 }
 
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-  .landing{
+@media only screen and (min-width: 1200px) {
+  .landing {
     padding-top: 54px;
     padding-bottom: 54px;
   }

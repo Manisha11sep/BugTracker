@@ -11,14 +11,13 @@ import google from "../Images/google.png";
 import godaddy from "../Images/godaddy.png";
 import groupon from "../Images/groupon.png";
 import report from "../Images/report.jpg";
-import install from '../Images/install.jpg'
-import tools from '../Images/tools.png'
-import team from '../Images/team.jpg'
-import devmtn from '../Images/devmtn.png'
-import lyft from '../Images/lyft.png'
-import uber from '../Images/uber.png';
+import install from "../Images/install.jpg";
+import tools from "../Images/tools.png";
+import team from "../Images/team.jpg";
+import devmtn from "../Images/devmtn.png";
+import lyft from "../Images/lyft.png";
+import uber from "../Images/uber.png";
 import "./../style/Login.css";
-
 
 const Heading = styled.div`
   margin: 0%5%;
@@ -135,28 +134,24 @@ export default class Login extends Component {
     const { username, password } = this.state;
     return (
       <div>
-        
         <section className="landing">
-         
-            <Title>Bug Tracking for Desktop and Mobile App.</Title>
-            <Title1>
-              A simple, fast and scalable bug tracking application for agile
-              teams, that helps you manage bugs easily and deliver great
-              products on time.
-            </Title1>
-        
+          <Title>Bug Tracking for Desktop and Mobile App.</Title>
+          <Title1>
+            A simple, fast and scalable bug tracking application for agile
+            teams, that helps you manage bugs easily and deliver great products
+            on time.
+          </Title1>
+
           <div>
-          <button type="button" class="btn btn-primary "> <Link to="/signup">
-          
-            Get Started for Free   </Link></button>
-       
-                
-            </div>
-            <br />
+            <button type="button" class="btn btn-primary ">
+              {" "}
+              <Link to="/signup">Get Started for Free </Link>
+            </button>
+          </div>
+          <br />
           <div className="box">
             <div className="features">
-          
-              <h4 className="login-text"> Username </h4>  
+              <h4 className="login-text"> Username </h4>
               <input
                 name="username"
                 type="text"
@@ -165,63 +160,74 @@ export default class Login extends Component {
                 onChange={this.username}
                 required
               />
-         
             </div>
             <div className="features">
-            <h4 className="login-text">Password</h4>
-            <br />
-            <input
-              type="password"
-              placeholder="Enter your Password"
-              value={password}
-              required
-              onKeyPress={e => this.handleKeyPress(e)}
-              onChange={this.password}
-            />
+              <h4 className="login-text">Password</h4>
+              <br />
+              <input
+                type="password"
+                placeholder="Enter your Password"
+                value={password}
+                required
+                onKeyPress={e => this.handleKeyPress(e)}
+                onChange={this.password}
+              />
             </div>
-             <InnerBox>
-             <button type="button" class="btn btn-primary" onClick={this.login}> Login</button>
-          </InnerBox>
+            <InnerBox>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={this.login}
+              >
+                {" "}
+                Login
+              </button>
+            </InnerBox>
           </div>
-
-         
         </section>
 
         <section className="companies">
-          <h3 className="center-text"> Top companies love to use Bug Tracker</h3>
+          <h3 className="center-text">
+            {" "}
+            Top companies love to use Bug Tracker
+          </h3>
           <div className="logo">
-            <img className="logo-images" src={google}className="logo-images" />
-            <img className="logo-images"src={groupon}  />
-            <img className="logo-images"src={uber}  />
+            <img className="logo-images" src={google} className="logo-images" />
+            <img className="logo-images" src={groupon} />
+            <img className="logo-images" src={uber} />
           </div>
           <div className="logo">
-          <img className="logo-images"src={lyft}  />
-            <img className="logo-images" src={godaddy}  />
-            <img className="logo-images" src={devmtn}  />
+            <img className="logo-images" src={lyft} />
+            <img className="logo-images" src={godaddy} />
+            <img className="logo-images" src={devmtn} />
           </div>
         </section>
         <section>
-        <h3 className="center-text"> Everything you need for a development workflow</h3>
+          <h3 className="center-text">
+            {" "}
+            Everything you need for a development workflow
+          </h3>
           <div className="features">
             <div className="benefit">
-            <div>
-              <img className="features-image" src={install} /> 
+              <div>
+                <img className="features-image" src={install} />
               </div>
               <div>
-              <h3>SIMPLE INSTALLATION</h3>
-              <p className="benefit-text">
-              Just add a single line of code and you’re good to go!
-              Its easy to use and install.</p>
-            </div>
+                <h3>SIMPLE INSTALLATION</h3>
+                <p className="benefit-text">
+                  Just add a single line of code and you’re good to go! Its easy
+                  to use and install.
+                </p>
+              </div>
             </div>
 
             <div className="benefit">
-            <div>
-              <img className="features-image" src={report} /> 
+              <div>
+                <img className="features-image" src={report} />
               </div>
-             
-              <div >
-              <h3>EASY REPORTING</h3>
+
+              <div>
+                <h3>EASY REPORTING</h3>
                 <p className="benefit-text">
                   Assign, track, and squash bugs. Manage your team and
                   deliverables with a crystal clear visual report.
@@ -231,29 +237,29 @@ export default class Login extends Component {
           </div>
           <div className="features">
             <div className="benefit">
-            <div>
-              <img className="features-image" src={team} /> 
+              <div>
+                <img className="features-image" src={team} />
               </div>
               <div>
-              <h3>EFFICIENT TEAM & CLIENT COMMUNICATION </h3>
-              <p className="benefit-text">
-                With a click, embrace the death of endless email exchanges and
-                feel satisfied with our visual reporting and flexible issue
-                tracker features.
-              </p>
+                <h3>EFFICIENT TEAM & CLIENT COMMUNICATION </h3>
+                <p className="benefit-text">
+                  With a click, embrace the death of endless email exchanges and
+                  feel satisfied with our visual reporting and flexible issue
+                  tracker features.
+                </p>
               </div>
             </div>
             <div className="benefit">
-            <div>
-              <img className="features-image" src={tools} /> 
+              <div>
+                <img className="features-image" src={tools} />
               </div>
               <div>
-              <h3>UNIVERSAL TOOL </h3>
-              <p className="benefit-text">
-                No matter the framework ie Laravel, Wordpress, Drupal, etc The
-                Bug Squasher works. From here delegate and prioritize website
-                change requests effortlessly.
-              </p>
+                <h3>UNIVERSAL TOOL </h3>
+                <p className="benefit-text">
+                  No matter the framework ie Laravel, Wordpress, Drupal, etc The
+                  Bug Squasher works. From here delegate and prioritize website
+                  change requests effortlessly.
+                </p>
               </div>
             </div>
           </div>

@@ -87,7 +87,7 @@ export default class Signup extends Component {
       };
       console.log("inside signup form", user);
       axios.post("/api/signup", user).then(response => {
-        console.log("response is ", response)
+        console.log("response is ", response);
         if (response.data === "registered successfully") {
           window.location = "/home";
         }
@@ -102,83 +102,89 @@ export default class Signup extends Component {
     return (
       <div className="loginContainer">
         <div className="wrapper">
-        <div className = "signup-form">
-          <div className="form-header">
-            <img className="logo-image" src={Logo} />
-          </div>
-          <div className ="form-body">
-          <p className="title">
-            Get Started Absolutely 
-            <span className="span-text">Free</span>
-          </p>
-
-          <div
-            className= {classnames("form-group", {
-              "has-error": errors.username
-            })}
-          >
-            <input
-              type="text"
-              className="form-control signup-input"
-              placeholder="username"
-              onChange={e => this.setState({ username: e.target.value })}
-            />
-            {errors.username && (
-              <span className="help-block">{errors.username} </span>
-            )}
-          </div>
-
-          <div
-            className={classnames("form-group", {
-              "has-error": errors.password
-            })}
-          >
-            <input
-              type="password"
-              className="form-control signup-input"
-              placeholder="password"
-              onChange={e => this.setState({ password: e.target.value })}
-            />
-            {errors.password && (
-              <span className="help-block">{errors.password} </span>
-            )}
-          </div>
-          <div
-            className={classnames("form-group", { "has-error": errors.email })}
-          >
-          
-            <input
-              type="text"
-              className="form-control signup-input"
-              placeholder="email"
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-            {errors.email && (
-              <span className="help-block">{errors.email} </span>
-            )}
-          </div>
-          <div className="image-upload">
-          <div>
-            <input
-              type="file"
-              onChange={e => this.setState({ profile_pic: e.target.files })}
-            />
+          <div className="signup-form">
+            <div className="form-header">
+              <img className="logo-image" src={Logo} />
             </div>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.uploadImage(this.state.profile_pic)}
-            >
-              Upload
-            </button>
+            <div className="form-body">
+              <p className="title">
+                Get Started Absolutely
+                <span className="span-text">Free</span>
+              </p>
+
+              <div
+                className={classnames("form-group", {
+                  "has-error": errors.username
+                })}
+              >
+                <input
+                  type="text"
+                  className="form-control signup-input"
+                  placeholder="username"
+                  onChange={e => this.setState({ username: e.target.value })}
+                />
+                {errors.username && (
+                  <span className="help-block">{errors.username} </span>
+                )}
+              </div>
+
+              <div
+                className={classnames("form-group", {
+                  "has-error": errors.password
+                })}
+              >
+                <input
+                  type="password"
+                  className="form-control signup-input"
+                  placeholder="password"
+                  onChange={e => this.setState({ password: e.target.value })}
+                />
+                {errors.password && (
+                  <span className="help-block">{errors.password} </span>
+                )}
+              </div>
+              <div
+                className={classnames("form-group", {
+                  "has-error": errors.email
+                })}
+              >
+                <input
+                  type="text"
+                  className="form-control signup-input"
+                  placeholder="email"
+                  onChange={e => this.setState({ email: e.target.value })}
+                />
+                {errors.email && (
+                  <span className="help-block">{errors.email} </span>
+                )}
+              </div>
+              <div className="image-upload">
+                <div>
+                  <input
+                    type="file"
+                    onChange={e =>
+                      this.setState({ profile_pic: e.target.files })
+                    }
+                  />
+                </div>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.uploadImage(this.state.profile_pic)}
+                >
+                  Upload
+                </button>
+              </div>
+              {this.state.failMessage}
+              <button
+                className="
+signup-button btn-primary"
+                onClick={() => this.signUp()}
+              >
+                sign up
+              </button>
+            </div>
           </div>
-          {this.state.failMessage}
-          <button className="
-signup-button btn-primary" onClick={() => this.signUp()}>
-            sign up
-          </button>
         </div>
-      </div>
-      </div>
       </div>
     );
   }

@@ -61,7 +61,7 @@ export default class Search extends Component {
 
     return (
       <div className="search-background">
-          <div className="search-parent">
+        <div className="search-parent">
           <div>
             <input
               className=""
@@ -69,46 +69,44 @@ export default class Search extends Component {
               value={text}
               onChange={this.updateText}
             />
-            </div>
-            
-            <div>
+          </div>
+
+          <div>
             <button
               className="filter-button btn btn-primary btn-md"
               onClick={() => this.searchIssue()}
             >
               <span class="glyphicon glyphicon-search" /> Search
             </button>
-            </div>
-            </div>
-        
-        
-         
-          {this.state.searchedIssue.length != 0 ? (
-            <div>
-              {this.state.searchedIssue.map((search, i) => {
-                return (
-                  <div className="issue-main" key={i}>
-                    <p className="bug-text">
-                      <b>Title: </b> {search.name}
-                    </p>
-                    <p className="bug-text">
-                      <b> Description</b> {search.description}{" "}
-                    </p>
-                    <p className="bug-text">
-                      <b>Last updated</b> {search.last_updated}{" "}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <SearchHeading>
-              <p>
-                <b>No Results!!</b>
-              </p>
-            </SearchHeading>
-          )}
+          </div>
         </div>
+
+        {this.state.searchedIssue.length != 0 ? (
+          <div>
+            {this.state.searchedIssue.map((search, i) => {
+              return (
+                <div className="issue-main" key={i}>
+                  <p className="bug-text">
+                    <b>Title: </b> {search.name}
+                  </p>
+                  <p className="bug-text">
+                    <b> Description</b> {search.description}{" "}
+                  </p>
+                  <p className="bug-text">
+                    <b>Last updated</b> {search.last_updated}{" "}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <SearchHeading>
+            <p>
+              <b>No Results!!</b>
+            </p>
+          </SearchHeading>
+        )}
+      </div>
     );
   }
 }

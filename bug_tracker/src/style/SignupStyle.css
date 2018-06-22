@@ -1,84 +1,79 @@
-
-.loginContainer{
+.loginContainer {
   background: url("https://images.unsplash.com/38/awhCbhLqRceCdjcPQUnn_IMG_0249.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cd7525fd7d47a39dc7c79e417aba2069&auto=format&fit=crop&w=1267&q=80")
     no-repeat center center fixed;
   background-size: cover;
   font-family: "Open Sans", san-serif;
 }
-.loginContainer:before{
+.loginContainer:before {
   content: "";
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(41, 45, 54, 0.9);
-
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(41, 45, 54, 0.9);
 }
 
-.wrapper{
+.wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
 }
-.signup-form{
+.signup-form {
   width: 350px;
   height: 450px;
-
 }
-.form-header{
+.form-header {
   position: relative;
   width: 100%;
   height: 80px;
-  background-color:#323a45;
+  background-color: #323a45;
   border-radius: 5px 5px 0 0;
 }
 
-.form-body{
+.form-body {
   height: calc(100% - 80px);
   background-color: #fff;
   text-align: center;
   border-radius: 0 0 5px 5px;
 }
 
-.image-upload{
+.image-upload {
   display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: flex-start;
 }
-.logo-image{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-  }
+.logo-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+}
 
-  .title {
-    padding-top: 30px;
-    margin: 0;
-    font-weight: 600;
-
-  }
-  .span-text{
-    padding:5px;
-    color: #ff2f63;
-    text-transform: uppercase;
-  }
-.loginNav{
+.title {
+  padding-top: 30px;
+  margin: 0;
+  font-weight: 600;
+}
+.span-text {
+  padding: 5px;
+  color: #ff2f63;
+  text-transform: uppercase;
+}
+.loginNav {
   height: 10%;
   width: 100%;
   background: #444;
   color: #444;
 }
 
-.backContainer{
+.backContainer {
   position: absolute;
   bottom: 0;
   width: 92%;
@@ -89,26 +84,24 @@ background: rgba(41, 45, 54, 0.9);
   margin-bottom: 10px;
 }
 
-.backButton{
+.backButton {
   width: 100%;
   font-size: 1.5em;
   margin: 1%;
   display: inline-block;
 }
 
-.fileInput{
+.fileInput {
   margin: 0 auto;
   width: 200px;
   padding: 5%;
 }
 
-.alert-warning{
+.alert-warning {
   width: 40%;
   font-size: 1em;
   margin: 1% auto;
 }
-
-
 
 .signup-button {
   width: 250px;
