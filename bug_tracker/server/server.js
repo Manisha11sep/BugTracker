@@ -69,6 +69,7 @@ app.get("/api/admin/users", admin_controller.allUser);
 
 //**************** Email//****************
 app.post("/api/send-email", email_controller.sendMessage);
+
 const path = require('path')
 app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));
