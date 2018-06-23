@@ -10,7 +10,7 @@ const massive = require("massive");
 const session = require("express-session");
 const nodeMailer = require("nodemailer");
 require("dotenv").config();
-const PORT = 3030;
+const PORT = 80;
 const app = express();
 // const cors = require('cors');
 // const checkForSession = require('./middlewares/checkForSession');
