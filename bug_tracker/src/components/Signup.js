@@ -4,7 +4,7 @@ import axios from "axios";
 import "./../style/SignupStyle.css";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-import validateInput from "./Validations";
+import validateInput from './Validators';
 import Logo from "./../Logo.jpg";
 
 const CLOUDINARY_UPLOAD_URL =
