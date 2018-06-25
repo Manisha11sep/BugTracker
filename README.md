@@ -34,22 +34,22 @@ BugTracker was a personally developed application.
 ## Screenshots
 
 ### -Dashboard
-<img src="./Images/screencapture-bugtrackerinfo-dashboard-2018-06-24-17_25_21.jpg" width="250" />
+<img src="./Images/dashboard.jpg"/>
 
 ### -Signup
-<img src="./Images/signup.jpg" width="250" />
+<img src="./Images/signup.jpg"/>
 ### -Home
-<img src="./Images/screencapture-bugtrackerinfo-home-2018-06-24-17_24_30.jpg" width="250" />
+<img src="./Images/screencapture-bugtrackerinfo-home-2018-06-24-17_24_30.jpg"/>
 
 
 ### -List of issues/bugs
-<img src="./Images/list of issues.png" width="250" />
+<img src="./Images/list of issues.png"/>
 
 ### -Create new Issue
-<img src="./Images/createnewissue.jpg" width="250" />
+<img src="./Images/createnewissue.jpg"/>
 
 ### -Search
-<img src="./Images/search.jpg" width="250" />
+<img src="./Images/search.jpg"/>
 
 
 
