@@ -1,7 +1,8 @@
 # BugTracker
+## For the live version, click [here](http://www.bugtrackerinfo.com/)
 
 ## About
-Bug Tracker is a full stack web application that helps users to manage bugs. This application allows for creating a new bug, post comment on bugs and search bugs by username or bug description. BugTracker has admin login which has access to all users and bug details  It also allow managers(admin) to keep track of bugs and user and see different reports. Admin can see different reports in graphical form and send email to multiple users at the same time.
+Bug Tracker is a full stack web application that helps users to manage bugs. This application allows user to create a new bug, post/edit/delete comment and search bugs by username or bug description. BugTracker has admin login which has access to all users and bug details  It also allow managers(admin) to keep track of bugs and user and filter the search results. Admin can see different reports in graphical form(Charts & tables) and send email to multiple users at the same time.
 BugTracker was a personally developed application.
 
 ## Technologies
@@ -38,6 +39,7 @@ BugTracker was a personally developed application.
 
 ### -Signup
 <img src="./Images/signup.jpg"/>
+
 ### -Home
 <img src="./Images/screencapture-bugtrackerinfo-home-2018-06-24-17_24_30.jpg"/>
 
@@ -50,6 +52,24 @@ BugTracker was a personally developed application.
 
 ### -Search
 <img src="./Images/search.jpg"/>
+
+
+## Admin Functionality 
+
+### -UsersInfo
+<img src="./Images/users.jpg"/>
+
+### -Charts
+<img src="./Images/charts.jpg"/>
+
+### -Email
+<img src="./Images/email.png"/>
+
+### -BugList
+<img src="./Images/List of bugs.jpg"/>
+
+### -GithubIssue
+<img src="./Images/github issues.png"/>
 
 
 
