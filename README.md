@@ -1,30 +1,55 @@
-# personal-project
+# BugTracker
 
-## Required packages :- 
+## About
+Bug Tracker is a full stack web application that helps users to manage bugs. This application allows for creating a new bug, post comment on bugs and search bugs by username or bug description. BugTracker has admin login which has access to all users and bug details  It also allow managers(admin) to keep track of bugs and user and see different reports. Admin can see different reports in graphical form and send email to multiple users at the same time.
+BugTracker was a personally developed application.
 
-### React :- npm i axios react-router-dom redux react-redux --save.
+## Technologies
+- React
+- Node
+- Redux- Redux is a predictable state container for JavaScript apps.
+- Express - webframework used for created robust APIs
+- Massive - Data access tool for the Postgres database
+- axios - promise library for ajax calls
+- chart.js - I use to show charting of user's transactions
+- Styled Components- styled-components allows you to write actual CSS code to style your components.
+- express-session - used for session management
+- NodeMailer- Nodemailer is a module for Node.js applications to make sending emails very simple.
+- AWS S3 Storage
+- PostgreSQL - database
+- Cloudinary - a API to store images on cloud
+- Jest - Unit testing
+- Postman - Endpoint testing
+- Cypress - End to end testing
 
-### Server :- npm i express body-parser --save
-Open your package.json. Add your main property 
-Your main should look like "main": "server/index.js"
-Your proxy should look like "proxy": "http://localhost:4000" using whatever port your server is setup to run on (the port should not be 3000 because that is what React will be running on).
+## Hosting info
+- Hosted on an digital ocean
+- Using ngynx as it's reverse proxy
+- PM2 to help with node server management
 
-### Database :- npm i massive dotenv --save
+## Additional Info
+- BugTracker was designed using the MVC pattern
+- Authentication is handled by bcrypt
+
+## Screenshots
+
+### -Dashboard
+<img src="./Images/screencapture-bugtrackerinfo-dashboard-2018-06-24-17_25_21.jpg" width="250" />
+
+### -Signup
+<img src="./Images/signup.jpg" width="250" />
+### -Home
+<img src="./Images/screencapture-bugtrackerinfo-home-2018-06-24-17_24_30.jpg" width="250" />
 
 
-### BootStrap : npm install bootstrap --save
+### -List of issues/bugs
+<img src="./Images/list of issues.png" width="250" />
 
-### validator.js(This library validates and sanitizes strings only.)
+### -Create new Issue
+<img src="./Images/createnewissue.jpg" width="250" />
 
-npm install validator
+### -Search
+<img src="./Images/search.jpg" width="250" />
 
-npm install react-icons --save
 
-npm i react-redux redux react-router-dom
 
-npm install --save react-datetime
-
-npm install react-chartjs-2 chart.js --save
-
-npm install --save styled-components.
-npm install --save nodemailer
